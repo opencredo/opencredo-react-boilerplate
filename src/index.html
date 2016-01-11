@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <title>Opencredo React + Redux boilerplate</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Boostrap v3 -->
+  <link rel="stylesheet" href="/css/bootstrap-v3.3.6.min.css">
+  <!-- Uncomment for Boostrap v4 alpha -->
+  <!-- <link rel="stylesheet" href="/css/bootstrap-v4.0.0-alpha.2.css"> -->
+</head>
+<body>
+  <div id="root" style="height: 100%"></div>
+
+  <!-- Load Google fonts asynchronously ()-->
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: { families: [ 'Merriweather+Sans::latin,latin-ext', 'Open+Sans::latin,latin-ext' ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
+</body>
+</html>

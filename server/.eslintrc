@@ -1,0 +1,53 @@
+{
+  "root": true,
+  "parser"  : "babel-eslint",
+  "extends" : [
+    "standard"
+  ],
+  "env": {
+    "node" : true
+  },
+  "globals" : {
+    "__DEV__"      : false,
+    "__PROD__"     : false,
+    "__DEBUG__"    : false,
+    "__DEBUG_NEW_WINDOW__" : false,
+  },
+  "rules": {
+    "block-spacing": [2, "always"],
+    "camelcase": [0, {"properties": "never"}],
+    "constructor-super": 2,
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
+    "new-cap": 2,
+    "new-parens": 2,
+    "newline-after-var": 2,
+    "no-class-assign": 2,
+    "no-cond-assign": 2,
+    "no-const-assign": 2,
+    "no-console": 1,
+    "no-dupe-args": 2,
+    "no-dupe-class-members": 2,
+    "no-dupe-keys": 2,
+    "no-duplicate-case": 2,
+    "no-irregular-whitespace": 2,
+    "no-mixed-spaces-and-tabs": 2,
+    "no-multiple-empty-lines": [2, {"max": 1}],
+    "no-multi-spaces": 2,
+    "no-redeclare": 2,
+    "no-restricted-syntax": [2, "WithStatement"],
+    "no-this-before-super": 2,
+    "no-trailing-spaces": 2,
+    "no-undef": 2,
+    "no-unreachable": 2,
+    "no-unused-vars": 2,
+    "no-use-before-define": [2, "nofunc"],
+    "no-var": 2,
+    "no-with": 2,
+    "object-curly-spacing": [2, "never"],
+    "one-var": [2, "never"],
+    "prefer-template": 2,
+    "semi": [2, "always"],
+    "space-before-function-paren": [2, {"anonymous": "always", "named": "never"}],
+  }
+}

@@ -1,0 +1,11 @@
+language: node_js
+
+env:
+  - NODE_ENV=development WEBPACK_ENV=development
+  - NODE_ENV=development WEBPACK_ENV=production
+
+node_js:
+  - '5.4'
+
+script:
+  - npm run deploy

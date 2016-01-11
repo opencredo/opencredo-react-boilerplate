@@ -1,0 +1,23 @@
+// This stylesheet contains the global styles for CoreLayout
+// It's not a component's style (names are not mangled and it's not InlineCss)
+// but rather it's your usual stylesheet that you'd include in a <link rel=... /> tag.
+
+@import 'base';
+
+// Some best-practice CSS that's useful for most apps
+// Just remove them if they're not what you want
+html {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
