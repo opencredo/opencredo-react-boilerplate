@@ -21,3 +21,21 @@ html, body {
 *:after {
   box-sizing: inherit;
 }
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+// global styles need to be added into the :global {} block
+:global {
+  .clearfix {
+    clear: both;
+  }
+}
+
+// or explicitly made global with :global(.class-name) { ... }
+:global(.top-right) {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
