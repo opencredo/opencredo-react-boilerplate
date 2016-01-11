@@ -48,11 +48,9 @@ export class LandingPage extends React.Component {
   }
 
   render() {
-    const {isAuthenticated} = this.props;
-
     return (
       <div id="landing-page">
-        <Hero>
+        <Hero displayUnderNavbar>
           <HeroBackground image="/images/workspace-cc.jpg" />
           <HeroContent>
             <VAContainer horizontal vertical>

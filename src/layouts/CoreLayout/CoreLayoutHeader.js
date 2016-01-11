@@ -10,7 +10,7 @@ class CoreLayoutHeader extends React.Component {
 
   render() {
     return (
-      <Navbar staticTop fluid className={styles.component}>
+      <Navbar staticTop fluid className={styles.header}>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/" className={styles.brand}>React-Bootstrap</Link>

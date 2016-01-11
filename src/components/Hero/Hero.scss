@@ -3,6 +3,11 @@
   position: relative;
   background: black;
   color: white;
+  transition: height .3s;
+}
+
+.move-up {
+  margin-top: -50px;
 }
 
 .content {
@@ -28,4 +33,12 @@
   width: 100%;
   padding: 30px;
   background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-small {
+  height: 400px;
+
+  .content {
+    height: 350px;
+  }
 }
