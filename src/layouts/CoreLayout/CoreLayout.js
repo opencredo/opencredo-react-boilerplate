@@ -1,4 +1,5 @@
 import 'styles/core.scss';
+import CoreLayoutHeader from './CoreLayoutHeader';
 
 // Note: Stateless/function components *will not* hot reload!
 // react-transform *only* works on component classes.
@@ -10,9 +11,11 @@ import 'styles/core.scss';
 // CoreLayout is a pure function of it's props, so we can
 // define it with a plain javascript function...
 function CoreLayout({children}) {
+  const isAuthenticated = false;
   return (
     <div className="page-container">
       <div className="view-container">
+        <CoreLayoutHeader isAuthenticated={isAuthenticated} />
         {children}
       </div>
     </div>

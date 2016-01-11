@@ -4,7 +4,6 @@ import {Grid, Row, Col, Button} from 'react-bootstrap';
 import debug from 'debug';
 import {autobind, deprecate} from 'core-decorators';
 
-import LandingPageHeader from 'components/LandingPageHeader/LandingPageHeader';
 import MainFooter from 'components/MainFooter/MainFooter';
 import {Hero, HeroContent, HeroBackground} from 'components/Hero/index';
 import {VAContainer, VAMiddle} from 'components/VAlign/VAlign';
@@ -53,7 +52,6 @@ export class LandingPage extends React.Component {
 
     return (
       <div id="landing-page">
-        <LandingPageHeader isAuthenticated={isAuthenticated} />
         <Hero>
           <HeroBackground image="/images/workspace-cc.jpg" />
           <HeroContent>
@@ -63,6 +61,10 @@ export class LandingPage extends React.Component {
                   <h1 className={styles['hero-title']}>
                     Opencredo React Boilerplate
                   </h1>
+
+                  <p className={styles['hero-description']}>
+                    A react + redux boilerplate.
+                  </p>
                 </div>
               </VAMiddle>
             </VAContainer>

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import styles from './LandingPageHeader.scss';
-import {Navbar, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
+import styles from './CoreLayout.scss';
+import {Navbar, Nav} from 'react-bootstrap';
 
-class LandingPageHeader extends React.Component {
+class CoreLayoutHeader extends React.Component {
   static propTypes = {
     isAuthenticated: React.PropTypes.bool,
   };
@@ -22,13 +22,6 @@ class LandingPageHeader extends React.Component {
             <li role="presentation">
               <Link activeClassName="active" to="about">About Us</Link>
             </li>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -36,4 +29,4 @@ class LandingPageHeader extends React.Component {
   }
 }
 
-export default LandingPageHeader;
+export default CoreLayoutHeader;
