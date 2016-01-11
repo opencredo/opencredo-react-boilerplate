@@ -10,16 +10,18 @@ class LandingPageHeader extends React.Component {
 
   render() {
     return (
-      <Navbar inverse staticTop>
+      <Navbar staticTop fluid className={styles.component}>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/" className={styles.brand}>opencredo-react-boilerplate</Link>
+            <Link to="/" className={styles.brand}>React-Bootstrap</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <li role="presentation"><Link activeClassName="active" to="about">About Us</Link></li>
+            <li role="presentation">
+              <Link activeClassName="active" to="about">About Us</Link>
+            </li>
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Action</MenuItem>
               <MenuItem eventKey={3.2}>Another action</MenuItem>

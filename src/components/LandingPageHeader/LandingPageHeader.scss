@@ -1,3 +1,13 @@
 .brand {
   font-weight: bold;
 }
+.component {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  border: none;
+
+  a {
+    color: white !important;
+  }
+}

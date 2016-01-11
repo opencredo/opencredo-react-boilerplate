@@ -1,7 +1,13 @@
+import React from 'react';
 import styles from './LandingPage.scss';
 import {Grid, Row, Col, Button} from 'react-bootstrap';
 import debug from 'debug';
 import {autobind, deprecate} from 'core-decorators';
+
+import LandingPageHeader from 'components/LandingPageHeader/LandingPageHeader';
+import MainFooter from 'components/MainFooter/MainFooter';
+import {Hero, HeroContent, HeroBackground} from 'components/Hero/index';
+import {VAContainer, VAMiddle} from 'components/VAlign/VAlign';
 
 const log = debug('landing-page:info');
 const error = debug('landing-page:error');
@@ -11,6 +17,10 @@ if (__DEBUG__) {
 }
 
 export class LandingPage extends React.Component {
+
+  static propTypes = {
+    isAuthenticated: React.PropTypes.bool,
+  };
 
   // executes only on the client
   componentDidMount() {
@@ -39,32 +49,53 @@ export class LandingPage extends React.Component {
   }
 
   render() {
+    const {isAuthenticated} = this.props;
+
     return (
-      <Grid>
-        <Row>
-          <Col xs={12}>
-            <h1 className={styles.title}>Landing Page zappy</h1>
-            <p> Press <code>ctrl-h</code> to toggle Redux Dev Tools (development mode only)</p>
-            <p>This pages auto-updates when you make changes and save.</p>
-            <p>
-              This page also demonstrates the use of ES7 decorators
-              <code>@autobind</code> and <code>@deprecated</code>
-            </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6} md={2}>
-            <Button bsStyle="primary" onClick={this.handleButtonClick}>
-              Click Me (log)
-            </Button>
-          </Col>
-          <Col xs={6} md={2}>
-            <Button bsStyle="default" onClick={this.handleDeprecatedButtonClick}>
-              Deprecated
-            </Button>
-          </Col>
-        </Row>
-      </Grid>
+      <div id="landing-page">
+        <LandingPageHeader isAuthenticated={isAuthenticated} />
+        <Hero>
+          <HeroBackground image="/images/workspace-cc.jpg" />
+          <HeroContent>
+            <VAContainer horizontal vertical>
+              <VAMiddle>
+                <div className="text-center">
+                  <h1 className={styles['hero-title']}>
+                    Opencredo React Boilerplate
+                  </h1>
+                </div>
+              </VAMiddle>
+            </VAContainer>
+          </HeroContent>
+        </Hero>
+
+        <Grid>
+          <Row>
+            <Col xs={12}>
+              <h1 className={styles.title}>Landing Page zappy</h1>
+              <p> Press <code>ctrl-h</code> to toggle Redux Dev Tools (development mode only)</p>
+              <p>This pages auto-updates when you make changes and save.</p>
+              <p>
+                This page also demonstrates the use of ES7 decorators
+                <code>@autobind</code> and <code>@deprecated</code>
+              </p>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={2}>
+              <Button bsStyle="primary" onClick={this.handleButtonClick}>
+                Click Me (log)
+              </Button>
+            </Col>
+            <Col xs={6} md={2}>
+              <Button bsStyle="default" onClick={this.handleDeprecatedButtonClick}>
+                Deprecated
+              </Button>
+            </Col>
+          </Row>
+        </Grid>
+        <MainFooter />
+      </div>
     );
   }
 }
