@@ -4,6 +4,7 @@
 
 @import 'base';
 
+
 // Some best-practice CSS that's useful for most apps
 // Just remove them if they're not what you want
 html {
@@ -23,22 +24,36 @@ html, body {
 }
 body {
   font-family: $fonts;
+  background-color: rgb(235, 236, 237);
 }
 
-// global styles need to be added into the :global {} block
 :global {
-  .clearfix {
-    clear: both;
+  #content {
+    margin-top: 1rem;
   }
-}
+  .container {
+    width: 1000px;
+  }
 
-// or explicitly made global with :global(.class-name) { ... }
-:global(.top-right) {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
+  .box {
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+    border: 1px solid #DBDBDC;
+    border-radius: 3px;
+    min-height: 20px;
+  }
 
-:global(#root) {
-  font-family: $fonts;
+  #sidebar {
+  }
+
+  .box-title {
+    margin: 0;
+    border-bottom: 1px solid black;
+    font-size: 15px;
+    padding: 0 15px;
+    color: #4b4f5d;
+    border-bottom-color: #f2f2f2;
+    font-size: 15px;
+    line-height: 48px;
+  }
 }

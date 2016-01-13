@@ -1,15 +1,26 @@
 import thunk from 'redux-thunk';
-import {syncHistory} from 'redux-simple-router';
-import rootReducer from './rootReducer';
+import rootReducer from './root-reducer';
 import {
   applyMiddleware,
   compose,
   createStore,
 } from 'redux';
+import createLogger from 'redux-logger';
+import debug from 'debug';
 
-export default function configureStore(initialState, history) {
+const log = debug('app:redux');
+
+if (__DEBUG__) {
+  debug.enable('app:*');
+}
+
+export default function configureStore(initialState) {
   let createStoreWithMiddleware;
-  const middleware = applyMiddleware(syncHistory(history), thunk);
+  const logger = createLogger({
+    logger: {log},
+  });
+
+  const middleware = applyMiddleware(thunk, logger);
 
   if (__DEBUG__) {
     createStoreWithMiddleware = compose(
@@ -25,11 +36,11 @@ export default function configureStore(initialState, history) {
   const store = createStoreWithMiddleware(createStore)(rootReducer, initialState);
 
   if (module.hot) {
-    module.hot.accept('./rootReducer', () => {
-      const nextRootReducer = require('./rootReducer').default;
-
+    module.hot.accept('./root-reducer', () => {
+      const nextRootReducer = require('./root-reducer').default;
       store.replaceReducer(nextRootReducer);
     });
   }
+
   return store;
 }

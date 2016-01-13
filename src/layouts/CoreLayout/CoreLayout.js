@@ -1,5 +1,7 @@
 import 'styles/core.scss';
+import React from 'react';
 import CoreLayoutHeader from './CoreLayoutHeader';
+import MainFooter from 'components/MainFooter/MainFooter';
 
 // Note: Stateless/function components *will not* hot reload!
 // react-transform *only* works on component classes.
@@ -14,10 +16,11 @@ function CoreLayout({children}) {
   const isAuthenticated = false;
   return (
     <div className="page-container">
+      <CoreLayoutHeader isAuthenticated={isAuthenticated} />
       <div className="view-container">
-        <CoreLayoutHeader isAuthenticated={isAuthenticated} />
         {children}
       </div>
+      <MainFooter />
     </div>
   );
 }

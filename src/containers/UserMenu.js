@@ -1,20 +1,14 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router';
-
-import MainSectionRoutes from 'routes/MainSectionRoutes';
-import ProfileSectionRoutes from 'routes/ProfileSectionRoutes';
 
 export default class Root extends React.Component {
 
   static propTypes = {
-    history: React.PropTypes.object.isRequired,
-    store: React.PropTypes.object.isRequired,
+    routes: PropTypes.element.isRequired,
+    history: PropTypes.object.isRequired,
+    store: PropTypes.object.isRequired,
   };
-
-  constructor(props, state, c) {
-    super(props, state, c);
-  }
 
   // redux devtools pane
   get devTools() {
@@ -34,12 +28,13 @@ export default class Root extends React.Component {
   }
 
   render() {
+    const {routes, history, store} = this.props;
+
     return (
-      <Provider store={this.props.store}>
-        <div style={{height: '100%'}}>
-          <Router history={this.props.history} store={this.props.store}>
-            {MainSectionRoutes}
-            {ProfileSectionRoutes}
+      <Provider store={store} >
+        <div style={{height: '100%'}} className={store.rootClass}>
+          <Router history={history}>
+            {routes}
           </Router>
           {this.devTools}
         </div>
