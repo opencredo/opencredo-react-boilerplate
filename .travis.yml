@@ -8,4 +8,5 @@ node_js:
   - '5.4'
 
 script:
+  - cp src/app-config.js.example src/app-config.js
   - npm run deploy
