@@ -29,7 +29,8 @@ class ProfileLayoutHeader extends Component {
   }
 
   render() {
-    const user = this.props.user || {};
+    const {picture, name, nickname} = this.props.user || {};
+
 
     return (
       <Navbar staticTop>
@@ -47,7 +48,7 @@ class ProfileLayoutHeader extends Component {
 
             <NavDropdown id="user-menu" title={this.dropdownTitle()}>
               <li>
-                <DropdownProfileCard picture={user.picture} name={user.name} nickname={user.nickname} />
+                <DropdownProfileCard picture={picture} name={name} nickname={nickname} />
               </li>
               <MenuItem divider />
               <li>
