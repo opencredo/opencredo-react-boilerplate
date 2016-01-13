@@ -5,8 +5,8 @@ import {Route, IndexRoute} from 'react-router';
 import ProfileLayout from 'layouts/ProfileLayout/ProfileLayout';
 
 // Pages
-import ProfileEditPage from 'views/ProfileEditPage/ProfileEditPage';
-import MySpacesPage from 'views/MySpacesPage/MySpacesPage';
+import ProfileEditPage from 'pages/ProfileEditPage/ProfileEditPage';
+import MySpacesPage from 'pages/MySpacesPage/MySpacesPage';
 
 export default (
   <Route name="profile" path="/profile" component={ProfileLayout}>

@@ -5,8 +5,8 @@ import {Route, IndexRoute} from 'react-router';
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
 
 // Pages
-import LandingPage from 'views/LandingPage/LandingPage';
-import AboutPage from 'views/AboutPage/AboutPage';
+import LandingPage from 'pages/LandingPage/LandingPage';
+import AboutPage from 'pages/AboutPage/AboutPage';
 
 export default (
   <Route name="landing-page" path="/" component={CoreLayout}>
