@@ -15,6 +15,7 @@ if (__DEBUG__) {
 const log = debug('landing-page:info');
 const error = debug('landing-page:error');
 
+@connect((state) => ({isAuthenticated: state.auth.isAuthenticated}))
 export class LandingPage extends React.Component {
 
   static propTypes = {
@@ -44,6 +45,8 @@ export class LandingPage extends React.Component {
   }
 
   render() {
+    const {isAuthenticated} = this.props;
+
     return (
       <div id="landing-page">
         <LandingPageHero backgroundImage="/images/workspace-cc.jpg" />
@@ -66,16 +69,15 @@ export class LandingPage extends React.Component {
               </Button>
             </Col>
           </Row>
+          <Row>
+            <Col xs={12}>
+              {isAuthenticated ? 'authenticated' : 'not authenticated'}
+            </Col>
+          </Row>
         </Grid>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.isAuthenticated,
-  };
-};
-
-export default connect(mapStateToProps)(LandingPage);
+export default LandingPage;

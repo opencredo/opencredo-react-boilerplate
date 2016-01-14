@@ -1,11 +1,12 @@
+/* @flow */
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {Navbar, Nav, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap';
 import debug from 'debug';
 
-import config from 'app-config';
-import DropdownProfileCard from 'components/DropdownProfileCard/DropdownProfileCard';
+import config from '../../app-config';
+import DropdownProfileCard from '../../components/DropdownProfileCard/DropdownProfileCard';
 
 if (__DEBUG__) {
   debug.enable('profile-page:*');
@@ -29,7 +30,7 @@ class ProfileLayoutHeader extends Component {
   }
 
   render() {
-    const {picture, name, nickname} = this.props.user || {};
+    const {picture, name, nickname} = this.props.user;
 
 
     return (
@@ -66,11 +67,6 @@ class ProfileLayoutHeader extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user || {},
-  };
-};
+const mapStateToProps = state => ({user: state.auth.user});
 
 export default connect(mapStateToProps)(ProfileLayoutHeader);

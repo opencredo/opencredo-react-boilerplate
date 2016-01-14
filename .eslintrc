@@ -11,9 +11,7 @@
     "__DEV__"      : false,
     "__PROD__"     : false,
     "__DEBUG__"    : false,
-    "__DEBUG_NEW_WINDOW__" : false,
-    "React": true,
-    "ReactDOM": true
+    "__DEBUG_NEW_WINDOW__" : false
   },
   "rules": {
     "no-console": 2,
