@@ -1,5 +1,7 @@
 import 'styles/core.scss';
-import LandingPageHeader from 'components/LandingPageHeader/LandingPageHeader';
+import React from 'react';
+import CoreLayoutHeader from './CoreLayoutHeader';
+import MainFooter from 'components/MainFooter/MainFooter';
 
 // Note: Stateless/function components *will not* hot reload!
 // react-transform *only* works on component classes.
@@ -10,20 +12,21 @@ import LandingPageHeader from 'components/LandingPageHeader/LandingPageHeader';
 //
 // CoreLayout is a pure function of it's props, so we can
 // define it with a plain javascript function...
-function CoreLayout({isAuthenticated, children}) {
+function CoreLayout({children}) {
+  const isAuthenticated = false;
   return (
     <div className="page-container">
-      <LandingPageHeader isAuthenticated={isAuthenticated} />
+      <CoreLayoutHeader isAuthenticated={isAuthenticated} />
       <div className="view-container">
         {children}
       </div>
+      <MainFooter />
     </div>
   );
 }
 
 CoreLayout.propTypes = {
   children: React.PropTypes.element,
-  isAuthenticated: React.PropTypes.bool,
 };
 
 export default CoreLayout;

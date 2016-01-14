@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Opencredo React + Redux boilerplate</title>
+  <base href="/" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/favicon.png" />
@@ -17,7 +18,7 @@
   <!-- Load Google fonts asynchronously ()-->
   <script type="text/javascript">
     WebFontConfig = {
-      google: { families: [ 'Merriweather+Sans::latin,latin-ext', 'Open+Sans::latin,latin-ext' ] }
+      google: { families: [ 'Open+Sans::latin,latin-ext' ] }
     };
     (function() {
       var wf = document.createElement('script');
@@ -29,5 +30,6 @@
       s.parentNode.insertBefore(wf, s);
     })();
   </script>
+  <script src="https://cdn.auth0.com/js/lock-8.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,6 @@
+export default {
+  name: 'Opencredo React Boilerplate',
+  description: 'Universal web application boilerplate built with React, Redux and React-Router.',
+  auth0_client_id: 'your-auth0-client-id',
+  auth0_domain: 'your-auth0-domain',
+};

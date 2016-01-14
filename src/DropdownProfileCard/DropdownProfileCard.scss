@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+  min-height: 40px;
+  padding: 13px 13px 13px 56px !important;
+  margin: 0 !important;
+}
+
+.picture {
+  display: block;
+  position: absolute !important;
+  left: 14px;
+  top: 14px;
+  width: 31px;
+  height: 31px;
+  border-radius: 20px;
+}
+
+.nickname {
+  display: block;
+}
+
+.username {
+  display: block;
+  font-weight: 800;
+  color: #454545;
+}

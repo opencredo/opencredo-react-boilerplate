@@ -7,7 +7,6 @@ const debug = _debug('app:config:base');
 const config = {
   env : process.env.NODE_ENV,
   webpack_env: process.env.WEBPACK_ENV,
-
   // ----------------------------------
   // Project Structure
   // ----------------------------------
@@ -27,10 +26,7 @@ const config = {
   // ----------------------------------
   compiler_css_modules     : true,
   compiler_enable_hmr      : false,
-  compiler_globals         : {
-    React : 'react',
-    ReactDOM : 'react-dom',
-  },
+  compiler_globals         : {},
   compiler_source_maps     : true,
   compiler_hash_type       : 'hash',
   compiler_fail_on_warning : false,
@@ -42,13 +38,14 @@ const config = {
     colors : true,
   },
   compiler_vendor : [
-    'history',
     'react',
     'react-redux',
     'react-router',
     'redux',
     'redux-actions',
+    'redux-thunk',
     'redux-simple-router',
+    'react-bootstrap',
   ],
 
   // ----------------------------------

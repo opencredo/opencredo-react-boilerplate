@@ -1,17 +1,19 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {Router, browserHistory} from 'react-router';
-import {syncReduxAndRouter} from 'redux-simple-router';
+import {Router} from 'react-router';
+
+import MainSectionRoutes from 'routes/MainSectionRoutes';
+import ProfileSectionRoutes from 'routes/ProfileSectionRoutes';
 
 export default class Root extends React.Component {
 
   static propTypes = {
-    routes: React.PropTypes.element.isRequired,
+    history: React.PropTypes.object.isRequired,
     store: React.PropTypes.object.isRequired,
   };
 
-  componentWillMount() {
-    syncReduxAndRouter(browserHistory, this.props.store, (state) => state.router);
+  constructor(props, state, c) {
+    super(props, state, c);
   }
 
   // redux devtools pane
@@ -35,8 +37,9 @@ export default class Root extends React.Component {
     return (
       <Provider store={this.props.store}>
         <div style={{height: '100%'}}>
-          <Router history={browserHistory}>
-            {this.props.routes}
+          <Router history={this.props.history} store={this.props.store}>
+            {MainSectionRoutes}
+            {ProfileSectionRoutes}
           </Router>
           {this.devTools}
         </div>

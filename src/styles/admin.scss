@@ -1,0 +1,59 @@
+// This stylesheet contains the global styles for CoreLayout
+// It's not a component's style (names are not mangled and it's not InlineCss)
+// but rather it's your usual stylesheet that you'd include in a <link rel=... /> tag.
+
+@import 'base';
+
+
+// Some best-practice CSS that's useful for most apps
+// Just remove them if they're not what you want
+html {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: $fonts;
+  background-color: rgb(235, 236, 237);
+}
+
+:global {
+  #content {
+    margin-top: 1rem;
+  }
+  .container {
+    width: 1000px;
+  }
+
+  .box {
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+    border: 1px solid #DBDBDC;
+    border-radius: 3px;
+    min-height: 20px;
+  }
+
+  #sidebar {
+  }
+
+  .box-title {
+    margin: 0;
+    border-bottom: 1px solid black;
+    font-size: 15px;
+    padding: 0 15px;
+    color: #4b4f5d;
+    border-bottom-color: #f2f2f2;
+    font-size: 15px;
+    line-height: 48px;
+  }
+}

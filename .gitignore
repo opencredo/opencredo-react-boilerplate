@@ -6,3 +6,4 @@ coverage/
 .DS_Store
 *.log
 *.map
+src/app-config.js

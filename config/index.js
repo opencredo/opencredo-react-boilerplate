@@ -15,4 +15,6 @@ try {
   );
 }
 
-export default Object.assign({}, base, overrides);
+export default Object.assign({}, base, overrides, {
+  APP_NAME: process.env.APP_NAME,
+});
