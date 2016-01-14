@@ -1,0 +1,25 @@
+[ignore]
+.*babylon
+.*babel
+.*npmconf
+.*fbjs
+
+[include]
+
+[libs]
+interfaces/
+
+[options]
+module.name_mapper='^components/\(.*\)' -> '<PROJECT_ROOT>/src/components/\1'
+module.name_mapper='^containers/\(.*\)' -> '<PROJECT_ROOT>/src/containers/\1'
+module.name_mapper='^layouts/\(.*\)' -> '<PROJECT_ROOT>/src/layouts/\1'
+module.name_mapper='^pages/\(.*\)' -> '<PROJECT_ROOT>/src/pages/\1'
+module.name_mapper='^redux/\(.*\)' -> '<PROJECT_ROOT>/src/redux/\1'
+module.name_mapper='^routes/\(.*\)' -> '<PROJECT_ROOT>/src/routes/\1'
+module.name_mapper='^styles/\(.*\)' -> '<PROJECT_ROOT>/src/styles/\1'
+module.name_mapper='^app-config$' -> '<PROJECT_ROOT>/src/app-config'
+
+module.name_mapper='.*\(.scss\)' -> 'empty/object'
+
+esproposal.class_static_fields=enable
+esproposal.decorators=ignore
