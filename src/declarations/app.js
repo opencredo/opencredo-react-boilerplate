@@ -1,3 +1,3 @@
 /* @flow */
 
-// Add custom types here
+// store custom type declarations here

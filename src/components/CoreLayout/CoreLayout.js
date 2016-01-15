@@ -12,7 +12,7 @@ import MainFooter from 'components/MainFooter/MainFooter';
 //
 // CoreLayout is a pure function of it's props, so we can
 // define it with a plain javascript function...
-function CoreLayout({ children }) {
+function CoreLayout({children}) {
   const isAuthenticated = false;
 
   return (
