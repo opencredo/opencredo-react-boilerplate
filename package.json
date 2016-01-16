@@ -8,16 +8,9 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "clean": "rm -rf dist",
-    "compile": "node --harmony bin/compile",
     "lint": "eslint . ./",
-    "lint:fix": "npm run lint -- --fix",
     "start": "npm run dev",
-    "dev": "node bin/server",
-    "dev:no-debug": "npm run dev -- --no_debug",
-    "test": "karma start bin/karma.js",
-    "test:dev": "npm run test -- --watch",
-    "deploy": "npm run clean && npm run compile"
+    "dev": "node bin/server"
   },
   "repository": {
     "type": "git",
