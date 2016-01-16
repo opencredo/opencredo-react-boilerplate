@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {Glyphicon, NavDropdown, MenuItem} from 'react-bootstrap';
 import {Link} from 'react-router';
 import DropdownProfileCard from 'components/DropdownProfileCard/DropdownProfileCard';
+import styles from './UserDropdownMenu.scss';
 
 const DropdownTitle = ({name}) => (
   <span>
@@ -17,7 +18,7 @@ DropdownTitle.propTypes = {
 
 const UserDropdownMenu = ({user, logout}) => {
   return (
-    <NavDropdown id="user-menu" title={new DropdownTitle(user.name)}>
+    <NavDropdown id="user-menu" title={new DropdownTitle(user.name)} className={styles.container}>
       <li>
         <DropdownProfileCard picture={user.picture} name={user.name} nickname={user.nickname} />
       </li>

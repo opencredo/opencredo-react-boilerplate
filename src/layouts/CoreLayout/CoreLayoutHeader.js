@@ -8,6 +8,7 @@ import {autobind} from 'core-decorators';
 import config from 'app-config';
 import styles from './CoreLayout.scss';
 import Login from 'components/Login/Login';
+import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu';
 import {
   loginSuccess,
   loginFailure,
@@ -75,16 +76,12 @@ class CoreLayoutHeader extends React.Component {
             <li role="presentation">
               <Link activeClassName="active" to="about">About Us</Link>
             </li>
-            <li role="presentation">
-              {this.props.isAuthenticated ?
-                <a onClick={this.onLogout}>Logout</a>
-                :
-                <Login onClick={this.onLogin}/>
-              }
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
+            {this.props.isAuthenticated ?
+
+              <UserDropdownMenu user={this.props.user} logout={this.onLogout} />
+              :
+              <Login onClick={this.onLogin}/>
+            }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -95,6 +92,7 @@ class CoreLayoutHeader extends React.Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user,
   };
 };
 
