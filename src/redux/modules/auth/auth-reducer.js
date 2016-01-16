@@ -11,18 +11,22 @@ if (__DEBUG__) {
 
 const log = debug('redux:auth-reducer');
 
+const initialState = {
+  isAuthenticated: false,
+};
+
 const persistAuthState = (state) => localStorage.setItem('auth-state', JSON.stringify(state));
 
 const getStoredAuthState = () => {
+  let state;
+
   try {
-    return JSON.parse(localStorage.getItem('auth-state'));
+    state = JSON.parse(localStorage.getItem('auth-state'));
   } catch (e) {
     log('Error loading auth state from local storage');
-    return {
-      isAuthenticated: false,
-      isFetching: false,
-    };
   }
+
+  return state ? state : initialState;
 };
 
 const authReducer = (state = getStoredAuthState(), action) => {
@@ -31,8 +35,9 @@ const authReducer = (state = getStoredAuthState(), action) => {
     case LOGIN_FAILURE:
     case LOGOUT_REQUEST:
       // save new state to localStorage
-      const newState = Object.assign({}, state, action.state);
+      const newState = Object.assign({}, action.state);
       persistAuthState(newState);
+      log('newState =>', newState);
       return newState;
     default:
       return state;

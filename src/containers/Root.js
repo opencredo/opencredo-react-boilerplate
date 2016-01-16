@@ -19,17 +19,10 @@ export default class Root extends React.Component {
   // redux devtools pane
   get devTools() {
     if (__DEBUG__) {
-      if (__DEBUG_NEW_WINDOW__) {
-        if (!window.devToolsExtension) {
-          require('../redux/utils/createDevToolsWindow').default(this.props.store);
-        } else {
-          window.devToolsExtension.open();
-        }
-      } else if (!window.devToolsExtension) {
-        const DevTools = require('containers/DevTools').default;
-
-        return <DevTools />;
-      }
+      const DevTools = require('containers/DevTools').default;
+      return <DevTools />;
+    } else {
+      return null;
     }
   }
 
@@ -41,7 +34,6 @@ export default class Root extends React.Component {
             {MainSectionRoutes}
             {ProfileSectionRoutes}
           </Router>
-          {this.devTools}
         </div>
       </Provider>
     );

@@ -1,12 +1,14 @@
 /* eslint key-spacing:0 spaced-comment:0 */
-import _debug from 'debug';
-import path from 'path';
-import {argv} from 'yargs';
+const _debug = require('debug');
+const path = require('path');
+const yargs = require('yargs');
 
 const debug = _debug('app:config:base');
+
+const argv = yargs.argv;
+
 const config = {
   env : process.env.NODE_ENV,
-  webpack_env: process.env.WEBPACK_ENV,
   // ----------------------------------
   // Project Structure
   // ----------------------------------
@@ -58,59 +60,5 @@ const config = {
   ],
 };
 
-/************************************************
--------------------------------------------------
 
-All Internal Configuration Below
-Edit at Your Own Risk
-
--------------------------------------------------
-************************************************/
-
-// ------------------------------------
-// Environment
-// ------------------------------------
-config.globals = {
-  'process.env'  : {
-    NODE_ENV : JSON.stringify(config.env),
-  },
-  NODE_ENV     : config.env,
-  __DEV__      : config.env === 'development',
-  __PROD__     : config.env === 'production',
-  __DEBUG__    : config.env === 'development' && !argv.no_debug,
-  __DEBUG_NEW_WINDOW__ : !!argv.nw,
-};
-
-// ------------------------------------
-// Validate Vendor Dependencies
-// ------------------------------------
-const pkg = require('../../package.json');
-
-config.compiler_vendor = config.compiler_vendor
-  .filter(dep => {
-    if (pkg.dependencies[dep]) return true;
-
-    debug(
-      `Package "${dep}" was not found as an npm dependency in package.json; ` +
-      `it won't be included in the webpack vendor bundle.\n` +
-      `Consider removing it from vendor_dependencies in ~/config/index.js`
-    );
-  });
-
-// ------------------------------------
-// Utilities
-// ------------------------------------
-config.utils_paths = (() => {
-  const resolve = path.resolve;
-
-  const base = (...args) =>
-    resolve.apply(resolve, [config.path_base, ...args]);
-
-  return {
-    base,
-    client: base.bind(null, config.dir_client),
-    dist: base.bind(null, config.dir_dist),
-  };
-})();
-
-export default config;
+module.exports = config;

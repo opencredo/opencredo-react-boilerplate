@@ -49,7 +49,7 @@ export class LandingPage extends React.Component {
 
     return (
       <div id="landing-page">
-        <LandingPageHero backgroundImage="/images/workspace-cc.jpg" />
+        <LandingPageHero backgroundImage="https://source.unsplash.com/random/1900x1080" />
         <Grid>
           <Row>
             <Col xs={12}>

@@ -16,6 +16,7 @@ import {
 
 const log = debug('app:core-layout-header');
 
+log('styles:', styles);
 
 function showLogin() {
   const lock = new Auth0Lock(config.auth0_client_id, config.auth0_domain);
@@ -91,8 +92,10 @@ class CoreLayoutHeader extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+  };
+};
 
 export default connect(mapStateToProps)(CoreLayoutHeader);

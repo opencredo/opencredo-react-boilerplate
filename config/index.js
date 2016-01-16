@@ -1,6 +1,6 @@
-import _debug from 'debug';
-import base from './environments/base';
-
+'use strict';
+const _debug = require('debug');
+const base = require('./environments/base');
 const debug = _debug('app:config');
 
 debug('Create configuration.');
@@ -15,6 +15,6 @@ try {
   );
 }
 
-export default Object.assign({}, base, overrides, {
-  APP_NAME: process.env.APP_NAME,
+module.exports = Object.assign({}, base, overrides, {
+  APP_NAME: 'Opencredo React Boilerplate',
 });
