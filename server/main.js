@@ -2,14 +2,12 @@ const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const _debug = require('debug');
-const webpackConfig = require('../webpack/webpack.development');
-
-const app = express();
-const compiler = webpack(webpackConfig);
+_debug.enable('app:*');
 
 const debug = _debug('app:server');
-
-
+const webpackConfig = require('../webpack.config');
+const app = express();
+const compiler = webpack(webpackConfig);
 debug('Enabling webpack dev middleware.');
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
