@@ -8,6 +8,7 @@ import AdminPageLayout from 'components/AdminPageLayout';
 import LandingPage from 'pages/LandingPage/LandingPage';
 import AboutPage from 'pages/AboutPage/AboutPage';
 import ProfileEditPage from 'pages/ProfileEditPage/ProfileEditPage';
+import AccountPage from 'pages/AccountPage/AccountPage';
 
 export default (
   <Route path="/" name="home" component={AppLayout}>
@@ -17,7 +18,8 @@ export default (
       <Route name="about-us" path="about-us" component={AboutPage}/>
     </Route>
     <Route name="account" path="account" component={AdminPageLayout}>
-      <IndexRoute component={ProfileEditPage} />
+      <IndexRoute component={AccountPage} />
+      <Route name="profile-edit" path="/profile/edit" component={ProfileEditPage} />
     </Route>
   </Route>
 );

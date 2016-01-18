@@ -4,7 +4,7 @@ import styles from './DropdownProfileCard.scss';
 
 const DropdownProfileCard = ({ picture, name, nickname }) => {
   return (
-    <Link to="/profile" className={styles.container}>
+    <Link to="/profile/edit" className={styles.container}>
       <img className={styles.picture} src={picture} />
       <span className={styles.username}>{name}</span>
       <span className={styles.nickname}>{nickname}</span>

@@ -13,7 +13,7 @@ const UserDropdownMenu = (props) => {
       </li>
       <MenuItem divider />
       <li>
-        <Link to="/account">Profile</Link>
+        <Link to="/account">Account</Link>
       </li>
       <MenuItem divider />
       <li>
