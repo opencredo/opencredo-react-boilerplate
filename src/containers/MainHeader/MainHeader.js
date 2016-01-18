@@ -48,7 +48,7 @@ class MainHeader extends React.Component {
         <Navbar.Collapse>
           <Nav pullRight>
             <li role="presentation">
-              <Link activeClassName="active" to="/pages/about">About Us</Link>
+              <Link activeClassName="active" to="/pages/about-us">About Us</Link>
             </li>
             <li role="presentation">
               {this.props.isAuthenticated ?

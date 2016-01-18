@@ -14,7 +14,7 @@ export default (
     <IndexRedirect to="/pages" />
     <Route name="pages" path="/pages" component={HeroPageLayout}>
       <IndexRoute component={LandingPage} />
-      <Route name="about-us" path="about" component={AboutPage} />
+      <Route name="about-us" path="about-us" component={AboutPage}/>
     </Route>
     <Route name="account" component={AdminPageLayout}>
       <IndexRedirect to="/profile/edit" />
