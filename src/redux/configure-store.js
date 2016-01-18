@@ -23,7 +23,6 @@ export default function configureStore(initialState, browserHistory) {
   const store = middleware(createStore)(rootReducer, initialState);
 
   if (__DEBUG__) {
-    console.log('listenForReplays', store);
     // listen for route replays (devtools)
     routerMiddleware.listenForReplays(store, ({ routing }) => routing);
   }
