@@ -1,28 +1,34 @@
-const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
-const _debug = require('debug');
-_debug.enable('app:*');
+const debug = require('debug');
+const config = require('../config');
+const history = require('connect-history-api-fallback');
+const webpackconfig = require('../webpack.config');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 
-const debug = _debug('app:server');
-const webpackConfig = require('../webpack.config');
+debug.enable('app:*');
+
 const app = express();
-const compiler = webpack(webpackConfig);
-debug('Enabling webpack dev middleware.');
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath
+const compiler = webpack(webpackconfig);
+
+const log = debug('app:server');
+
+log('Redirecting all other requests to index.html');
+app.use(history({ verbose: false }));
+
+log('Enabling webpack dev middleware.');
+app.use(webpackDevMiddleware(compiler, {
+  lazy: false,
+  noInfo: false,
+  quiet: false,
+  stats: config.compiler.stats,
 }));
 
-debug('Enabling Webpack Hot Module Replacement (HMR).');
-app.use(require('webpack-hot-middleware')(compiler));
+log('Enabling Webpack Hot Module Replacement (HMR).');
+app.use(webpackHotMiddleware(compiler));
 
-debug('Serving static content from ./src/static');
-app.use(express.static(path.resolve(__dirname, '..', 'src', 'static')));
-
-debug('Redirecting all other requests to index.html');
-app.get('*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
-});
+log(`Serving static content from ${config.paths.static}`);
+app.use(express.static(config.paths.static));
 
 module.exports = app;

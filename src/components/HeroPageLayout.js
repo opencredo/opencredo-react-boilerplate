@@ -1,9 +1,16 @@
 import React, { PropTypes } from 'react';
+import MainHeader from 'containers/MainHeader/MainHeader';
+import MainFooter from 'components/MainFooter/MainFooter';
+
 
 const HeroPageLayout = (props) => {
   return (
-    <div id="page-layout" className="with-hero">
-      {props.children}
+    <div className="page-container">
+      <MainHeader />
+      <div className="view-container">
+        {props.children}
+      </div>
+      <MainFooter />
     </div>
   );
 };

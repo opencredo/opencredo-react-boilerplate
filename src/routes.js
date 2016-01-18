@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
+
 import AppLayout from 'components/AppLayout';
 import HeroPageLayout from 'components/HeroPageLayout';
 import AdminPageLayout from 'components/AdminPageLayout';
+
 import LandingPage from 'pages/LandingPage/LandingPage';
 import AboutPage from 'pages/AboutPage/AboutPage';
 import ProfileEditPage from 'pages/ProfileEditPage/ProfileEditPage';
