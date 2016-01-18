@@ -1,16 +1,15 @@
 {
-  "parser"  : "babel-eslint",
-  "extends" : [
+  "parser": "babel-eslint",
+  "extends": [
     "airbnb"
   ],
-  "env"     : {
-    "browser" : true
+  "env": {
+    "browser": true
   },
-  "globals" : {
-    "__DEV__"      : false,
-    "__PROD__"     : false,
-    "__DEBUG__"    : false,
-    "__DEBUG_NEW_WINDOW__" : false
+  "globals": {
+    "DEVELOPMENT": false,
+    "PRODUCTION": false,
+    "__DEBUG__": false
   },
   "rules": {
     "no-console": 2,
@@ -18,11 +17,6 @@
     "new-parens": 2,
     "no-dupe-class-members": 2,
     "no-this-before-super": 1,
-    "object-curly-spacing": [2, "never"],
-    "prefer-template": 2,
-    "valid-jsdoc": [1, {
-      "requireParamDescription": false,
-      "requireReturnDescription": false
-    }]
+    "prefer-template": 2
   }
 }

@@ -1,117 +1,166 @@
 'use strict';
+const head = require('lodash/head');
+const tail = require('lodash/tail');
 const path = require('path');
 const webpack = require('webpack');
-const cssnano = require('cssnano');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const cssnano = require('cssnano');
+const debug = require('debug');
+const config = require('./config');
 
+debug.enable('app:*');
+
+const log = debug('app:webpack');
+
+// Environment
 const NODE_ENV = process.env.NODE_ENV || 'development';
-const __DEV__ = NODE_ENV === 'development';
-const PROJECT_ROOT = path.resolve(__dirname);
-const SOURCES_ROOT = path.resolve(__dirname, 'src');
-const DIST_PATH = path.resolve(PROJECT_ROOT, 'dist');
-const GLOBALS = {
-  NODE_ENV,
-  __DEV__      : NODE_ENV === 'development',
-  __PROD__     : NODE_ENV === 'production',
-  __DEBUG__    : NODE_ENV === 'development'
-};
+const DEVELOPMENT = NODE_ENV === 'development';
+const PRODUCTION = NODE_ENV === 'production';
+const __DEBUG__ = DEVELOPMENT;
 
-let webpackConfig = {
-  devtool: 'cheap-module-eval-source-map',
-  entry: {
-    app: [
-      'eventsource-polyfill', // necessary for hot reloading with IE
-      'webpack-hot-middleware/client',
-      `${SOURCES_ROOT}/main.js`
-    ],
-    vendor: [
-      'react',
-      'react-redux',
-      'react-router',
-      'redux',
-      'redux-actions',
-      'redux-thunk',
-      'redux-simple-router',
-      'react-bootstrap',
-    ]
-  },
+
+// Webpack configuration
+log('Creating webpack configuration...');
+const webpackconfig = {
+  devtool: config.webpack.devtool,
   resolve: {
-    root: [SOURCES_ROOT],
-    extensions: ['.js', '.jsx', '']
+    root: config.paths.app,
+    extensions: ['', '.js', '.jsx'],
   },
+
+  entry: {
+    app: [config.paths.entryFile],
+    vendor: config.webpack.vendor,
+  },
+
   output: {
     filename: `[name].[hash].js`,
-    path: DIST_PATH,
-    publicPath: ''
+    path: config.paths.dist,
+    publicPath: 'http://localhost:3000/',
   },
+
   plugins: [
-    new webpack.DefinePlugin(GLOBALS),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({ DEVELOPMENT, PRODUCTION, __DEBUG__ }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(SOURCES_ROOT, 'index.html'),
-      hash: false,
-      favicon: path.resolve(SOURCES_ROOT, 'static', 'favicon.png'),
+      template: path.resolve(config.paths.app, 'index.html'),
+      hash: true,
+      favicon: path.resolve(config.paths.static, 'favicon.png'),
       filename: 'index.html',
       inject: 'body',
       minify: {
-        collapseWhitespace: true
-      }
-    })
+        collapseWhitespace: true,
+      },
+    }),
   ],
+
   module: {
-    loaders: [{
-      test: /\.jsx?/,
-      loaders: ['babel-loader'],
-      include: path.resolve(SOURCES_ROOT)
-    }, {
-      test: /\.scss$/,
-      include: /src/,
-      loaders: [
-        'style',
-        ,
-        'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-        'postcss',
-        'sass'
-      ]
-    },
-    {
-      test: /\.scss$/,
-      exclude: /src/,
-      loaders: [
-        'style',
-        'css?sourceMap',
-        'postcss',
-        'sass'
-      ]
-    },
-    // File loaders
-    { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
-    { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
-    { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
-    { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
-    { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
-    { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }],
-    // include src/styles in SASS paths
+    loaders: [
+      {
+        test: /\.jsx?/,
+        loaders: ['babel-loader'],
+        include: config.paths.app,
+      },
+      {
+        test: /\.json$/,
+        loader: 'json',
+      },
+      {
+        test: /\.scss$/,
+        include: /src/,
+        loaders: [
+          'style',
+          'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          'postcss',
+          'sass',
+        ],
+      },
+      {
+        test: /\.scss$/,
+        exclude: /src/,
+        loader: 'style!css?sourceMap!postcss!sass',
+      },
+      // File loaders
+      /* eslint-disable */
+      { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
+      { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
+      { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
+      { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
+      { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
+      { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' },
+      /* eslint-enable */
+    ],
   },
-  sassLoader: {
-    includePaths: path.resolve(SOURCES_ROOT, 'styles')
-  },
-  // postcss plgin
+
   postcss: [
     cssnano({
       sourcemap: true,
       autoprefixer: {
         add: true,
         remove: true,
-        browsers: ['last 2 versions']
+        browsers: ['last 2 versions'],
       },
       safe: true,
       discardComments: {
-        removeAll: true
-      }
-    })
-  ]
+        removeAll: true,
+      },
+    }),
+  ],
+
+  sassLoader: {
+    includePaths: config.paths.styles,
+  },
 };
 
-module.exports = webpackConfig;
+
+if (DEVELOPMENT) {
+  log('Extending webpack configuration with development settings.');
+
+  log('Adding HMR entry points');
+  webpackconfig.entry.app.push('webpack-hot-middleware/client');
+
+  log('Enable development plugins (HMR, NoErrors)');
+  webpackconfig.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  );
+}
+
+
+if (PRODUCTION) {
+  log('Extending webpack configuration with production settings.');
+
+  log('Setting output.publicPath to http://beta.compartirespacios.com');
+  webpackconfig.output.publicPath = `http://beta.compartirespacios.com`;
+
+  log('Add uglify and dedupe plugins');
+  webpackconfig.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true,
+      },
+    }),
+    new webpack.optimize.DedupePlugin()
+  );
+
+  log('Apply ExtractTextPlugin to CSS loaders.');
+  webpackconfig.module.loaders.filter(loader =>
+    loader.loaders && loader.loaders.find(name => /css/.test(name.split('?')[0]))
+  ).forEach(loader => {
+    /* eslint-disable */
+    const first = head(loader.loaders);
+    const rest = tail(loader.loaders);
+    loader.loader = ExtractTextPlugin.extract(first, rest.join('!'));
+    delete loader.loaders;
+    /* eslint-enable */
+  });
+  webpackconfig.plugins.push(
+    new ExtractTextPlugin('[name].[contenthash].css', {
+      allChunks: true,
+    })
+  );
+}
+
+module.exports = webpackconfig;
