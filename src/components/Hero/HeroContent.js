@@ -11,11 +11,6 @@ export default class HeroContent extends React.Component {
     return (
       <div className={styles.content}>
         {children ? children : ''}
-        <footer className={styles.footer}>
-          <div style={{ margin: 'auto', backgroundColor: 'white', width: 500 }}>
-            Search box
-          </div>
-        </footer>
       </div>
     );
   }

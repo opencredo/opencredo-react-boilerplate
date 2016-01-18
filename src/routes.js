@@ -17,8 +17,7 @@ export default (
       <Route name="about-us" path="about-us" component={AboutPage}/>
     </Route>
     <Route name="account" component={AdminPageLayout}>
-      <IndexRedirect to="/profile/edit" />
-      <Route name="/profile/edit" path="about" component={ProfileEditPage} />
+      <IndexRoute component={ProfileEditPage} />
     </Route>
   </Route>
 );
