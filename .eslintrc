@@ -7,7 +7,6 @@
     "browser" : true
   },
   "globals" : {
-    "Auth0Lock"    : false,
     "__DEV__"      : false,
     "__PROD__"     : false,
     "__DEBUG__"    : false,

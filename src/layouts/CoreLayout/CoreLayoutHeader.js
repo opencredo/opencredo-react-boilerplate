@@ -11,7 +11,6 @@ import Login from 'components/Login/Login';
 import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu';
 import {
   loginSuccess,
-  loginFailure,
   logoutRequest,
 } from 'redux/modules/auth/auth-actions';
 
@@ -19,28 +18,11 @@ const log = debug('app:core-layout-header');
 
 log('styles:', styles);
 
-function showLogin() {
-  const lock = new Auth0Lock(config.auth0_client_id, config.auth0_domain);
-
-  return dispatch => {
-    log('dispatch =>', dispatch);
-    lock.show((err, profile, token) => {
-      log(err, profile, token);
-      if (err) {
-        dispatch(loginFailure(err));
-        return;
-      }
-      localStorage.setItem('profile', JSON.stringify(profile));
-      localStorage.setItem('id_token', token);
-      dispatch(loginSuccess(profile, token));
-    });
-  };
-}
-
 class CoreLayoutHeader extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func,
-    isAuthenticated: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
   };
 
   componentWillUpdate() {
@@ -49,7 +31,7 @@ class CoreLayoutHeader extends React.Component {
 
   @autobind
   onLogin() {
-    this.props.dispatch(showLogin());
+    this.props.dispatch(loginSuccess());
   }
 
   @autobind
@@ -80,7 +62,10 @@ class CoreLayoutHeader extends React.Component {
 
               <UserDropdownMenu user={this.props.user} logout={this.onLogout} />
               :
-              <Login onClick={this.onLogin}/>
+
+              <li role="presentation">
+                <Login onClick={this.onLogin}/>
+              </li>
             }
           </Nav>
         </Navbar.Collapse>
