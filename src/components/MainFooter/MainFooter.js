@@ -3,11 +3,11 @@ import styles from './MainFooter.scss';
 import { Link } from 'react-router';
 
 const FOOTER_LINKS = [
-  { to: '/about', content: 'About' },
-  { to: '/faq', content: 'FAQ' },
-  { to: '/policies', content: 'Policies' },
-  { to: '/terms', content: 'Terms & Privacy' },
-  { to: '/help', content: 'Help' },
+  { to: '/pages/about-us', content: 'About' },
+  { to: '/pages/faq', content: 'FAQ' },
+  { to: '/pages/policies', content: 'Policies' },
+  { to: '/pages/terms', content: 'Terms & Privacy' },
+  { to: '/pages/help', content: 'Help' },
 ];
 
 export default class MainFooter extends React.Component {
