@@ -11,6 +11,7 @@
 [options]
 module.name_mapper='^components/\(.*\)' -> '<PROJECT_ROOT>/src/components/\1'
 module.name_mapper='^containers/\(.*\)' -> '<PROJECT_ROOT>/src/containers/\1'
+module.name_mapper='^declarations/\(.*\)' -> '<PROJECT_ROOT>/src/declarations/\1'
 module.name_mapper='^layouts/\(.*\)' -> '<PROJECT_ROOT>/src/layouts/\1'
 module.name_mapper='^pages/\(.*\)' -> '<PROJECT_ROOT>/src/pages/\1'
 module.name_mapper='^redux/\(.*\)' -> '<PROJECT_ROOT>/src/redux/\1'

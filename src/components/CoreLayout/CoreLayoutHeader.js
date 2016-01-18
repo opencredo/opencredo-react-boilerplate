@@ -14,7 +14,6 @@ import {
 
 const log = debug('app:core-layout-header');
 
-
 class CoreLayoutHeader extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func,
@@ -38,7 +37,6 @@ class CoreLayoutHeader extends React.Component {
   willReceiveProps(props) {
     log('core-layout-header will receive props', props);
   }
-
 
   render() {
     return (

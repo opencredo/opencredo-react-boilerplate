@@ -14,6 +14,7 @@ import MainFooter from 'components/MainFooter/MainFooter';
 // define it with a plain javascript function...
 function CoreLayout({ children }) {
   const isAuthenticated = false;
+
   return (
     <div className="page-container">
       <CoreLayoutHeader isAuthenticated={isAuthenticated} />
