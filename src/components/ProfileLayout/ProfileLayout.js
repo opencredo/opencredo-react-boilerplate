@@ -3,10 +3,10 @@ import ProfileLayoutHeader from 'containers/ProfileLayoutHeader/ProfileLayoutHea
 import 'styles/admin.scss';
 import styles from './ProfileLayout.scss';
 import classNames from 'classnames';
-import {Grid, Row, Col} from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import Sidebar from 'containers/Sidebar/Sidebar';
 
-function ProfileLayout({children}) {
+function ProfileLayout({ children }) {
   const containerClasses = classNames('page-container', 'profile-layout', styles.layout);
   return (
     <div className={containerClasses}>

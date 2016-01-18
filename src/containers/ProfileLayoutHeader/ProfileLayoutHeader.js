@@ -1,13 +1,11 @@
-/* @flow */
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import {Navbar, Nav} from 'react-bootstrap';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { Navbar, Nav, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
 import debug from 'debug';
 
-import config from '../../app-config';
-import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu';
-import {logoutRequest} from 'redux/modules/auth/auth-actions';
+import config from 'app-config';
+import DropdownProfileCard from 'components/DropdownProfileCard/DropdownProfileCard';
 
 if (__DEBUG__) {
   debug.enable('profile-page:*');
@@ -21,7 +19,19 @@ class ProfileLayoutHeader extends Component {
     user: PropTypes.object,
   };
 
+  dropdownTitle() {
+    return (
+      <span>
+        <Glyphicon glyph="user" />
+        <span>You</span>
+      </span>
+    );
+  }
+
   render() {
+    const { picture, name, nickname } = this.props.user || {};
+
+
     return (
       <Navbar staticTop>
         <Navbar.Header>
@@ -35,7 +45,20 @@ class ProfileLayoutHeader extends Component {
             <li role="presentation">
               <Link activeClassName="active" to="about">About Us</Link>
             </li>
-            <UserDropdownMenu user={this.props.user} logout={this.props.logout} />
+
+            <NavDropdown id="user-menu" title={this.dropdownTitle()}>
+              <li>
+                <DropdownProfileCard picture={picture} name={name} nickname={nickname} />
+              </li>
+              <MenuItem divider />
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <MenuItem divider />
+              <li>
+                <a onClick={this.logout}>Sign out</a>
+              </li>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -43,6 +66,11 @@ class ProfileLayoutHeader extends Component {
   }
 }
 
-const mapStateToProps = state => ({user: state.auth.user});
-const mapDispatchToProps = {logout: logoutRequest};
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileLayoutHeader);
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user || {},
+  };
+};
+
+export default connect(mapStateToProps)(ProfileLayoutHeader);

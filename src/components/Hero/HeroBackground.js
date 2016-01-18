@@ -8,7 +8,7 @@ export default class HeroBackground extends React.Component {
 
   render() {
     return (
-      <div className={styles.background} style={{backgroundImage: `url(${this.props.image})`}}>
+      <div className={styles.background} style={{ backgroundImage: `url(${this.props.image})` }}>
       </div>
     );
   }

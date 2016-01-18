@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class ProfileEditPage extends React.Component {
+export class NotFoundView extends React.Component {
   render() {
     return (
       <div className="content">
@@ -24,4 +24,4 @@ export class ProfileEditPage extends React.Component {
   }
 }
 
-export default ProfileEditPage;
+export default NotFoundView;

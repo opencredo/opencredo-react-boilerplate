@@ -1,4 +1,3 @@
-/* @flow */
 import React from 'react';
 import styles from './Hero.scss';
 import classNames from 'classnames';
@@ -10,7 +9,7 @@ export default class Hero extends React.Component {
     small: React.PropTypes.bool,
   };
 
-  render(): Object {
+  render() {
     const classes = classNames({
       [styles.hero]: true,
       [styles['move-up']]: this.props.displayUnderNavbar,

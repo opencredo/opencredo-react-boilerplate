@@ -1,28 +1,43 @@
-/* @flow */
-import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
-import {Navbar, Nav} from 'react-bootstrap';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import { Navbar, Nav } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import debug from 'debug';
-import {autobind} from 'core-decorators';
+import { autobind } from 'core-decorators';
 import config from 'app-config';
 import styles from './CoreLayout.scss';
 import Login from 'components/Login/Login';
-import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu';
 import {
   loginSuccess,
+  loginFailure,
   logoutRequest,
 } from 'redux/modules/auth/auth-actions';
 
 const log = debug('app:core-layout-header');
 
-log('styles:', styles);
+
+function showLogin() {
+  const lock = new Auth0Lock(config.auth0_client_id, config.auth0_domain);
+
+  return dispatch => {
+    log('dispatch =>', dispatch);
+    lock.show((err, profile, token) => {
+      log(err, profile, token);
+      if (err) {
+        dispatch(loginFailure(err));
+        return;
+      }
+      localStorage.setItem('profile', JSON.stringify(profile));
+      localStorage.setItem('id_token', token);
+      dispatch(loginSuccess(profile, token));
+    });
+  };
+}
 
 class CoreLayoutHeader extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    user: PropTypes.object.isRequired,
+    dispatch: PropTypes.func,
+    isAuthenticated: PropTypes.bool,
   };
 
   componentWillUpdate() {
@@ -31,7 +46,7 @@ class CoreLayoutHeader extends React.Component {
 
   @autobind
   onLogin() {
-    this.props.dispatch(loginSuccess());
+    this.props.dispatch(showLogin());
   }
 
   @autobind
@@ -58,15 +73,16 @@ class CoreLayoutHeader extends React.Component {
             <li role="presentation">
               <Link activeClassName="active" to="about">About Us</Link>
             </li>
-            {this.props.isAuthenticated ?
-
-              <UserDropdownMenu user={this.props.user} logout={this.onLogout} />
-              :
-
-              <li role="presentation">
+            <li role="presentation">
+              {this.props.isAuthenticated ?
+                <a onClick={this.onLogout}>Logout</a>
+                :
                 <Login onClick={this.onLogin}/>
-              </li>
-            }
+              }
+            </li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -74,11 +90,8 @@ class CoreLayoutHeader extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user,
-  };
-};
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
 
 export default connect(mapStateToProps)(CoreLayoutHeader);

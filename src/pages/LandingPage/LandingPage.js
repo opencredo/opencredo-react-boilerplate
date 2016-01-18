@@ -1,21 +1,18 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import styles from './LandingPage.scss';
-import {Grid, Row, Col, Button} from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import debug from 'debug';
-import {autobind} from 'core-decorators';
-
+import { autobind } from 'core-decorators';
 import LandingPageHero from './LandingPageHero';
 
+const log = debug('landing-page:info');
+const error = debug('landing-page:error');
 
 if (__DEBUG__) {
   debug.enable('landing-page:*');
 }
 
-const log = debug('landing-page:info');
-const error = debug('landing-page:error');
-
-@connect((state) => ({isAuthenticated: state.auth.isAuthenticated}))
 export class LandingPage extends React.Component {
 
   static propTypes = {
@@ -45,11 +42,9 @@ export class LandingPage extends React.Component {
   }
 
   render() {
-    const {isAuthenticated} = this.props;
-
     return (
       <div id="landing-page">
-        <LandingPageHero backgroundImage="https://source.unsplash.com/random/1900x1080" />
+        <LandingPageHero backgroundImage="/images/workspace-cc.jpg" />
         <Grid>
           <Row>
             <Col xs={12}>
@@ -69,15 +64,16 @@ export class LandingPage extends React.Component {
               </Button>
             </Col>
           </Row>
-          <Row>
-            <Col xs={12}>
-              {isAuthenticated ? 'authenticated' : 'not authenticated'}
-            </Col>
-          </Row>
         </Grid>
       </div>
     );
   }
 }
 
-export default LandingPage;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated,
+  };
+};
+
+export default connect(mapStateToProps)(LandingPage);

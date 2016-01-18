@@ -131,9 +131,6 @@ if (DEVELOPMENT) {
 if (PRODUCTION) {
   log('Extending webpack configuration with production settings.');
 
-  log('Setting output.publicPath to http://beta.compartirespacios.com');
-  webpackconfig.output.publicPath = `http://beta.compartirespacios.com`;
-
   log('Add uglify and dedupe plugins');
   webpackconfig.plugins.push(
     new webpack.optimize.UglifyJsPlugin({

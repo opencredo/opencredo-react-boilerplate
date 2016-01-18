@@ -1,6 +1,5 @@
-/* @flow */
 import 'styles/core.scss';
-import React, {PropTypes} from 'react';
+import React from 'react';
 import CoreLayoutHeader from './CoreLayoutHeader';
 import MainFooter from 'components/MainFooter/MainFooter';
 
@@ -13,7 +12,7 @@ import MainFooter from 'components/MainFooter/MainFooter';
 //
 // CoreLayout is a pure function of it's props, so we can
 // define it with a plain javascript function...
-function CoreLayout({children}:Object): any {
+function CoreLayout({ children }) {
   const isAuthenticated = false;
   return (
     <div className="page-container">
@@ -27,8 +26,7 @@ function CoreLayout({children}:Object): any {
 }
 
 CoreLayout.propTypes = {
-  isAuthenticated: PropTypes.bool,
-  children: PropTypes.element,
+  children: React.PropTypes.element,
 };
 
 export default CoreLayout;

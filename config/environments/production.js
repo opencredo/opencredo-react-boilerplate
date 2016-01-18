@@ -1,11 +1,14 @@
 module.exports = {
   server: {
-    hostname: 'beta.compartirespacios.com',
+    hostname: '<your production domain>',
     port: 80,
   },
 
   webpack: {
     devtool: 'source-map',
+    output: {
+      publicPath: 'http://<your production domain>',
+    },
   },
 
   compiler: {

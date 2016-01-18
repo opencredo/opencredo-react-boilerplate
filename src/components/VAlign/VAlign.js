@@ -2,11 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './VAlign.scss';
 
-export const VAMiddle = ({children = ''}) => <div className={styles.middle}>{children}</div>;
-export const VATop = ({children = ''}) => <div className={styles.top}>{children}</div>;
-export const VABottom = ({children = ''}) => <div className={styles.bottom}>{children}</div>;
+export const VAMiddle = ({ children = '' }) => <div className={styles.middle}>{children}</div>;
+export const VATop = ({ children = '' }) => <div className={styles.top}>{children}</div>;
+export const VABottom = ({ children = '' }) => <div className={styles.bottom}>{children}</div>;
 
-export const VAContainer = ({horizontal, vertical, children = ''}) => {
+export const VAContainer = ({ horizontal, vertical, children = '' }) => {
   const classes = classNames({
     [styles.container]: true,
     [styles.vertical]: vertical,
