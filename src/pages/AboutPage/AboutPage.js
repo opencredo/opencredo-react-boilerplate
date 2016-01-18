@@ -1,6 +1,6 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
-import {HeroBackground, Hero} from 'components/Hero';
+import { Grid, Row, Col } from 'react-bootstrap';
+import { HeroBackground, Hero } from 'components/Hero';
 
 export default () => (
   <section id="about-page">

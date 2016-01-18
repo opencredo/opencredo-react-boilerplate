@@ -1,7 +1,7 @@
-import React, {PropTypes, Component} from 'react';
-import {Link} from 'react-router';
-import {connect} from 'react-redux';
-import {ADMIN_ROLE} from 'core/constants';
+import React, { PropTypes, Component } from 'react';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { ADMIN_ROLE } from 'core/constants';
 
 class Sidebar extends Component {
   static propTypes = {

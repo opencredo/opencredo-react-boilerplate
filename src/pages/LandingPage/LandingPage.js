@@ -1,19 +1,17 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import styles from './LandingPage.scss';
-import {Grid, Row, Col, Button} from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import debug from 'debug';
-import {autobind} from 'core-decorators';
-
+import { autobind } from 'core-decorators';
 import LandingPageHero from './LandingPageHero';
 
+const log = debug('landing-page:info');
+const error = debug('landing-page:error');
 
 if (__DEBUG__) {
   debug.enable('landing-page:*');
 }
-
-const log = debug('landing-page:info');
-const error = debug('landing-page:error');
 
 export class LandingPage extends React.Component {
 

@@ -1,8 +1,8 @@
-import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import styles from './DropdownProfileCard.scss';
 
-const DropdownProfileCard = ({picture, name, nickname}) => {
+const DropdownProfileCard = ({ picture, name, nickname }) => {
   return (
     <Link to="/profile" className={styles.container}>
       <img className={styles.picture} src={picture} />

@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import {Navbar, Nav, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { Navbar, Nav, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
 import debug from 'debug';
 
 import config from 'app-config';
@@ -29,7 +29,7 @@ class ProfileLayoutHeader extends Component {
   }
 
   render() {
-    const {picture, name, nickname} = this.props.user || {};
+    const { picture, name, nickname } = this.props.user || {};
 
 
     return (

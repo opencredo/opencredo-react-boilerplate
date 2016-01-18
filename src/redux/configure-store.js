@@ -1,33 +1,28 @@
 import thunk from 'redux-thunk';
 import rootReducer from './root-reducer';
-import {
-  applyMiddleware,
-  compose,
-  createStore,
-} from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import createLogger from 'redux-logger';
 import debug from 'debug';
+import { syncHistory } from 'redux-simple-router';
+import DevTools from 'containers/DevTools';
 
 const log = debug('app:redux');
 
-if (__DEBUG__) {
-  debug.enable('app:*');
-}
-
-export default function configureStore(initialState) {
+export default function configureStore(initialState, browserHistory) {
   let createStoreWithMiddleware;
   const logger = createLogger({
-    logger: {log},
+    logger: { log },
   });
 
-  const middleware = applyMiddleware(thunk, logger);
+  const reduxRouterMiddleware = syncHistory(browserHistory);
+  const middleware = applyMiddleware(reduxRouterMiddleware, thunk, logger);
 
   if (__DEBUG__) {
     createStoreWithMiddleware = compose(
       middleware,
       window.devToolsExtension
         ? window.devToolsExtension()
-        : require('containers/DevTools').default.instrument()
+        : DevTools.instrument()
     );
   } else {
     createStoreWithMiddleware = compose(middleware);
