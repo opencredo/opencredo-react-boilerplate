@@ -66,19 +66,24 @@ const webpackconfig = {
         test: /\.json$/,
         loader: 'json',
       },
+      // Any .scss file in ./src/... *except* those in ./src/styles/
+      // are local css modules. the class names and ids will be changed to:
+      // [name]-[local]-[hash:base64:5]
       {
         test: /\.scss$/,
-        include: /src/,
+        include: /src\/(?!styles).+/,
         loaders: [
           'style',
-          'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          'css?modules&sourceMap&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]',
           'postcss',
           'sass',
         ],
       },
+      // Any .scss files in ./src/styles are treated as normal (not local)
+      // sass files, and so class names and ids will remain as specified
       {
         test: /\.scss$/,
-        exclude: /src/,
+        include: /src\/styles/,
         loader: 'style!css?sourceMap!postcss!sass',
       },
       // File loaders
