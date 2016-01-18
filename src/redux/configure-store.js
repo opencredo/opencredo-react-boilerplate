@@ -1,34 +1,32 @@
 import thunk from 'redux-thunk';
 import rootReducer from './root-reducer';
 import { applyMiddleware, compose, createStore } from 'redux';
-import createLogger from 'redux-logger';
-import debug from 'debug';
 import { syncHistory } from 'redux-simple-router';
-import DevTools from 'containers/DevTools';
 
-const log = debug('app:redux');
+function withDevTools(middleware) {
+  const devTools = window.devToolsExtension
+    ? window.devToolsExtension()
+    : require('../containers/DevTools').instrument();
+  return compose(middleware, devTools);
+}
 
 export default function configureStore(initialState, browserHistory) {
-  let createStoreWithMiddleware;
-  const logger = createLogger({
-    logger: { log },
-  });
+  const routerMiddleware = syncHistory(browserHistory);
 
-  const reduxRouterMiddleware = syncHistory(browserHistory);
-  const middleware = applyMiddleware(reduxRouterMiddleware, thunk, logger);
+  let middleware = applyMiddleware(thunk, routerMiddleware);
 
   if (__DEBUG__) {
-    createStoreWithMiddleware = compose(
-      middleware,
-      window.devToolsExtension
-        ? window.devToolsExtension()
-        : DevTools.instrument()
-    );
-  } else {
-    createStoreWithMiddleware = compose(middleware);
+    // use devtools in debug environment
+    middleware = withDevTools(middleware);
   }
 
-  const store = createStoreWithMiddleware(createStore)(rootReducer, initialState);
+  const store = middleware(createStore)(rootReducer, initialState);
+
+  if (__DEBUG__) {
+    console.log('listenForReplays', store);
+    // listen for route replays (devtools)
+    routerMiddleware.listenForReplays(store, ({ routing }) => routing);
+  }
 
   if (module.hot) {
     module.hot.accept('./root-reducer', () => {

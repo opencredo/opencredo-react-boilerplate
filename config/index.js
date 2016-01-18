@@ -39,7 +39,7 @@ const config = {
       'react-router-bootstrap',
     ],
     output: {
-      publicPath: '',
+      publicPath: '/',
     },
   },
 

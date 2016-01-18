@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
-import DevTools from 'containers/DevTools';
 
 export default class Root extends React.Component {
 
@@ -17,7 +16,8 @@ export default class Root extends React.Component {
 
   // redux devtools pane
   get devTools() {
-    if (__DEBUG__) {
+    if (DEVELOPMENT) {
+      const DevTools = require('./DevTools');
       return <DevTools />;
     }
   }
@@ -29,7 +29,7 @@ export default class Root extends React.Component {
           <Router history={this.props.history}>
             {this.props.routes}
           </Router>
-          { __DEBUG__ ? <DevTools /> : null }
+          {this.devTools}
         </div>
       </Provider>
     );
