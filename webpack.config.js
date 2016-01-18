@@ -35,9 +35,9 @@ const webpackconfig = {
   },
 
   output: {
-    filename: `[name].[hash].js`,
+    filename: `[name].[${config.compiler.hash_type}].js`,
     path: config.paths.dist,
-    publicPath: 'http://localhost:3000/',
+    publicPath: config.webpack.output.publicPath,
   },
 
   plugins: [

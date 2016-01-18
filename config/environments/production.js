@@ -7,7 +7,7 @@ module.exports = {
   webpack: {
     devtool: 'source-map',
     output: {
-      publicPath: 'http://<your production domain>',
+      publicPath: '/',
     },
   },
 
