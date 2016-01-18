@@ -6,12 +6,12 @@ import debug from 'debug';
 import { autobind } from 'core-decorators';
 import LandingPageHero from './LandingPageHero';
 
-const log = debug('landing-page:info');
-const error = debug('landing-page:error');
-
 if (__DEBUG__) {
   debug.enable('landing-page:*');
 }
+
+const log = debug('landing-page:info');
+const error = debug('landing-page:error');
 
 export class LandingPage extends React.Component {
 
