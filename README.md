@@ -15,4 +15,6 @@ npm start
 
 Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
 
-A lot more information coming w/c Mon 18 Jan 2016!
+## Flowtype
+
+See [FLOWTYPE.md](./FLOWTYPE.md) for [flowtype](http://flowtype.org/) usage.
