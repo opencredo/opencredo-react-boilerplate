@@ -1,12 +1,8 @@
 language: node_js
 
 env:
-  - NODE_ENV=development WEBPACK_ENV=development
-  - NODE_ENV=development WEBPACK_ENV=production
-
+  - NODE_ENV=development
 node_js:
   - '5.4'
-
 script:
-  - cp src/app-config.js.example src/app-config.js
-  - npm run deploy
+  - npm run lint
