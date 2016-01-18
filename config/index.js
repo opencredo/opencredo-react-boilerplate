@@ -38,6 +38,9 @@ const config = {
       'react-bootstrap',
       'react-router-bootstrap',
     ],
+    output: {
+      publicPath: '',
+    },
   },
 
   compiler: {
