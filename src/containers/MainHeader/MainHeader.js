@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Navbar, Nav } from 'react-bootstrap';
+import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
 import { loginSuccess, logoutRequest } from 'redux/modules/auth/auth-actions';
@@ -15,6 +16,7 @@ class MainHeader extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func,
     isAuthenticated: PropTypes.bool,
+    user: PropTypes.object,
   };
 
   componentWillUpdate() {
@@ -50,13 +52,13 @@ class MainHeader extends React.Component {
             <li role="presentation">
               <Link activeClassName="active" to="/pages/about-us">About Us</Link>
             </li>
-            <li role="presentation">
-              {this.props.isAuthenticated ?
-                <a onClick={this.onLogout}>Logout</a>
-                :
+            {this.props.isAuthenticated ?
+              <UserDropdownMenu user={this.props.user} logout={this.onLogout} />
+              :
+              <li role="presentation">
                 <Login onClick={this.onLogin}/>
-              }
-            </li>
+              </li>
+            }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -66,6 +68,7 @@ class MainHeader extends React.Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps)(MainHeader);

@@ -16,7 +16,7 @@ export default (
       <IndexRoute component={LandingPage} />
       <Route name="about-us" path="about-us" component={AboutPage}/>
     </Route>
-    <Route name="account" component={AdminPageLayout}>
+    <Route name="account" path="account" component={AdminPageLayout}>
       <IndexRoute component={ProfileEditPage} />
     </Route>
   </Route>
