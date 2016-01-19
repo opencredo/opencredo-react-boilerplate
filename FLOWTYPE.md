@@ -2,23 +2,13 @@
 
 This codebase has been set up to use [flowtype](http://flowtype.org/), a static typechecker for Javascript.
 
-## Installation
+## Windows installation
 
-To use it, first install `flow`.
-
-### *nix
-
-``` sh
-brew update
-brew install flow
-```
-
-### Windows
 Download and install [the Windows binaries](https://www.ocamlpro.com/pub/ocpwin/flow-builds/).
 
 ## Running
 
-Once installed for your operating system, you can then run the flow checker:
+You can now run the flow checker:
 
 ``` sh
 npm run flow-check
