@@ -54,4 +54,8 @@ const config = {
 };
 
 
-module.exports = merge({}, config, require(`./environments/${NODE_ENV}`));
+if (NODE_ENV === 'test') {
+  module.exports = config;
+} else {
+  module.exports = merge({}, config, require(`./environments/${NODE_ENV}`));
+}

@@ -16,6 +16,7 @@ const log = debug('app:webpack');
 // Environment
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const DEVELOPMENT = NODE_ENV === 'development';
+const TESTING = NODE_ENV === 'test';
 const PRODUCTION = NODE_ENV === 'production';
 const __DEBUG__ = DEVELOPMENT;
 
@@ -118,6 +119,11 @@ const webpackconfig = {
   },
 };
 
+if (!TESTING) {
+  webpackconfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    names: ['vendor'],
+  }));
+}
 
 if (DEVELOPMENT) {
   log('Extending webpack configuration with development settings.');

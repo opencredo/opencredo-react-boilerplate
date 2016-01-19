@@ -4,12 +4,16 @@
     "airbnb"
   ],
   "env": {
-    "browser": true
+    "browser": true,
+    "mocha": true,
   },
   "globals": {
     "DEVELOPMENT": false,
     "PRODUCTION": false,
-    "__DEBUG__": false
+    "__DEBUG__": false,
+    "sinon": false,
+    "expect": false,
+    "assert": false
   },
   "rules": {
     "no-console": 2,
