@@ -9,8 +9,10 @@
   },
   "scripts": {
     "lint": "eslint . ./",
+    "flow-check": "flow check",
     "start": "npm run dev",
-    "dev": "node --harmony server"
+    "dev": "node --harmony server",
+    "build": "npm run flow-check && npm run lint"
   },
   "repository": {
     "type": "git",
