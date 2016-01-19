@@ -1,3 +1,4 @@
 #!/bin/bash -evx
 
-npm install -g flow-bin
+npm install flow-bin
+npm install eslint
