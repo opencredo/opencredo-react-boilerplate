@@ -4,5 +4,7 @@ env:
   - NODE_ENV=development
 node_js:
   - '5.4'
+install:
+  - build/install.bash
 script:
-  - npm run lint
+  - build/script.bash
