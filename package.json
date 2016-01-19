@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint . ./",
     "start": "npm run dev",
-    "dev": "node --harmony bin/server"
+    "dev": "node --harmony server"
   },
   "repository": {
     "type": "git",

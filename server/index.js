@@ -1,3 +1,4 @@
+const yargs = require('yargs');
 const express = require('express');
 const webpack = require('webpack');
 const debug = require('debug');
@@ -30,5 +31,10 @@ app.use(webpackHotMiddleware(compiler));
 
 log(`Serving static content from ${config.paths.static}`);
 app.use(express.static(config.paths.static));
+
+const port = yargs.argv.port || config.server.port;
+app.listen(port, config.server.hostname, function (err, data) {
+  log(`Server is now running at http://${config.server.hostname}:${port}.`);
+});
 
 module.exports = app;
