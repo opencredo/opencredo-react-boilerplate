@@ -7,11 +7,11 @@ import {
 const authReducer = (state = getState(), action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      return Object.assign({}, state, action.state);
+      return Object.assign({}, action.state);
     case LOGIN_FAILURE:
-      return Object.assign({}, state, action.state);
+      return Object.assign({}, action.state);
     case LOGOUT_REQUEST:
-      return Object.assign({}, state, action.state);
+      return Object.assign({}, action.state);
     default:
       return state;
   }

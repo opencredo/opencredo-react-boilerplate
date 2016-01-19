@@ -2,9 +2,6 @@
 
 .footer {
   background-color: $color-footer;
-  position: absolute;
-  left: 0;
-  bottom: 0;
   width: 100%;
 
   ul {
@@ -12,8 +9,6 @@
     margin: 0;
     text-align: center;
   }
-
-
 }
 
 .item {
