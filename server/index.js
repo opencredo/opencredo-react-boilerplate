@@ -33,7 +33,7 @@ log(`Serving static content from ${config.paths.static}`);
 app.use(express.static(config.paths.static));
 
 const port = yargs.argv.port || config.server.port;
-app.listen(port, config.server.hostname, function (err, data) {
+app.listen(port, config.server.hostname, () => {
   log(`Server is now running at http://${config.server.hostname}:${port}.`);
 });
 
