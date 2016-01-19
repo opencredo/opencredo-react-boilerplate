@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { ADMIN_ROLE } from 'core/constants';
 
 class Sidebar extends Component {
   static propTypes = {
@@ -40,8 +39,8 @@ class Sidebar extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  isAdmin: state.auth.isAdmin,
   user: state.auth.user,
-  isAdmin: (state.auth.user.roles.indexOf(ADMIN_ROLE) >= 0),
 });
 
 export default connect(mapStateToProps)(Sidebar);
