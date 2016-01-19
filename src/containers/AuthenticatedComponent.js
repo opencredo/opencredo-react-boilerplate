@@ -1,9 +1,10 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { routeActions } from 'redux-simple-router';
+import classNames from 'classnames';
 
 
-const requireAuthentication = (Component) => {
+const requireAuthentication = (ComposedComponent) => {
   const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
   });
@@ -34,9 +35,15 @@ const requireAuthentication = (Component) => {
     }
 
     render() {
+      const { isAuthenticated } = this.props;
+      const wrapperClass = classNames({
+        'is-authenticated': isAuthenticated,
+        'requires-authentication': !isAuthenticated,
+      });
+
       return (
-        <div>
-          { this.props.isAuthenticated ? <Component {...this.props}/> : null }
+        <div className={wrapperClass}>
+          { isAuthenticated ? <ComposedComponent {...this.props}/> : null }
         </div>
       );
     }
