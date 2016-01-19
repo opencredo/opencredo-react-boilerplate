@@ -25,7 +25,7 @@ When you are creating a bug report, please [include as many details as possible]
 
 #### Before Submitting A Bug Report
 
-* **Perform a [cursory search](https://github.com/opencredo/opencredo-react-boilerplate/issues?q=is%3Aissue)** to see if the problem has already been reported. If it has, add a comment to the existing issue instead of opening a new one.
+* Perform a [cursory search](https://github.com/opencredo/opencredo-react-boilerplate/issues?q=is%3Aissue) to see if the problem has already been reported. If it has, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Bug Report?
 
@@ -89,7 +89,7 @@ Before creating enhancement suggestions, please check [this list](#before-submit
 
 #### Before Submitting An Enhancement Suggestion
 
-* **Perform a [cursory search](https://github.com/opencredo/opencredo-react-boilerplate/labels/enhancement)** to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
+* Perform a [cursory search](https://github.com/opencredo/opencredo-react-boilerplate/labels/enhancement) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Enhancement Suggestion?
 
@@ -130,43 +130,25 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 
 Unsure where to begin contributing? You can start by looking through [the open issues on github](https://github.com/opencredo/opencredo-react-boilerplate/issues).
 
-### Pull Requests
+## Before you commit
 
-## Styleguides
+Please make sure you do the following before committing code:
+
+* do a quick smoke-test to ensure the app appears to be functioning as expected
+* run `npm run lint` &ndash; ensure no errors
+* it's also preferable to run the `flow` checker &ndash; see [FLOWTYPE.md](./FLOWTYPE.md) for details.
+
+## Pull Requests
 
 ### Git Commit Messages
 
 * Use the present tense ("Add feature" not "Added feature")
 * Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
 * Limit the first line to 72 characters or less
-* Reference issues and pull requests liberally
-* When only changing documentation, include `[ci skip]` in the commit description
-* Consider starting the commit message with an applicable emoji:
-    * :art: `:art:` when improving the format/structure of the code
-    * :racehorse: `:racehorse:` when improving performance
-    * :non-potable_water: `:non-potable_water:` when plugging memory leaks
-    * :memo: `:memo:` when writing docs
-    * :penguin: `:penguin:` when fixing something on Linux
-    * :apple: `:apple:` when fixing something on Mac OS
-    * :checkered_flag: `:checkered_flag:` when fixing something on Windows
-    * :bug: `:bug:` when fixing a bug
-    * :fire: `:fire:` when removing code or files
-    * :green_heart: `:green_heart:` when fixing the CI build
-    * :white_check_mark: `:white_check_mark:` when adding tests
-    * :lock: `:lock:` when dealing with security
-    * :arrow_up: `:arrow_up:` when upgrading dependencies
-    * :arrow_down: `:arrow_down:` when downgrading dependencies
-    * :shirt: `:shirt:` when removing linter warnings
+* Reference issues and pull requests liberally ("Fix #17")
 
-### Specs Styleguide
 
-- Include thoughtfully-worded, well-structured
-  [Jasmine](http://jasmine.github.io/) specs in the `./spec` folder.
-- treat `describe` as a noun or situation.
-- treat `it` as a statement about state or how an operation changes state.
+## Styleguides
 
-#### Example
+Please refer to [STYLE_GUIDES.md](./STYLE_GUIDES.md).
 
-``` js
-TBC
-```
