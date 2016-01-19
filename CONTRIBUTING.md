@@ -135,8 +135,7 @@ Unsure where to begin contributing? You can start by looking through [the open i
 Please make sure you do the following before committing code:
 
 * do a quick smoke-test to ensure the app appears to be functioning as expected
-* run `npm run lint` &ndash; ensure no errors
-* it's also preferable to run the `flow` checker &ndash; see [FLOWTYPE.md](./FLOWTYPE.md) for details.
+* run `npm run build` &ndash; ensure no errors
 
 ## Pull Requests
 
