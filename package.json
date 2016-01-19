@@ -9,8 +9,10 @@
   },
   "scripts": {
     "lint": "eslint . ./",
+    "flow-check": "flow check",
     "start": "npm run dev",
-    "dev": "node --harmony server"
+    "dev": "node --harmony server",
+    "build": "npm run flow-check && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -73,6 +75,7 @@
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "flow-bin": "^0.20.1",
     "fs-extra": "^0.26.4",
     "html-webpack-plugin": "^1.7.0",
     "isparta-loader": "^2.0.0",
