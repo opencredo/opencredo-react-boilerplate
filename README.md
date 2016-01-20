@@ -19,3 +19,7 @@ Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
 ## Flowtype
 
 See [FLOWTYPE.md](./FLOWTYPE.md) for [flowtype](http://flowtype.org/) usage.
+
+## Contributing
+
+Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get involved.
