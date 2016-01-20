@@ -15,7 +15,7 @@ Please report unacceptable behaviour to [github@opencredo.com](mailto:github@ope
 
 ### Pull Requests
 
-We 💚 pull requests.
+We :heart: pull requests.
 
 ### Reporting Bugs
 
@@ -39,7 +39,7 @@ We're mostly following [Airbnb's JavaScript style guide](https://github.com/airb
 
 ### Code Conventions
 
-* We 💚 semicolons `;`
+* We :heart: semicolons `;`
 * Commas last `,`
 * 2 spaces for indentation (no tabs)
 * Prefer single `'` over double `"` quotes.
