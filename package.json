@@ -8,14 +8,16 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "build": "npm run flow-check && npm run lint && npm test && npm run compile",
+    "build": "npm run test && npm run dist:clean && npm run copy:static && npm run compile",
+    "dist:clean": "rm -rf dist && mkdir dist",
+    "copy:static": "cp -r src/static/* dist",
     "compile": "NODE_ENV=production webpack -p --bail",
     "dev": "node --harmony server",
     "flow-check": "flow check",
     "karma": "NODE_ENV=test karma start --single-run",
     "lint": "eslint . ./",
     "start": "npm run dev",
-    "test": "npm run karma"
+    "test": "npm run flow-check && npm run lint && npm run karma"
   },
   "repository": {
     "type": "git",
