@@ -11,7 +11,7 @@ import LanguageSelectionDropdown from '../LanguageSelectionDropdown/LanguageSele
 import { links } from 'shared/links';
 
 
-const log = debug('app:core-layout-header');
+const log = debug('app:main-header');
 
 class MainHeader extends React.Component {
   static propTypes = {
@@ -31,7 +31,7 @@ class MainHeader extends React.Component {
   }
 
   willReceiveProps(props) {
-    log('core-layout-header will receive props', props);
+    log('main-header will receive props', props);
   }
 
   render() {

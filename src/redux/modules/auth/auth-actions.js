@@ -36,7 +36,7 @@ export const loginSuccess = () => {
       familyName: 'Doe',
       nickname: 'john.doe',
       picture: '/images/default-profile.png',
-      email: 'john.doe@example.eg',
+      email: 'john.doe@example.org',
       emailVerified: true,
       roles: ['admin'],
       createdAt: '2016-01-01T00:00:00.000Z',
