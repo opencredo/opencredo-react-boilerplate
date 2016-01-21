@@ -1,5 +1,5 @@
-const fetch = (window.fetch) ? window.fetch : require('fetch-polyfill');
+import axios from 'axios';
 
 export const getProfile = () => {
-  return fetch('/api/profile.json').then(success => success.json());
+  return axios.get('/api/profile.json').then(response => response.data);
 };

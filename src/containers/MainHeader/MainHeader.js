@@ -57,7 +57,7 @@ class MainHeader extends React.Component {
                 <FormattedMessage {...links.aboutUs} />
               </Link>
             </li>
-            {this.props.isAuthenticated ?
+            {this.props.isAuthenticated && this.props.user ?
               <UserDropdownMenu user={this.props.user} logout={this.onLogout} />
               :
               <li role="presentation">
@@ -75,7 +75,7 @@ class MainHeader extends React.Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  user: state.auth.user,
+  user: state.user,
   language: state.language,
 });
 

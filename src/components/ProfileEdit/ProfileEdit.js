@@ -1,8 +1,15 @@
 import React, { PropTypes } from 'react';
 import styles from './ProfileEdit.scss';
+import debug from 'debug';
+
+if (__DEBUG__) {
+  debug.enable('profile-edit:*');
+}
+
+const log = debug('profile-edit:debug');
 
 const ProfileEdit = ({ user }) => {
-  console.log('user:', user);
+  log('user:', user);
 
   return (
     <div className={styles.container}>

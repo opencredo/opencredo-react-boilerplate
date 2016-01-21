@@ -31,10 +31,10 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.9.0",
     "classnames": "^2.2.3",
     "dotenv": "^1.2.0",
     "empty": "^0.10.1",
-    "fetch-polyfill": "^0.8.2",
     "lodash": "^4.0.0",
     "react": "^0.14.6",
     "react-bootstrap": "^0.28.2",

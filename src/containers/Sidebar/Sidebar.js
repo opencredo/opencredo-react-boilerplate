@@ -40,7 +40,7 @@ class Sidebar extends Component {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   isAdmin: state.auth.isAdmin,
-  user: state.auth.user,
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(Sidebar);

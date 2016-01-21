@@ -69,7 +69,7 @@ class ProfileLayoutHeader extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user || {},
+    user: state.user || {},
   };
 };
 

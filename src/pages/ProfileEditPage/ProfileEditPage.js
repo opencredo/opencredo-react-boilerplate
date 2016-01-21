@@ -22,7 +22,7 @@ export class ProfileEditPage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.auth.user,
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(ProfileEditPage);
