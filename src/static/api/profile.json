@@ -1,0 +1,16 @@
+{
+  "userId": "1",
+  "name": "John Doe",
+  "givenName": "John",
+  "familyName": "Doe",
+  "nickname": "john.doe",
+  "picture": "/images/default-profile.png",
+  "email": "john.doe@example.org",
+  "emailVerified": true,
+  "roles": [
+    "admin"
+  ],
+  "createdAt": "2016-01-01T00:00:00.000Z",
+  "updatedAt": "2016-01-01T00:00:00.000Z",
+  "locale": "en-GB"
+}

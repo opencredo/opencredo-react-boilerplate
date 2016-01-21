@@ -1,6 +1,7 @@
 import {
   getState,
-  LOGIN_SUCCESS, LOGIN_FAILURE,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
   LOGOUT_REQUEST,
 } from './auth-actions';
 

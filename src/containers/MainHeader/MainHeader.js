@@ -5,7 +5,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
-import { loginSuccess, logoutRequest } from 'redux/modules/auth/auth-actions';
+import { loginRequest, logoutRequest } from 'redux/modules/auth/auth-actions';
 import debug from 'debug';
 import LanguageSelectionDropdown from '../LanguageSelectionDropdown/LanguageSelectionDropdown';
 import { links } from 'shared/links';
@@ -22,7 +22,7 @@ class MainHeader extends React.Component {
 
   @autobind
   onLogin() {
-    this.props.dispatch(loginSuccess());
+    this.props.dispatch(loginRequest());
   }
 
   @autobind

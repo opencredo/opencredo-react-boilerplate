@@ -1,10 +1,12 @@
-export const SHOW_LOGIN = '@@auth/SHOW_LOGIN';
-export const LOGIN_REQUEST = '@@auth/LOGIN_REQUEST';
-export const LOGIN_SUCCESS = '@@auth/LOGIN_SUCCESS';
-export const LOGIN_FAILURE = '@@auth/LOGIN_FAILURE';
+import { getProfile } from 'api/user';
+
+export const LOGIN_REQUEST = Symbol('@@auth/LOGIN_REQUEST');
+export const LOGIN_SUCCESS = Symbol('@@auth/LOGIN_SUCCESS');
+export const LOGIN_FAILURE = Symbol('@@auth/LOGIN_FAILURE');
 export const LOCAL_STORAGE_KEY = 'redux:auth';
 
 const initialState = {
+  isLoading: true,
   isAuthenticated: false,
 };
 
@@ -21,28 +23,12 @@ export const getState = () => {
   }
 };
 
-export const showLogin = () => ({
-  type: SHOW_LOGIN,
-});
-
-export const loginSuccess = () => {
+export const loginSuccess = (response) => {
   const state = {
+    isLoading: false,
     isAuthenticated: true,
     isAdmin: true,
-    user: {
-      userId: '1',
-      name: 'John Doe',
-      givenName: 'John',
-      familyName: 'Doe',
-      nickname: 'john.doe',
-      picture: '/images/default-profile.png',
-      email: 'john.doe@example.org',
-      emailVerified: true,
-      roles: ['admin'],
-      createdAt: '2016-01-01T00:00:00.000Z',
-      updatedAt: '2016-01-01T00:00:00.000Z',
-      locale: 'en-GB',
-    },
+    user: response,
     token: 'eyJ0eXAasdfiOi',
   };
 
@@ -64,6 +50,30 @@ export const loginFailure = () => {
   return {
     type: LOGIN_FAILURE,
     state,
+  };
+};
+
+export const loginRequest = () => {
+  // Returning a function works because `redux-thunk` middleware is installed:
+  // https://github.com/gaearon/redux-thunk
+  // See `configure-store.js`.
+  return (dispatch) => {
+    dispatch({
+      type: LOGIN_REQUEST,
+      state: {
+        isLoading: true,
+        isAuthenticated: false,
+      },
+    });
+
+    getProfile().then(
+      response => {
+        dispatch(loginSuccess(response));
+      },
+      () => {
+        dispatch(loginFailure());
+      }
+    );
   };
 };
 
