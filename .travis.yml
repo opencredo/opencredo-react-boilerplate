@@ -6,3 +6,7 @@ node_js:
   - '5.4'
 script:
   - npm run build
+
+notifications:
+  slack:
+    secure: $SLACK_NOTIFICATION_TOKEN
