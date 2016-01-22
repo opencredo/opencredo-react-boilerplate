@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "npm run flow-check && npm run lint && npm test && npm run compile",
-    "compile": "NODE_ENV=production webpack -p",
+    "compile": "NODE_ENV=production webpack -p --bail",
     "dev": "node --harmony server",
     "flow-check": "flow check",
     "karma": "NODE_ENV=test karma start --single-run",
