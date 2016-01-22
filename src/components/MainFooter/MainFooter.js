@@ -1,15 +1,16 @@
 import React from 'react';
 import styles from './MainFooter.scss';
 import { Link } from 'react-router';
+import { FormattedMessage } from 'react-intl';
+import { links } from 'shared/links';
 
-const FOOTER_LINKS = [
-  { to: '/pages/about-us', content: 'About' },
-  { to: '/pages/faq', content: 'FAQ' },
-  { to: '/pages/policies', content: 'Policies' },
-  { to: '/pages/terms', content: 'Terms & Privacy' },
-  { to: '/pages/help', content: 'Help' },
+const footerLinks = [
+  links.aboutUs,
+  links.faq,
+  links.policies,
+  links.terms,
+  links.help,
 ];
-
 export default class MainFooter extends React.Component {
   static propTypes = {
     children: React.PropTypes.node,
@@ -20,9 +21,11 @@ export default class MainFooter extends React.Component {
       <footer className={`container footer footer-main ${styles.footer}`}>
         <nav>
           <ul className="inline-list">
-            {FOOTER_LINKS.map((link, index) =>
-              <li key={index} className={`footer-item ${styles.item}`}>
-                <Link to={link.to}>{link.content}</Link>
+            {footerLinks.map((link) =>
+              <li key={link.id} className={`footer-item ${styles.item}`}>
+                <Link to={link.to}>
+                  <FormattedMessage {...link} />
+                </Link>
               </li>
             )}
           </ul>
