@@ -11,5 +11,5 @@ export default {
   navigation_privacy: 'Privacy',
   navigation_help: 'Help',
   lang_en: 'English',
-  lang_es: 'Spanish',
+  lang_es: 'Español',
 };

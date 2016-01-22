@@ -10,6 +10,6 @@ export default {
   navigation_terms: 'Términos & Condiciones',
   navigation_privacy: 'Privacidad',
   navigation_help: 'Ayuda',
-  lang_en: 'Inglés',
+  lang_en: 'English',
   lang_es: 'Español',
 };
