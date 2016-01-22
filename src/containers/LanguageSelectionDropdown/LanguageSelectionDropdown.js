@@ -1,4 +1,3 @@
-/* @flow weak */
 import React, { PropTypes, Component } from 'react';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
