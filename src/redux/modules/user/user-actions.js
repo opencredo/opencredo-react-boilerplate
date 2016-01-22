@@ -32,7 +32,7 @@ const persistUser = (user: ?User) => {
 
 export const getUser = (): ?User => {
   const storedUser = localStorage.getItem(LOCAL_STORAGE_KEY);
-  let user: User|void;
+  let user: ?User;
 
   if (storedUser) {
     user = JSON.parse(storedUser);

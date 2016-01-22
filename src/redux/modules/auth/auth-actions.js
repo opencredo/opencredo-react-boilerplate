@@ -33,7 +33,7 @@ const persistState = (state: ?AuthState) => {
 
 export const getState = (): AuthState => {
   const storedState = localStorage.getItem(LOCAL_STORAGE_KEY);
-  let state: AuthState|void;
+  let state: ?AuthState;
 
   if (storedState) {
     state = JSON.parse(storedState);
