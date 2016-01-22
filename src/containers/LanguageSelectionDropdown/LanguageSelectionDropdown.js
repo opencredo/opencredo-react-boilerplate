@@ -15,8 +15,8 @@ const supportedLanguages = [
   {
     id: 'lang_es',
     key: 'es',
-    description: 'Spanish',
-    defaultMessage: 'Spanish',
+    description: 'Español',
+    defaultMessage: 'Español',
   },
 ];
 
