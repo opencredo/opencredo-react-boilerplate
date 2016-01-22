@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import { requireAuthentication as restrict } from 'containers/AuthenticatedComponent';
 
-import AppLayout from 'components/AppLayout';
+import AppContainer from 'containers/AppContainer';
 import HeroPageLayout from 'components/HeroPageLayout';
 import AdminPageLayout from 'components/AdminPageLayout';
 import LandingPage from 'pages/LandingPage/LandingPage';
@@ -12,7 +12,7 @@ import AccountPage from 'pages/AccountPage/AccountPage';
 
 export default(
   // Route components without path will render their children...
-  <Route component={AppLayout}>
+  <Route component={AppContainer}>
     // until a match is found...
     <Route component={HeroPageLayout}>
       // here
