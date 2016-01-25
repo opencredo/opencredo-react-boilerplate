@@ -2,6 +2,7 @@ import debug from 'debug';
 import React, { PropTypes } from 'react';
 import type User from 'declarations/app';
 import ProfileEdit from 'components/ProfileEdit/ProfileEdit';
+import { updateUser } from 'redux/modules/user/user-actions';
 import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
 
@@ -13,12 +14,14 @@ const log = debug('profile-edit-page:debug');
 
 export class ProfileEditPage extends React.Component {
   static propTypes = {
+    dispatch: PropTypes.func.isRequired,
     user: PropTypes.object,
   };
 
   @autobind
   handleUpdate(user: User) {
     log('handleUpdate(): user:', user);
+    this.props.dispatch(updateUser(user));
   }
 
   render() {

@@ -4,6 +4,7 @@ import { User } from 'declarations/app';
 
 export const SET_USER = Symbol('@@user/SET_USER');
 export const CLEAR_USER = Symbol('@@user/CLEAR_USER');
+export const UPDATE_USER = Symbol('@@user/UPDATE_USER');
 export const LOCAL_STORAGE_KEY: string = 'redux:user';
 
 type UserAction = {
@@ -48,6 +49,15 @@ export const setUser = (user: ?User): UserAction => {
 
   return {
     type: SET_USER,
+    user,
+  };
+};
+
+export const updateUser = (user: ?User): UserAction => {
+  persistUser(user);
+
+  return {
+    type: UPDATE_USER,
     user,
   };
 };
