@@ -11,7 +11,11 @@ const log = debug('profile-edit:debug');
 
 const ProfileEdit = ({ user, handleUpdate }) => {
   log('user:', user);
-  log('handleUpdate:', handleUpdate);
+
+  const onUpdateClick = () => {
+    log('onUpdateClick(): user:', user);
+    handleUpdate(user);
+  };
 
   return (
     <div className={styles.container}>
@@ -24,7 +28,7 @@ const ProfileEdit = ({ user, handleUpdate }) => {
         <div className={styles.nickname}>{user.nickname}</div>
         <div className={styles.email}>{user.email}</div>
         <div className={styles.updateButton}>
-          <Button bsStyle="primary" onClick={handleUpdate(user)}>Update</Button>
+          <Button bsStyle="primary" onClick={onUpdateClick}>Update</Button>
         </div>
       </div>
     </div>

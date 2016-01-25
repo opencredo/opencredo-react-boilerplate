@@ -9,7 +9,7 @@ if (__DEBUG__) {
   debug.enable('profile-edit-page:*');
 }
 
-const log = debug('profile-edit-page:info');
+const log = debug('profile-edit-page:debug');
 
 export class ProfileEditPage extends React.Component {
   static propTypes = {
