@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {wrapper, container} from '../styles/styleGuide';
 import { IntlProvider } from 'react-intl';
 import messages from 'translations';
-import {updateThemeColor} from '../redux/modules/theme/themeActionCreators';
+import {updateThemeColor} from '../redux/modules/theme/theme-actions';
 import ThemeSelect from '../components/theme/ThemeSelect';
 import 'styles/app.scss';
 
@@ -13,6 +13,7 @@ class AppContainer extends Component {
     language: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired,
     theme: PropTypes.object.isRequired,
+    updateThemeColor: PropTypes.func.isRequired,
   };
 
   render() {

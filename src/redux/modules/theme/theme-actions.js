@@ -1,0 +1,29 @@
+const UPDATE_THEME_COLOR = 'UPDATE_THEME_COLOR';
+const LOCAL_STORAGE_KEY = 'redux:theme';
+const DEFAULT_THEME_COLOR = '#5DC4C6';
+
+//type ThemeAction = {
+//  type: object;
+//payload: payload;
+//};
+
+const initialState = {
+  color: '#5DC4C6',
+};
+
+const persistState = (state) => {
+  localStorage.setItem(LOCAL_STORAGE_KEY);
+};
+
+//function getTheme() {
+//  const theme = localStorage.getItem(LOCAL_STORAGE_KEY);
+//  return theme ? theme : DEFAULT_THEME_COLOR;
+//}
+
+export function updateThemeColor(payload) {
+  localStorage.setItem(LOCAL_STORAGE_KEY, theme);
+  return {
+    type: UPDATE_THEME_COLOR,
+    payload: payload
+  };
+}
