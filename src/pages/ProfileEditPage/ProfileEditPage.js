@@ -1,6 +1,8 @@
+/* @flow */
+
 import debug from 'debug';
-import React, { PropTypes } from 'react';
-import type User from 'declarations/app';
+import React, { PropTypes, ReactComponent } from 'react';
+import { User } from 'declarations/app';
 import ProfileEdit from 'components/ProfileEdit/ProfileEdit';
 import { updateUser } from 'redux/modules/user/user-actions';
 import { autobind } from 'core-decorators';
@@ -24,7 +26,7 @@ export class ProfileEditPage extends React.Component {
     this.props.dispatch(updateUser(user));
   }
 
-  render() {
+  render(): ReactComponent {
     return (
       <div className="content">
         <h2 className="box-title">Edit Profile</h2>

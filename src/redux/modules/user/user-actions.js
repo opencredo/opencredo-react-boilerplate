@@ -2,10 +2,14 @@
 
 import { User } from 'declarations/app';
 
+import { updateProfile } from 'api/user';
+
 export const SET_USER = Symbol('@@user/SET_USER');
 export const CLEAR_USER = Symbol('@@user/CLEAR_USER');
-export const UPDATE_USER = Symbol('@@user/UPDATE_USER');
-export const LOCAL_STORAGE_KEY: string = 'redux:user';
+export const UPDATE_USER_REQUEST = Symbol('@@user/UPDATE_USER_REQUEST');
+export const UPDATE_USER_SUCCESS = Symbol('@@user/UPDATE_USER_SUCCESS');
+export const UPDATE_USER_FAILURE = Symbol('@@user/UPDATE_USER_FAILURE');
+export const LOCAL_STORAGE_KEY:string = 'redux:user';
 
 type UserAction = {
   type: Symbol;
@@ -53,16 +57,40 @@ export const setUser = (user: ?User): UserAction => {
   };
 };
 
-export const updateUser = (user: ?User): UserAction => {
-  persistUser(user);
-
+export const updateUserSuccess = (user: User): UserAction => {
   return {
-    type: UPDATE_USER,
+    type: UPDATE_USER_SUCCESS,
     user,
   };
 };
 
-export const clearUser = (): UserAction => {
+export const updateUserFailure = (): UserAction => {
+  return {
+    type: UPDATE_USER_FAILURE,
+    user: null,
+  };
+};
+
+export const updateUser = (user: User): Function => {
+  return (dispatch) => {
+    dispatch({
+      type: UPDATE_USER_REQUEST,
+      user,
+    });
+
+    updateProfile(user).then(
+      response => {
+        dispatch(updateUserSuccess(response));
+        dispatch(setUser(response));
+      },
+      () => {
+        dispatch(updateUserFailure());
+      }
+    );
+  };
+};
+
+export const clearUser = ():UserAction => {
   persistUser(null);
 
   return {

@@ -2,7 +2,9 @@ import debug from 'debug';
 import {
   getUser,
   SET_USER,
-  UPDATE_USER,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILURE,
   CLEAR_USER,
 } from './user-actions';
 
@@ -17,8 +19,13 @@ const userReducer = (state = getUser(), action) => {
   switch (action.type) {
     case SET_USER:
       return Object.assign({}, action.user);
-    case UPDATE_USER:
+    case UPDATE_USER_REQUEST:
       return Object.assign({}, action.user);
+    case UPDATE_USER_SUCCESS:
+      return Object.assign({}, action.user);
+    case UPDATE_USER_FAILURE:
+      // NOTE: this is not essential, but it's useful to explicitly define
+      return state;
     case CLEAR_USER:
       return null;
     default:
