@@ -3,7 +3,7 @@ const LOCAL_STORAGE_KEY = 'redux:theme';
 const DEFAULT_THEME_COLOR = '#5DC4C6';
 
 //type ThemeAction = {
-//  type: object;
+//  type: string;
 //payload: payload;
 //};
 

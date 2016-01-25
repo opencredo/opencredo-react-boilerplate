@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import {wrapper, container} from '../styles/styleGuide';
 import { IntlProvider } from 'react-intl';
 import messages from 'translations';
-import {updateThemeColor} from '../redux/modules/theme/theme-actions';
+import {updateThemeColor} from '../redux/modules/theme';
 import ThemeSelect from '../components/theme/ThemeSelect';
 import 'styles/app.scss';
 
-const mapStateToProps = ({ language, theme }) => ({ language, theme });
+const mapStateToProps = ({ language }) => ({ language });
 class AppContainer extends Component {
   static propTypes = {
     language: PropTypes.string.isRequired,
@@ -24,7 +24,7 @@ class AppContainer extends Component {
       <div
         style={{
             ...container,
-            background: theme.color
+            background: theme.color ? {} : '#5DC4C6'
           }}
       >
       </div>
@@ -38,17 +38,14 @@ class AppContainer extends Component {
   }
 }
 
-//function select(state) {
-//  return {
-//    theme: state.theme
-//  };
-//}
-//
-//export default connect(
-//  select,
-//  {
-//    updateThemeColor
-//  }
-//)(AppContainer);
+function select(state) {
+  return { theme: state.theme };
+}
 
-export default connect(mapStateToProps)(AppContainer);
+export default connect(
+  select,
+  { updateThemeColor },
+  mapStateToProps
+)(AppContainer);
+
+// export default connect(mapStateToProps)(AppContainer);

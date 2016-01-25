@@ -1,4 +1,5 @@
 import Reactt, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import 'react-colors-picker/assets/index.css';
 import ColorPicker from 'react-colors-picker';
 import {corner} from './../../styles/styleGuide';
