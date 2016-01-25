@@ -1,4 +1,4 @@
-import React from 'react';
+import Reactt, { PropTypes } from 'react';
 import 'react-colors-picker/assets/index.css';
 import ColorPicker from 'react-colors-picker';
 import {corner} from './../../styles/styleGuide';
@@ -23,8 +23,8 @@ const ThemeSelect = ({updateThemeColor, theme}) => {
 };
 
 ThemeSelect.propTypes = {
-  theme: React.PropTypes.object.isRequired,
-  updateThemeColor: React.PropTypes.func.isRequired
+  theme: PropTypes.object.isRequired,
+  updateThemeColor: PropTypes.func.isRequired
 };
 
 export default ThemeSelect;
