@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Button } from 'react-bootstrap';
 import styles from './ProfileEdit.scss';
 import debug from 'debug';
 
@@ -8,8 +9,9 @@ if (__DEBUG__) {
 
 const log = debug('profile-edit:debug');
 
-const ProfileEdit = ({ user }) => {
+const ProfileEdit = ({ user, handleUpdate }) => {
   log('user:', user);
+  log('handleUpdate:', handleUpdate);
 
   return (
     <div className={styles.container}>
@@ -21,6 +23,9 @@ const ProfileEdit = ({ user }) => {
         </div>
         <div className={styles.nickname}>{user.nickname}</div>
         <div className={styles.email}>{user.email}</div>
+        <div className={styles.updateButton}>
+          <Button bsStyle="primary" onClick={handleUpdate(user)}>Update</Button>
+        </div>
       </div>
     </div>
   );
@@ -28,6 +33,7 @@ const ProfileEdit = ({ user }) => {
 
 ProfileEdit.propTypes = {
   user: PropTypes.object.isRequired,
+  handleUpdate: PropTypes.func.isRequired,
 };
 
 export default ProfileEdit;

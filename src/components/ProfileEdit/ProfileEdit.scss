@@ -33,6 +33,12 @@
   color: #454545;
 }
 
-.nickname {
+.nickname,
+.email,
+.updateButton {
   display: block;
+}
+
+.updateButton {
+  margin-top: 20px;
 }
