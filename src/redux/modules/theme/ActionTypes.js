@@ -1,0 +1,1 @@
+export const UPDATE_THEME_COLOR = 'UPDATE_THEME_COLOR';
