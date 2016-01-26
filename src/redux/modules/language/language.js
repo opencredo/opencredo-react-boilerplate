@@ -4,7 +4,7 @@ export const LOCAL_STORAGE_KEY = 'redux:language';
 export const DEFAULT_LANGUAGE = 'en';
 
 type LanguageAction = {
-  type: string;
+  type: Symbol;
   language: string;
 };
 
