@@ -11,7 +11,10 @@ export const updateProfile = (user: User): Promise<User> => {
   // NOTE: this is where the actual `PUT` http request would be called:
   // it is mocked here in order to keep things simple (ie, no actual service needs to be built)
   // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-  return new Promise((resolve) => resolve(user));
+  return new Promise((resolve) => {
+    // insert a short delay to simulate service call delay
+    setTimeout(() => resolve(user), 700);
+  });
   // So to simulate an http request that fails:
   // return new Promise((resolve, reject) => reject());
 };

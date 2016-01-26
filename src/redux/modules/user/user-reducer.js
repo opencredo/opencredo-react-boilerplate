@@ -15,22 +15,32 @@ if (__DEBUG__) {
 const log = debug('user-reducer:debug');
 
 const userReducer = (state = getUser(), action) => {
-  log('type:', action.type, 'user:', action.user);
+  let newState;
+
   switch (action.type) {
     case SET_USER:
-      return Object.assign({}, action.user);
+      newState = Object.assign({}, action.user);
+      break;
     case UPDATE_USER_REQUEST:
-      return Object.assign({}, action.user);
+      newState = Object.assign({}, action.user);
+      break;
     case UPDATE_USER_SUCCESS:
-      return Object.assign({}, action.user);
+      newState = Object.assign({}, action.user);
+      break;
     case UPDATE_USER_FAILURE:
       // NOTE: this is not essential, but it's useful to explicitly define
-      return state;
+      newState = state;
+      break;
     case CLEAR_USER:
-      return null;
+      newState = null;
+      break;
     default:
-      return state;
+      newState = state;
   }
+
+  log('action:', action, 'state:', state, 'newState:', newState);
+
+  return newState;
 };
 
 export default userReducer;
