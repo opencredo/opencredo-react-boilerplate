@@ -1,6 +1,7 @@
 .spinner {
   -webkit-animation: spin 1000ms infinite linear;
   animation: spin 1000ms infinite linear;
+  margin-right: 10px;
 }
 
 @-webkit-keyframes spin {

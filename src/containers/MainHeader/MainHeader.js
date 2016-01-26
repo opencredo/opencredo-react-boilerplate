@@ -10,6 +10,9 @@ import debug from 'debug';
 import LanguageSelectionDropdown from '../LanguageSelectionDropdown/LanguageSelectionDropdown';
 import { links } from 'shared/links';
 
+if (__DEBUG__) {
+  debug.enable('app:*');
+}
 
 const log = debug('app:main-header');
 
@@ -62,7 +65,7 @@ class MainHeader extends React.Component {
               :
               <li role="presentation">
                 <a onClick={this.onLogin}>
-                  <FormattedMessage {...links.login} />
+                  <FormattedMessage {...links.logIn} />
                 </a>
               </li>
             }

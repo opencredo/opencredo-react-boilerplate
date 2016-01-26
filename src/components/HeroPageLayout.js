@@ -15,7 +15,7 @@ const HeroPageLayout = (props) => {
       <MainFooter />
       <Spinner
         canShow={props.spinner.canShow}
-        message={props.spinner.message}
+        messageId={props.spinner.messageId}
       />
     </div>
   );

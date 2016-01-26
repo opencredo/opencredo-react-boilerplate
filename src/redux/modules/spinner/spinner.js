@@ -15,12 +15,12 @@ import {
 
 type SpinnerState = {
   canShow: boolean;
-  message: string;
+  messageId: string;
 };
 
 export const DEFAULT_SPINNER_STATE: SpinnerState = {
   canShow: false,
-  message: '',
+  messageId: 'please_wait',
 };
 
 if (__DEBUG__) {
@@ -34,14 +34,12 @@ const spinnerReducer = (state : SpinnerState = DEFAULT_SPINNER_STATE, action: an
 
   switch (action.type) {
     case UPDATE_USER_REQUEST:
-      // TODO: i18n for `message`
-      // TODO: where should the value for `message` be set?
       newState = Object.assign(
         {},
         action.state,
         {
           canShow: true,
-          message: 'Updating user details...',
+          messageId: 'updating_user_details',
         }
       );
       break;
@@ -59,7 +57,7 @@ const spinnerReducer = (state : SpinnerState = DEFAULT_SPINNER_STATE, action: an
         action.state,
         {
           canShow: true,
-          message: 'Logging in...',
+          messageId: 'logging_in',
         }
       );
       break;
@@ -77,7 +75,7 @@ const spinnerReducer = (state : SpinnerState = DEFAULT_SPINNER_STATE, action: an
         action.state,
         {
           canShow: true,
-          message: 'Logging out...',
+          messageId: 'logging_out',
         }
       );
       break;

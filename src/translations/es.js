@@ -4,7 +4,7 @@ export default {
   site_description: 'Un relatively minimal boilerplate for React + Redux web apps.',
   navigation_home: 'Opencredo React Boilerplate',
   navigation_about_us: 'Sobre Nosotros',
-  navigation_login: 'Iniciar Sesión',
+  navigation_log_in: 'Iniciar Sesión',
   navigation_faq: 'FAQ',
   navigation_policies: 'Normas',
   navigation_terms: 'Términos & Condiciones',
@@ -12,4 +12,8 @@ export default {
   navigation_help: 'Ayuda',
   lang_en: 'English',
   lang_es: 'Español',
+  please_wait: 'Espera por favor...',
+  logging_in: 'Iniciando sesión...',
+  logging_out: 'Terminando sesion...',
+  updating_user_details: 'Actualizando detalles del usuario...',
 };
