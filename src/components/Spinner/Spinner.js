@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Modal } from 'react-bootstrap';
-import styles from './IndeterminateSpinner.scss';
+import styles from './Spinner.scss';
 
-const IndeterminateSpinner = ({ canShow, message }) => {
+const Spinner = ({ canShow, message }) => {
   const className = `glyphicon glyphicon-refresh ${styles.spinner}`;
 
   // TODO: find out how to specify the `container` for the modal
@@ -15,9 +15,9 @@ const IndeterminateSpinner = ({ canShow, message }) => {
   );
 };
 
-IndeterminateSpinner.propTypes = {
+Spinner.propTypes = {
   canShow: PropTypes.bool.isRequired,
   message: PropTypes.string,
 };
 
-export default IndeterminateSpinner;
+export default Spinner;

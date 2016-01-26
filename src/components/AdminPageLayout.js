@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import MainHeader from 'containers/MainHeader/MainHeader';
 import MainFooter from 'components/MainFooter/MainFooter';
-import IndeterminateSpinner from 'components/IndeterminateSpinner/IndeterminateSpinner';
+import Spinner from 'components/Spinner/Spinner';
 
 const mapStateToProps = ({ spinner }) => ({ spinner });
 const AdminPageLayout = (props) => {
@@ -13,7 +13,7 @@ const AdminPageLayout = (props) => {
         {props.children}
       </div>
       <MainFooter />
-      <IndeterminateSpinner
+      <Spinner
         canShow={props.spinner.canShow}
         message={props.spinner.message}
       />
