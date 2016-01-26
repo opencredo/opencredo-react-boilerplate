@@ -96,7 +96,7 @@ export const loginRequest = (): Function => {
   };
 };
 
-export const LOGOUT_REQUEST = '@@auth/LOGOUT_REQUEST';
+export const LOGOUT_REQUEST = Symbol('@@auth/LOGOUT_REQUEST');
 
 export const logoutRequest = (): Function => {
   persistState(initialState);
