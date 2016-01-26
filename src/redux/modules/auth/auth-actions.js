@@ -84,7 +84,8 @@ export const loginRequest = (): Function => {
 
     getProfile().then(
       response => {
-        dispatch(loginSuccess(response));
+        // insert a short delay to simulate service call delay - remove in real application
+        setTimeout(() => dispatch(loginSuccess(response)), 700);
         dispatch(setUser(response));
       },
       () => {
