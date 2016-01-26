@@ -1,22 +1,18 @@
 /* @flow */
 import debug from 'debug';
-import {
-  UPDATE_USER_REQUEST,
-  UPDATE_USER_SUCCESS,
-  UPDATE_USER_FAILURE,
-} from 'redux/modules/user/user-actions';
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  LOGOUT_REQUEST,
-  LOGOUT_SUCCESS,
-} from 'redux/modules/auth/auth-actions';
 
 type SpinnerState = {
   canShow: boolean;
-  messageId: string;
+  messageId: ?string;
 };
+
+type SpinnerAction = {
+  type: Symbol;
+  messageId: ?string;
+};
+
+export const SHOW_SPINNER: Symbol = Symbol('@@spinner/SHOW_SPINNER');
+export const HIDE_SPINNER: Symbol = Symbol('@@spinner/HIDE_SPINNER');
 
 export const DEFAULT_SPINNER_STATE: SpinnerState = {
   canShow: false,
@@ -29,58 +25,35 @@ if (__DEBUG__) {
 
 const log = debug('spinner-reducer:debug');
 
-const spinnerReducer = (state : SpinnerState = DEFAULT_SPINNER_STATE, action: any): any => {
+export function showSpinner(messageId: string): SpinnerAction {
+  return {
+    type: SHOW_SPINNER,
+    messageId,
+  };
+}
+
+export function hideSpinner(): SpinnerAction {
+  return {
+    type: HIDE_SPINNER,
+    messageId: null,
+  };
+}
+
+export function spinnerReducer(state : SpinnerState = DEFAULT_SPINNER_STATE, action: any): any {
   let newState: SpinnerState;
 
   switch (action.type) {
-    case UPDATE_USER_REQUEST:
+    case SHOW_SPINNER:
       newState = Object.assign(
         {},
-        action.state,
         {
           canShow: true,
-          messageId: 'updating_user_details',
+          messageId: action.messageId,
         }
       );
       break;
-    case UPDATE_USER_SUCCESS:
-      newState = Object.assign({}, action.state, DEFAULT_SPINNER_STATE);
-      break;
-    case UPDATE_USER_FAILURE:
-      newState = Object.assign({}, action.state, DEFAULT_SPINNER_STATE);
-      break;
-    case LOGIN_REQUEST:
-      // TODO: i18n for `message`
-      // TODO: where should the value for `message` be set?
-      newState = Object.assign(
-        {},
-        action.state,
-        {
-          canShow: true,
-          messageId: 'logging_in',
-        }
-      );
-      break;
-    case LOGIN_SUCCESS:
-      newState = Object.assign({}, action.state, DEFAULT_SPINNER_STATE);
-      break;
-    case LOGIN_FAILURE:
-      newState = Object.assign({}, action.state, DEFAULT_SPINNER_STATE);
-      break;
-    case LOGOUT_REQUEST:
-      // TODO: i18n for `message`
-      // TODO: where should the value for `message` be set?
-      newState = Object.assign(
-        {},
-        action.state,
-        {
-          canShow: true,
-          messageId: 'logging_out',
-        }
-      );
-      break;
-    case LOGOUT_SUCCESS:
-      newState = Object.assign({}, action.state, DEFAULT_SPINNER_STATE);
+    case HIDE_SPINNER:
+      newState = Object.assign({}, DEFAULT_SPINNER_STATE);
       break;
     default:
       newState = state;
@@ -92,6 +65,4 @@ const spinnerReducer = (state : SpinnerState = DEFAULT_SPINNER_STATE, action: an
   }
 
   return newState;
-};
-
-export default spinnerReducer;
+}

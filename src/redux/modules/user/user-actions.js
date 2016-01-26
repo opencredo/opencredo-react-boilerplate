@@ -3,6 +3,7 @@
 import { User } from 'declarations/app';
 
 import { updateProfile } from 'api/user';
+import { showSpinner, hideSpinner } from '../spinner/spinner';
 
 export const SET_USER = Symbol('@@user/SET_USER');
 export const CLEAR_USER = Symbol('@@user/CLEAR_USER');
@@ -77,14 +78,17 @@ export const updateUser = (user: User): Function => {
       type: UPDATE_USER_REQUEST,
       user,
     });
+    dispatch(showSpinner('updating_user_details'));
 
     updateProfile(user).then(
       response => {
         dispatch(updateUserSuccess(response));
+        dispatch(hideSpinner());
         dispatch(setUser(response));
       },
       () => {
         dispatch(updateUserFailure());
+        dispatch(hideSpinner());
       }
     );
   };

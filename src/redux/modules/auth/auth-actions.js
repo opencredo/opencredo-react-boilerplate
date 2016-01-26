@@ -2,6 +2,7 @@
 
 import { getProfile } from 'api/user';
 import { setUser, clearUser } from '../user/user-actions';
+import { showSpinner, hideSpinner } from '../spinner/spinner';
 
 export const LOGIN_REQUEST = Symbol('@@auth/LOGIN_REQUEST');
 export const LOGIN_SUCCESS = Symbol('@@auth/LOGIN_SUCCESS');
@@ -27,6 +28,11 @@ const initialState = {
   isAuthenticated: false,
   isAdmin: false,
   token: null,
+};
+
+const loginRequestAction: AuthAction = {
+  type: LOGIN_REQUEST,
+  state: initialState,
 };
 
 const persistState = (state: ?AuthState) => {
@@ -75,23 +81,22 @@ export const loginRequest = (): Function => {
   // Returning a function works because `redux-thunk` middleware is installed:
   // https://github.com/gaearon/redux-thunk
   // See `configure-store.js`.
-  return (dispatch) => {
-    dispatch({
-      type: LOGIN_REQUEST,
-      state: {
-        isLoading: true,
-        isAuthenticated: false,
-      },
-    });
+  return dispatch => {
+    dispatch(loginRequestAction);
+    dispatch(showSpinner('logging_in'));
 
     getProfile().then(
       response => {
         // insert a short delay to simulate service call delay - remove in real application
-        setTimeout(() => dispatch(loginSuccess(response)), 700);
-        dispatch(setUser(response));
+        setTimeout(() => {
+          dispatch(loginSuccess(response));
+          dispatch(hideSpinner());
+          dispatch(setUser(response));
+        }, 700);
       },
       () => {
         dispatch(loginFailure());
+        dispatch(hideSpinner());
         dispatch(clearUser());
       }
     );
@@ -103,11 +108,13 @@ export const logoutRequest = (): Function => {
     dispatch({
       type: LOGOUT_REQUEST,
     });
+    dispatch(showSpinner('logging_out'));
 
     // insert a short delay to simulate service call delay - remove in real application
     setTimeout(() => {
       persistState(initialState);
       dispatch(clearUser());
+      dispatch(hideSpinner());
       dispatch({
         type: LOGOUT_SUCCESS,
         state: initialState,
