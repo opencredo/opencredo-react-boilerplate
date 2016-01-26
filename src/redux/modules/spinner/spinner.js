@@ -9,6 +9,8 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
 } from 'redux/modules/auth/auth-actions';
 
 type SpinnerState = {
@@ -67,11 +69,29 @@ const spinnerReducer = (state : SpinnerState = DEFAULT_SPINNER_STATE, action: an
     case LOGIN_FAILURE:
       newState = Object.assign({}, action.state, DEFAULT_SPINNER_STATE);
       break;
+    case LOGOUT_REQUEST:
+      // TODO: i18n for `message`
+      // TODO: where should the value for `message` be set?
+      newState = Object.assign(
+        {},
+        action.state,
+        {
+          canShow: true,
+          message: 'Logging out...',
+        }
+      );
+      break;
+    case LOGOUT_SUCCESS:
+      newState = Object.assign({}, action.state, DEFAULT_SPINNER_STATE);
+      break;
     default:
       newState = state;
   }
 
-  log('action:', action, 'state:', state, 'newState:', newState);
+  if (newState !== state) {
+    // only log if state has changed
+    log('action:', action, 'state:', state, 'newState:', newState);
+  }
 
   return newState;
 };

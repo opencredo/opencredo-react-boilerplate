@@ -38,7 +38,10 @@ const userReducer = (state = getUser(), action) => {
       newState = state;
   }
 
-  log('action:', action, 'state:', state, 'newState:', newState);
+  if (newState !== state) {
+    // only log if state has changed
+    log('action:', action, 'state:', state, 'newState:', newState);
+  }
 
   return newState;
 };

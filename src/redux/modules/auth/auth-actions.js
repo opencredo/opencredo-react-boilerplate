@@ -6,6 +6,8 @@ import { setUser, clearUser } from '../user/user-actions';
 export const LOGIN_REQUEST = Symbol('@@auth/LOGIN_REQUEST');
 export const LOGIN_SUCCESS = Symbol('@@auth/LOGIN_SUCCESS');
 export const LOGIN_FAILURE = Symbol('@@auth/LOGIN_FAILURE');
+export const LOGOUT_REQUEST = Symbol('@@auth/LOGOUT_REQUEST');
+export const LOGOUT_SUCCESS = Symbol('@@auth/LOGOUT_SUCCESS');
 export const LOCAL_STORAGE_KEY = 'redux:auth';
 
 type AuthState = {
@@ -96,16 +98,20 @@ export const loginRequest = (): Function => {
   };
 };
 
-export const LOGOUT_REQUEST = Symbol('@@auth/LOGOUT_REQUEST');
-
 export const logoutRequest = (): Function => {
-  persistState(initialState);
-
   return dispatch => {
-    dispatch(clearUser());
     dispatch({
       type: LOGOUT_REQUEST,
-      state: initialState,
     });
+
+    // insert a short delay to simulate service call delay - remove in real application
+    setTimeout(() => {
+      persistState(initialState);
+      dispatch(clearUser());
+      dispatch({
+        type: LOGOUT_SUCCESS,
+        state: initialState,
+      });
+    }, 700);
   };
 };
