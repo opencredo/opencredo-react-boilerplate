@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
 import DropdownProfileCard from 'components/DropdownProfileCard/DropdownProfileCard';
+import { links } from 'shared/links';
 
 const UserDropdownMenu = (props) => {
   const { name, picture, nickname } = props.user;
@@ -13,11 +15,11 @@ const UserDropdownMenu = (props) => {
       </li>
       <MenuItem divider />
       <li>
-        <Link to="/account">Account</Link>
+        <Link to={links.account.to}><FormattedMessage {...links.account} /></Link>
       </li>
       <MenuItem divider />
       <li>
-        <a onClick={props.logout}>Sign out</a>
+        <a onClick={props.logout}><FormattedMessage {...links.logOut} /></a>
       </li>
     </NavDropdown>
   );

@@ -21,6 +21,19 @@ export const links = {
     defaultMessage: 'Log in',
   },
 
+  logOut: {
+    id: 'navigation_log_out',
+    description: 'Log out',
+    defaultMessage: 'Log out',
+  },
+
+  account: {
+    to: '/account',
+    id: 'navigation_account',
+    description: 'Account',
+    defaultMessage: 'Account',
+  },
+
   faq: {
     to: '/pages/faq',
     id: 'navigation_faq',
