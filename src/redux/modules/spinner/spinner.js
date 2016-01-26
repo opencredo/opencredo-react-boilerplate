@@ -8,7 +8,7 @@ type SpinnerState = {
 
 type SpinnerAction = {
   type: Symbol;
-  messageId: ?string;
+  state: SpinnerState;
 };
 
 export const SHOW_SPINNER: Symbol = Symbol('@@spinner/SHOW_SPINNER');
@@ -28,14 +28,17 @@ const log = debug('spinner-reducer:debug');
 export function showSpinner(messageId: string): SpinnerAction {
   return {
     type: SHOW_SPINNER,
-    messageId,
+    state: {
+      canShow: true,
+      messageId,
+    },
   };
 }
 
 export function hideSpinner(): SpinnerAction {
   return {
     type: HIDE_SPINNER,
-    messageId: null,
+    state: DEFAULT_SPINNER_STATE,
   };
 }
 
@@ -44,16 +47,8 @@ export function spinnerReducer(state : SpinnerState = DEFAULT_SPINNER_STATE, act
 
   switch (action.type) {
     case SHOW_SPINNER:
-      newState = Object.assign(
-        {},
-        {
-          canShow: true,
-          messageId: action.messageId,
-        }
-      );
-      break;
     case HIDE_SPINNER:
-      newState = Object.assign({}, DEFAULT_SPINNER_STATE);
+      newState = Object.assign({}, state, action.state);
       break;
     default:
       newState = state;
