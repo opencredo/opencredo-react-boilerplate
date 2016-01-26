@@ -1,3 +1,5 @@
+// Combine version, ala language 'hacky-way'
+
 const UPDATE_THEME_COLOR = 'UPDATE_THEME_COLOR';
 //const LOCAL_STORAGE_KEY = 'redux:theme:color';
 //const DEFAULT_THEME_COLOR = '#5DC4C6';

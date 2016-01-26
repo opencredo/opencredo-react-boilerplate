@@ -4,7 +4,7 @@ import {wrapper, container} from '../styles/styleGuide';
 import { IntlProvider } from 'react-intl';
 import messages from 'translations';
 import {updateThemeColor} from '../redux/modules/theme';
-import ThemeSelect from '../components/theme/ThemeSelect';
+import ThemeSelect from '../components/ThemeSelect';
 import 'styles/app.scss';
 
 const mapStateToProps = ({ language }) => ({ language });
@@ -16,6 +16,7 @@ class AppContainer extends Component {
     updateThemeColor: PropTypes.func.isRequired,
   };
 
+
   render() {
     const { language, children, theme, updateThemeColor } = this.props;
 
@@ -24,7 +25,7 @@ class AppContainer extends Component {
       <div
         style={{
             ...container,
-            background: theme.color ? {} : '#5DC4C6'
+            background: theme.color
           }}
       >
       </div>
@@ -38,14 +39,9 @@ class AppContainer extends Component {
   }
 }
 
-function select(state) {
-  return { theme: state.theme };
-}
+// Adding this
+function select(state) {return { theme: state.theme }; }
+//export default connect(select, { updateThemeColor })(AppContainer);
 
-export default connect(
-  select,
-  { updateThemeColor },
-  mapStateToProps
-)(AppContainer);
-
-// export default connect(mapStateToProps)(AppContainer);
+// Existing but modified prefixing with: (select, { updateThemeColor })
+export default connect(select, { updateThemeColor })(mapStateToProps)(AppContainer);
