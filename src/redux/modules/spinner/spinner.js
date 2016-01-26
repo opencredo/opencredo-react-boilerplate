@@ -16,7 +16,7 @@ export const HIDE_SPINNER: Symbol = Symbol('@@spinner/HIDE_SPINNER');
 
 export const DEFAULT_SPINNER_STATE: SpinnerState = {
   canShow: false,
-  messageId: 'please_wait',
+  messageId: null,
 };
 
 if (__DEBUG__) {

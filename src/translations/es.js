@@ -14,7 +14,6 @@ export default {
   navigation_help: 'Ayuda',
   lang_en: 'English',
   lang_es: 'Español',
-  please_wait: 'Espera por favor...',
   logging_in: 'Iniciando sesión...',
   logging_out: 'Terminando sesion...',
   updating_user_details: 'Actualizando detalles del usuario...',

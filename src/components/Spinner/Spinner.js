@@ -10,7 +10,9 @@ const Spinner = ({ canShow, messageId }) => {
     <Modal show={canShow} bsSize="small">
       <Modal.Body>
         <i className={className}/>
+        {canShow &&
         <FormattedMessage id={messageId} defaultMessage="Please wait..."/>
+        }
       </Modal.Body>
     </Modal>
   );
