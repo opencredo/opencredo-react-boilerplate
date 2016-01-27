@@ -1,0 +1,44 @@
+.container {
+  padding: 13px 0;
+}
+
+.picture {
+  display: inline-block;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.details {
+  display: inline-block;
+  padding: 0 0 0 14px;
+  vertical-align: top;
+}
+
+.fullName {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.givenName {
+  display: inline-block;
+}
+
+.familyName {
+  display: inline-block;
+}
+
+.username {
+  display: block;
+  font-weight: 800;
+  color: #454545;
+}
+
+.nickname,
+.email,
+.updateButton {
+  display: block;
+}
+
+.updateButton {
+  margin-top: 20px;
+}
