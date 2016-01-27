@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import { routeReducer as routing } from 'redux-simple-router';
-import auth from './modules/auth/auth-reducer';
+import { documentTitleReducer as documentTitle } from './modules/document-title/document-title';
 import { spinnerReducer as spinner } from './modules/spinner/spinner';
-import user from './modules/user/user-reducer';
 import { languageReducer as language } from './modules/language/language';
+import user from './modules/user/user-reducer';
+import auth from './modules/auth/auth-reducer';
 
 export default combineReducers({
   auth,
@@ -11,4 +12,5 @@ export default combineReducers({
   user,
   language,
   routing,
+  documentTitle,
 });

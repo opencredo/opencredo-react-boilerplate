@@ -1,13 +1,15 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
+import DocumentTitle from 'components/DocumentTitle';
 import messages from 'translations';
 import 'styles/app.scss';
 
-const mapStateToProps = ({ language }) => ({ language });
+const mapStateToProps = ({ language, documentTitle }) => ({ language, documentTitle });
 class AppContainer extends Component {
   static propTypes = {
     language: PropTypes.string.isRequired,
+    documentTitle: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired,
   };
 
@@ -16,7 +18,9 @@ class AppContainer extends Component {
 
     return (
       <IntlProvider locale={language} messages={messages[language]}>
-        {children}
+        <DocumentTitle title={this.props.documentTitle}>
+          {children}
+        </DocumentTitle>
       </IntlProvider>
     );
   }
