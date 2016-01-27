@@ -47,6 +47,29 @@ Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
 ├── tests.karma.js              # (self explanatory)
 └── webpack.config.js           # (self explanatory)
 ```
+## Features
+
+* [React](https://facebook.github.io/react/)
+  - `react-dom`, `react-addons-test-utils`.
+* [Redux](http://rackt.org/redux/)
+* [react-router](https://github.com/rackt/react-router)
+* [react-router-redux](https://github.com/rackt/react-router-redux)
+  - Synchronize react router state with your redux store.
+* [Webpack](https://webpack.github.io)
+  - Configured with `webpack-dev-middleware` and `webpack-hot-middlware`.
+  - Hot Module Replacement
+  - SASS / SCSS
+  - [CSS modules](https://github.com/css-modules/css-modules)
+  - `.eslintrc` pre-loader
+  - Support for production and development builds based on `NODE_ENV`.
+* [Hot Module Replacement](https://github.com/gaearon/react-transform-hmr) in the form of `react-transform-hmr`, and `babel-preset-react-hmre`.
+* [Flowtype](http://flowtype.org) Static type checker.
+* [Babel](https://babeljs.io) for ES2015 and _beyond_.
+  - Presets: `es2015`, `react`, `stage-0`, and `react-hmre` (development).
+* [React Bootstrap](https://react-bootstrap.github.io) and [react-router-bootstrap](https://github.com/react-bootstrap/react-router-bootstrap)
+* [react-intl](https://github.com/yahoo/react-intl/) for i18n support with a couple of example translations.
+* Example production build script (`npm run build`).
+* Basic support for restricted pages. Check `src/routes.js` for examples of restricted routes.
 
 ## Flowtype
 
