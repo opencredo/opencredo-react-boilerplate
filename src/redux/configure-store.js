@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import rootReducer from './root-reducer';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { syncHistory } from 'redux-simple-router';
+import { syncHistory } from 'react-router-redux';
 
 function withDevTools(middleware) {
   const devTools = window.devToolsExtension
@@ -24,7 +24,7 @@ export default function configureStore(initialState, browserHistory) {
 
   if (__DEBUG__) {
     // listen for route replays (devtools)
-    routerMiddleware.listenForReplays(store, ({ routing }) => routing);
+    routerMiddleware.listenForReplays(store);
   }
 
   if (module.hot) {
