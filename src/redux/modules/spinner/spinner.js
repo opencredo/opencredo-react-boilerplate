@@ -42,8 +42,10 @@ export function hideSpinner(): SpinnerAction {
   };
 }
 
-export function spinnerReducer(state : SpinnerState = DEFAULT_SPINNER_STATE, action: any): any {
-  let newState: SpinnerState;
+export function spinnerReducer(
+  state : SpinnerState = DEFAULT_SPINNER_STATE,
+  action: any): SpinnerState {
+  let newState: SpinnerState = state;
 
   switch (action.type) {
     case SHOW_SPINNER:
