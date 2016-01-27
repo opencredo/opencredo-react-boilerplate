@@ -49,13 +49,13 @@ Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
 ```
 ## Features
 
-* [React](https://facebook.github.io/react/) (`^0.14.6`)
+* [React](https://facebook.github.io/react/)
   - `react-dom`, `react-addons-test-utils`.
-* [Redux](http://rackt.org/redux/) (`^3.0.5`)
-* [react-router](https://github.com/rackt/react-router) (`^3.0.5`)
-* [react-router-redux](https://github.com/rackt/react-router-redux) (`^2.1.0`)
+* [Redux](http://rackt.org/redux/)
+* [react-router](https://github.com/rackt/react-router)
+* [react-router-redux](https://github.com/rackt/react-router-redux)
   - Synchronize react router state with your redux store.
-* [Webpack](https://webpack.github.io) (`^1.12.11`)
+* [Webpack](https://webpack.github.io)
   - Configured with `webpack-dev-middleware` and `webpack-hot-middlware`.
   - Hot Module Replacement
   - SASS / SCSS
@@ -66,8 +66,8 @@ Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
 * [Flowtype](http://flowtype.org) Static type checker.
 * [Babel](https://babeljs.io) for ES2015 and _beyond_.
   - Presets: `es2015`, `react`, `stage-0`, and `react-hmre` (development).
-* [React Bootstrap](https://react-bootstrap.github.io) (`^0.28.2`) and [react-router-bootstrap](https://github.com/react-bootstrap/react-router-bootstrap) (`^0.20.1`)
-* [react-intl](https://github.com/yahoo/react-intl/) (`2.0.0-beta-2`) for i18n support with a couple of example translations.
+* [React Bootstrap](https://react-bootstrap.github.io) and [react-router-bootstrap](https://github.com/react-bootstrap/react-router-bootstrap)
+* [react-intl](https://github.com/yahoo/react-intl/) for i18n support with a couple of example translations.
 * Example production build script (`npm run build`).
 * Basic support for restricted pages. Check `src/routes.js` for examples of restricted routes.
 
