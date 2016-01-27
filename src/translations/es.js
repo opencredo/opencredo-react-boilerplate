@@ -18,6 +18,7 @@ export default {
   'profile.form.gender.label': 'Sexo',
   'profile.form.gender.male.label': 'Masculino',
   'profile.form.gender.female.label': 'Femenino',
+  'profile.form.locale.label': 'Idioma',
   site_description: 'Un relatively minimal boilerplate for React + Redux web apps.',
   site_name: 'Opencredo React Boilerplate',
   titles_about_us: 'Sobre Nosotros',
