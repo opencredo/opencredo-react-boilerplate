@@ -5,14 +5,18 @@ import { Grid, Row, Col, Button } from 'react-bootstrap';
 import debug from 'debug';
 import { autobind } from 'core-decorators';
 import LandingPageHero from './LandingPageHero';
-import { updateDocumentTitle, resetDocumentTitle } from 'redux/modules/document-title/document-title';
+import {
+  updateDocumentTitle,
+  resetDocumentTitle,
+  DocumentTitleType,
+} from 'redux/modules/document-title/document-title';
 
 if (__DEBUG__) {
   debug.enable('landing-page:*');
 }
 
 const log = debug('landing-page:info');
-const PAGE_TITLE = {
+const PAGE_TITLE: DocumentTitleType = {
   description: 'i18n token for the landing page title',
   id: 'titles_landing_page',
   defaultMessage: 'Landing Page',

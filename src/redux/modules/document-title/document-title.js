@@ -5,19 +5,25 @@ import config from 'app-config';
 const UPDATE_DOCUMENT_TITLE = 'UPDATE_DOCUMENT_TITLE';
 const RESET_DOCUMENT_TITLE = 'RESET_DOCUMENT_TITLE';
 
-type DocumentTitleAction = {
-  type: string;
-  documentTitle: Object;
+export type DocumentTitleType = {
+  id: string;
+  defaultMessage: string;
+  description?: string;
 };
 
-const initialState: Object = {
+export type DocumentTitleAction = {
+  type: string;
+  documentTitle: DocumentTitleType;
+};
+
+const initialState: DocumentTitleType = {
   id: 'site_name',
   defaultMessage: config.name,
 };
 
 // Action Creators
 
-export function updateDocumentTitle(documentTitle: Object): DocumentTitleAction {
+export function updateDocumentTitle(documentTitle: DocumentTitleType): DocumentTitleAction {
   return {
     type: UPDATE_DOCUMENT_TITLE,
     documentTitle,
@@ -33,7 +39,9 @@ export function resetDocumentTitle(): DocumentTitleAction {
 
 
 // Reducer
-export function documentTitleReducer(state: Object = initialState, action: DocumentTitleAction): Object {
+export function documentTitleReducer(
+  state: DocumentTitleType = initialState,
+  action: DocumentTitleAction): DocumentTitleType {
   switch (action.type) {
     case RESET_DOCUMENT_TITLE:
     case UPDATE_DOCUMENT_TITLE:

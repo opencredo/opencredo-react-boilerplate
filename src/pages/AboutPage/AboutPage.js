@@ -1,10 +1,15 @@
+/* @flow */
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { HeroBackground, Hero } from 'components/Hero';
-import { updateDocumentTitle, resetDocumentTitle } from 'redux/modules/document-title/document-title';
+import {
+  updateDocumentTitle,
+  resetDocumentTitle,
+  DocumentTitleType,
+} from 'redux/modules/document-title/document-title';
 
-const PAGE_TITLE = {
+const PAGE_TITLE: DocumentTitleType = {
   id: 'titles_about_us',
   defaultMessage: 'About Us',
 };
