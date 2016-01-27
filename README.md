@@ -50,7 +50,7 @@ Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
 ## Features
 
 * [React](https://facebook.github.io/react/) (`^0.14.6`)
-  - Includes `react-dom`, `react-addons-test-utils`, et
+  - `react-dom`, `react-addons-test-utils`.
 * [Redux](http://rackt.org/redux/) (`^3.0.5`)
 * [react-router](https://github.com/rackt/react-router) (`^3.0.5`)
 * [react-router-redux](https://github.com/rackt/react-router-redux) (`^3.0.5`)
