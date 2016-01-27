@@ -1,8 +1,9 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react';
 import { Button } from 'react-bootstrap';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
 import { reduxForm } from 'redux-form';
+import { messages } from './ProfileEditForm.i18n';
 import styles from './ProfileEditForm.scss';
 import debug from 'debug';
 import { autobind } from 'core-decorators';
@@ -18,6 +19,7 @@ const FEMALE: string = 'female';
 class ProfileEditForm extends React.Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
+    intl: intlShape.isRequired,
     values: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
     handleUpdate: PropTypes.func.isRequired,
@@ -31,6 +33,7 @@ class ProfileEditForm extends React.Component {
 
   render(): Component {
     const { fields: { givenName, familyName, nickname, email, emailVerified, gender, locale, notes } } = this.props;
+    const { formatMessage } = this.props.intl;
     // in a real app, the locales would be populated via service call:
     const locales: string[] = ['en-GB', 'en-AU', 'es-ES', 'es-CR', 'es-NI'];
 
@@ -40,14 +43,14 @@ class ProfileEditForm extends React.Component {
           <img className={styles.picture} src={this.props.user.picture}/>
           <div className={styles.details}>
             <div className={styles.fullName}>
-              <input type="text" placeholder="given name" {...givenName} />
-              <input type="text" placeholder="family name" {...familyName}/>
+              <input type="text" placeholder={formatMessage(messages.givenName.placeholder)} {...givenName} />
+              <input type="text" placeholder={formatMessage(messages.familyName.placeholder)} {...familyName}/>
             </div>
             <div>
-              <input type="text" placeholder="nickname" {...nickname}/>
+              <input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname}/>
             </div>
             <div>
-              <input type="text" placeholder="email" {...email}/>
+              <input type="text" placeholder={formatMessage(messages.email.placeholder)} {...email}/>
             </div>
             <div>
               <label>
@@ -125,4 +128,4 @@ const reduxFormConfig: Object = {
 
 const mapStateToProps = (state, props) => ({ initialValues: props.user });
 
-export default reduxForm(reduxFormConfig, mapStateToProps)(ProfileEditForm);
+export default reduxForm(reduxFormConfig, mapStateToProps)(injectIntl(ProfileEditForm));
