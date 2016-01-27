@@ -38,10 +38,10 @@ class ProfileEditForm extends React.Component {
               <input type="text" placeholder="given name" {...givenName} />
               <input type="text" placeholder="family name" {...familyName}/>
             </div>
-            <div className={styles.nickname}>
+            <div>
               <input type="text" placeholder="nickname" {...nickname}/>
             </div>
-            <div className={styles.email}>
+            <div>
               <input type="text" placeholder="email" {...email}/>
             </div>
             <div className={styles.updateButton}>
