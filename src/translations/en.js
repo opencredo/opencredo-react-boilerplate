@@ -19,4 +19,5 @@ export default {
   updating_user_details: 'Updating user details...',
   titles_landing_page: 'Landing Page',
   titles_about_us: 'About Us',
+  'profile.form.email_verified.label': 'Email verified',
 };

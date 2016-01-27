@@ -19,4 +19,5 @@ export default {
   updating_user_details: 'Actualizando detalles del usuario...',
   titles_landing_page: 'Inicio',
   titles_about_us: 'Sobre Nosotros',
+  'profile.form.email_verified.label': 'Correo verificado',
 };

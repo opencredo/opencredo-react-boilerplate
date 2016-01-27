@@ -1,6 +1,7 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react';
 import { Button } from 'react-bootstrap';
+import { FormattedMessage } from 'react-intl';
 import { reduxForm } from 'redux-form';
 import styles from './ProfileEditForm.scss';
 import debug from 'debug';
@@ -27,7 +28,7 @@ class ProfileEditForm extends React.Component {
   }
 
   render(): Component {
-    const { fields: { givenName, familyName, nickname, email } } = this.props;
+    const { fields: { givenName, familyName, nickname, email, emailVerified } } = this.props;
 
     return (
       <div className={styles.container}>
@@ -44,6 +45,15 @@ class ProfileEditForm extends React.Component {
             <div>
               <input type="text" placeholder="email" {...email}/>
             </div>
+            <div>
+              <label>
+                <input type="checkbox" {...emailVerified}/>
+                <FormattedMessage
+                  id={'profile.form.email_verified.label'}
+                  defaultMessage="Email verified"
+                />
+              </label>
+            </div>
             <div className={styles.updateButton}>
               <Button bsStyle="primary" onClick={this.onUpdateClick}>Update</Button>
             </div>
@@ -55,7 +65,7 @@ class ProfileEditForm extends React.Component {
 }
 
 const reduxFormConfig: Object = {
-  fields: ['givenName', 'familyName', 'nickname', 'email'],
+  fields: ['givenName', 'familyName', 'nickname', 'email', 'emailVerified'],
   form: 'editProfile',
 };
 
