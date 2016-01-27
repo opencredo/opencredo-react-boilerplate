@@ -1,29 +1,23 @@
 /* @flow */
-
+import { FormattedMessageType } from 'declarations/i18n-types';
 import config from 'app-config';
 
 const UPDATE_DOCUMENT_TITLE = 'UPDATE_DOCUMENT_TITLE';
 const RESET_DOCUMENT_TITLE = 'RESET_DOCUMENT_TITLE';
 
-export type DocumentTitleType = {
-  id: string;
-  defaultMessage: string;
-  description?: string;
-};
-
 export type DocumentTitleAction = {
   type: string;
-  documentTitle: DocumentTitleType;
+  documentTitle: FormattedMessageType;
 };
 
-const initialState: DocumentTitleType = {
+const initialState: FormattedMessageType = {
   id: 'site_name',
   defaultMessage: config.name,
 };
 
 // Action Creators
 
-export function updateDocumentTitle(documentTitle: DocumentTitleType): DocumentTitleAction {
+export function updateDocumentTitle(documentTitle: FormattedMessageType): DocumentTitleAction {
   return {
     type: UPDATE_DOCUMENT_TITLE,
     documentTitle,
@@ -40,8 +34,8 @@ export function resetDocumentTitle(): DocumentTitleAction {
 
 // Reducer
 export function documentTitleReducer(
-  state: DocumentTitleType = initialState,
-  action: DocumentTitleAction): DocumentTitleType {
+  state: FormattedMessageType = initialState,
+  action: DocumentTitleAction): FormattedMessageType {
   switch (action.type) {
     case RESET_DOCUMENT_TITLE:
     case UPDATE_DOCUMENT_TITLE:

@@ -8,7 +8,7 @@ import LandingPageHero from './LandingPageHero';
 import {
   updateDocumentTitle,
   resetDocumentTitle,
-  DocumentTitleType,
+  FormattedMessageType,
 } from 'redux/modules/document-title/document-title';
 
 if (__DEBUG__) {
@@ -16,7 +16,7 @@ if (__DEBUG__) {
 }
 
 const log = debug('landing-page:info');
-const PAGE_TITLE: DocumentTitleType = {
+const PAGE_TITLE: FormattedMessageType = {
   description: 'i18n token for the landing page title',
   id: 'titles_landing_page',
   defaultMessage: 'Landing Page',

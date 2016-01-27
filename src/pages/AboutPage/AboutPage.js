@@ -3,13 +3,13 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { HeroBackground, Hero } from 'components/Hero';
+import { FormattedMessageType } from 'declarations/i18n-types';
 import {
   updateDocumentTitle,
   resetDocumentTitle,
-  DocumentTitleType,
 } from 'redux/modules/document-title/document-title';
 
-const PAGE_TITLE: DocumentTitleType = {
+const PAGE_TITLE: FormattedMessageType = {
   id: 'titles_about_us',
   defaultMessage: 'About Us',
 };
