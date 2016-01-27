@@ -30,7 +30,7 @@ class ProfileEditForm extends React.Component {
   }
 
   render(): Component {
-    const { fields: { givenName, familyName, nickname, email, emailVerified, gender, locale } } = this.props;
+    const { fields: { givenName, familyName, nickname, email, emailVerified, gender, locale, notes } } = this.props;
     // in a real app, the locales would be populated via service call:
     const locales: string[] = ['en-GB', 'en-AU', 'es-ES', 'es-CR', 'es-NI'];
 
@@ -96,6 +96,17 @@ class ProfileEditForm extends React.Component {
                 </div>
               </div>
             </div>
+            <div>
+              <label>
+                <FormattedMessage
+                  id={'profile.form.notes.label'}
+                  defaultMessage="NOTES"
+                />
+              </label>
+              <div>
+                <textarea {...notes} value={notes.value || ''} />
+              </div>
+            </div>
 
             <div className={styles.updateButton}>
               <Button bsStyle="primary" onClick={this.onUpdateClick}>Update</Button>
@@ -108,7 +119,7 @@ class ProfileEditForm extends React.Component {
 }
 
 const reduxFormConfig: Object = {
-  fields: ['givenName', 'familyName', 'nickname', 'email', 'emailVerified', 'gender', 'locale'],
+  fields: ['givenName', 'familyName', 'nickname', 'email', 'emailVerified', 'gender', 'locale', 'notes'],
   form: 'editProfile',
 };
 
