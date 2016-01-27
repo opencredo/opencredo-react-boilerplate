@@ -7,6 +7,7 @@ const history = require('connect-history-api-fallback');
 const webpackconfig = require('../webpack.config');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const browserSync = require('browser-sync');
 
 debug.enable('app:*');
 
@@ -33,8 +34,9 @@ log(`Serving static content from ${config.paths.static}`);
 app.use(express.static(config.paths.static));
 
 const port = yargs.argv.port || config.server.port;
-app.listen(port, config.server.hostname, () => {
-  log(`Server is now running at http://${config.server.hostname}:${port}.`);
+app.listen(4000, config.server.hostname);
+browserSync.init({
+  proxy: `${config.server.hostname}:4000`
 });
 
 module.exports = app;
