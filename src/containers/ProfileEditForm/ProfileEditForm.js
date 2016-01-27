@@ -12,6 +12,8 @@ if (__DEBUG__) {
 }
 
 const log = debug('profile-edit-form:debug');
+const MALE: string = 'male';
+const FEMALE: string = 'female';
 
 class ProfileEditForm extends React.Component {
   static propTypes = {
@@ -28,7 +30,7 @@ class ProfileEditForm extends React.Component {
   }
 
   render(): Component {
-    const { fields: { givenName, familyName, nickname, email, emailVerified } } = this.props;
+    const { fields: { givenName, familyName, nickname, email, emailVerified, gender } } = this.props;
 
     return (
       <div className={styles.container}>
@@ -54,6 +56,31 @@ class ProfileEditForm extends React.Component {
                 />
               </label>
             </div>
+            <div>
+              <label>
+                <FormattedMessage
+                  id={'profile.form.gender.label'}
+                  defaultMessage="GENDER"
+                />
+              </label>
+              <div>
+                <label>
+                  <input type="radio" {...gender} value={MALE} checked={gender.value === MALE}/>
+                  <FormattedMessage
+                    id={'profile.form.gender.male.label'}
+                    defaultMessage="MALE"
+                  />
+                </label>
+                <label>
+                  <input type="radio" {...gender} value={FEMALE} checked={gender.value === FEMALE}/>
+                  <FormattedMessage
+                    id={'profile.form.gender.female.label'}
+                    defaultMessage="FEMALE"
+                  />
+                </label>
+              </div>
+            </div>
+
             <div className={styles.updateButton}>
               <Button bsStyle="primary" onClick={this.onUpdateClick}>Update</Button>
             </div>
@@ -65,7 +92,7 @@ class ProfileEditForm extends React.Component {
 }
 
 const reduxFormConfig: Object = {
-  fields: ['givenName', 'familyName', 'nickname', 'email', 'emailVerified'],
+  fields: ['givenName', 'familyName', 'nickname', 'email', 'emailVerified', 'gender'],
   form: 'editProfile',
 };
 
