@@ -20,7 +20,7 @@ const supportedLanguages = [
   },
 ];
 
-class LanguageSelectionDropDown extends Component {
+class LanguageSelectionDropdown extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -52,4 +52,4 @@ class LanguageSelectionDropDown extends Component {
 
 const mapStateToProps = ({ language }) => ({ language });
 
-export default connect(mapStateToProps)(LanguageSelectionDropDown);
+export default connect(mapStateToProps)(LanguageSelectionDropdown);

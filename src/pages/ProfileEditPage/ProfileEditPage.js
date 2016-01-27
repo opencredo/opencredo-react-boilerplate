@@ -1,27 +1,47 @@
-import React from 'react';
+/* @flow */
 
-export class NotFoundView extends React.Component {
-  render() {
+import debug from 'debug';
+import React, { PropTypes, ReactComponent } from 'react';
+import { User } from 'declarations/app';
+import ProfileEdit from 'components/ProfileEdit/ProfileEdit';
+import { updateUser } from 'redux/modules/user/user-actions';
+import { autobind } from 'core-decorators';
+import { connect } from 'react-redux';
+
+if (__DEBUG__) {
+  debug.enable('profile-edit-page:*');
+}
+
+const log = debug('profile-edit-page:debug');
+
+export class ProfileEditPage extends React.Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    user: PropTypes.object,
+  };
+
+  @autobind
+  handleUpdate(user: User) {
+    log('handleUpdate(): user:', user);
+    this.props.dispatch(updateUser(user));
+  }
+
+  render(): ReactComponent {
     return (
       <div className="content">
         <h2 className="box-title">Edit Profile</h2>
 
         <div className="box-content">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum
-          </p>
-
+          <ProfileEdit user={this.props.user} handleUpdate={this.handleUpdate}/>
         </div>
 
-			</div>
+      </div>
     );
   }
 }
 
-export default NotFoundView;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(ProfileEditPage);

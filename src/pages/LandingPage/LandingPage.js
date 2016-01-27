@@ -5,13 +5,22 @@ import { Grid, Row, Col, Button } from 'react-bootstrap';
 import debug from 'debug';
 import { autobind } from 'core-decorators';
 import LandingPageHero from './LandingPageHero';
+import {
+  updateDocumentTitle,
+  resetDocumentTitle,
+  FormattedMessageType,
+} from 'redux/modules/document-title/document-title';
 
 if (__DEBUG__) {
   debug.enable('landing-page:*');
 }
 
 const log = debug('landing-page:info');
-const error = debug('landing-page:error');
+const PAGE_TITLE: FormattedMessageType = {
+  description: 'i18n token for the landing page title',
+  id: 'titles_landing_page',
+  defaultMessage: 'Landing Page',
+};
 
 export class LandingPage extends React.Component {
 
@@ -22,18 +31,12 @@ export class LandingPage extends React.Component {
 
   // executes only on the client
   componentDidMount() {
-    if ('geolocation' in navigator) {
-      log('Geolocation available');
-
-      navigator.geolocation.getCurrentPosition(
-        (success) => log('Gelolocation position:', success),
-        (reason) => error('Geolocation error', reason)
-      );
-    }
+    this.props.dispatch(updateDocumentTitle(PAGE_TITLE));
   }
 
   componentWillUnmount() {
-    log('remove root class .landing-page');
+    log('remove custom document title');
+    this.props.dispatch(resetDocumentTitle());
   }
 
   @autobind

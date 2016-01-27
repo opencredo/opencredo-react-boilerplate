@@ -15,10 +15,23 @@ export const links = {
     defaultMessage: 'About Us',
   },
 
-  login: {
-    id: 'navigation_login',
-    description: 'Login',
-    defaultMessage: 'Login',
+  logIn: {
+    id: 'navigation_log_in',
+    description: 'Log in',
+    defaultMessage: 'Log in',
+  },
+
+  logOut: {
+    id: 'navigation_log_out',
+    description: 'Log out',
+    defaultMessage: 'Log out',
+  },
+
+  account: {
+    to: '/account',
+    id: 'navigation_account',
+    description: 'Account',
+    defaultMessage: 'Account',
   },
 
   faq: {

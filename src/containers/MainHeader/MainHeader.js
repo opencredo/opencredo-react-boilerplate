@@ -5,13 +5,16 @@ import { Navbar, Nav } from 'react-bootstrap';
 import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
-import { loginSuccess, logoutRequest } from 'redux/modules/auth/auth-actions';
+import { loginRequest, logoutRequest } from 'redux/modules/auth/auth-actions';
 import debug from 'debug';
 import LanguageSelectionDropdown from '../LanguageSelectionDropdown/LanguageSelectionDropdown';
 import { links } from 'shared/links';
 
+if (__DEBUG__) {
+  debug.enable('app:*');
+}
 
-const log = debug('app:core-layout-header');
+const log = debug('app:main-header');
 
 class MainHeader extends React.Component {
   static propTypes = {
@@ -22,7 +25,7 @@ class MainHeader extends React.Component {
 
   @autobind
   onLogin() {
-    this.props.dispatch(loginSuccess());
+    this.props.dispatch(loginRequest());
   }
 
   @autobind
@@ -31,7 +34,7 @@ class MainHeader extends React.Component {
   }
 
   willReceiveProps(props) {
-    log('core-layout-header will receive props', props);
+    log('main-header will receive props', props);
   }
 
   render() {
@@ -57,12 +60,12 @@ class MainHeader extends React.Component {
                 <FormattedMessage {...links.aboutUs} />
               </Link>
             </li>
-            {this.props.isAuthenticated ?
+            {this.props.isAuthenticated && this.props.user ?
               <UserDropdownMenu user={this.props.user} logout={this.onLogout} />
               :
               <li role="presentation">
                 <a onClick={this.onLogin}>
-                  <FormattedMessage {...links.login} />
+                  <FormattedMessage {...links.logIn} />
                 </a>
               </li>
             }
@@ -75,7 +78,7 @@ class MainHeader extends React.Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  user: state.auth.user,
+  user: state.user,
   language: state.language,
 });
 

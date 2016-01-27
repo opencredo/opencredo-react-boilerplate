@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import MainHeader from 'containers/MainHeader/MainHeader';
 import MainFooter from 'components/MainFooter/MainFooter';
+import Spinner from 'components/Spinner/Spinner';
 
+const mapStateToProps = ({ spinner }) => ({ spinner });
 const AdminPageLayout = (props) => {
   return (
     <div id="admin-layout" className="page-container">
@@ -10,12 +13,17 @@ const AdminPageLayout = (props) => {
         {props.children}
       </div>
       <MainFooter />
+      <Spinner
+        canShow={props.spinner.canShow}
+        messageId={props.spinner.messageId}
+      />
     </div>
   );
 };
 
 AdminPageLayout.propTypes = {
+  spinner: PropTypes.object,
   children: PropTypes.element,
 };
 
-export default AdminPageLayout;
+export default connect(mapStateToProps)(AdminPageLayout);

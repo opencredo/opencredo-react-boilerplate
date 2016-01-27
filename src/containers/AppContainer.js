@@ -2,15 +2,17 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import {wrapper, container} from '../styles/styleGuide';
 import { IntlProvider } from 'react-intl';
+import DocumentTitle from 'components/DocumentTitle';
 import messages from 'translations';
 import {updateThemeColor} from '../redux/modules/theme';
 import ThemeSelect from '../components/ThemeSelect';
 import 'styles/app.scss';
 
-const mapStateToProps = ({ language }) => ({ language });
+const mapStateToProps = ({ language, documentTitle }) => ({ language, documentTitle });
 class AppContainer extends Component {
   static propTypes = {
     language: PropTypes.string.isRequired,
+    documentTitle: PropTypes.object.isRequired,
     children: PropTypes.element.isRequired,
     theme: PropTypes.object.isRequired,
     updateThemeColor: PropTypes.func.isRequired,
@@ -30,7 +32,9 @@ class AppContainer extends Component {
       >
       </div>
       <IntlProvider locale={language} messages={messages[language]}>
-        {children}
+        <DocumentTitle title={this.props.documentTitle}>
+          {children}
+        </DocumentTitle>
       </IntlProvider>
       <ThemeSelect theme={theme} updateThemeColor={updateThemeColor} />
     </div>

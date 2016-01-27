@@ -57,6 +57,13 @@ const webpackconfig = {
   ],
 
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+      },
+    ],
     loaders: [
       {
         test: /\.jsx?/,
@@ -120,6 +127,10 @@ const webpackconfig = {
 
   sassLoader: {
     includePaths: config.paths.styles,
+  },
+
+  eslint: {
+    configFile: path.resolve(config.paths.root, '.eslintrc'),
   },
 };
 

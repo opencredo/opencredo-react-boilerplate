@@ -1,20 +1,40 @@
+import debug from 'debug';
 import {
   getState,
-  LOGIN_SUCCESS, LOGIN_FAILURE,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
   LOGOUT_REQUEST,
 } from './auth-actions';
 
+if (__DEBUG__) {
+  debug.enable('auth-reducer:*');
+}
+
+const log = debug('auth-reducer:debug');
+
 const authReducer = (state = getState(), action) => {
+  let newState;
+
   switch (action.type) {
     case LOGIN_SUCCESS:
-      return Object.assign({}, action.state);
+      newState = Object.assign({}, action.state);
+      break;
     case LOGIN_FAILURE:
-      return Object.assign({}, action.state);
+      newState = Object.assign({}, action.state);
+      break;
     case LOGOUT_REQUEST:
-      return Object.assign({}, action.state);
+      newState = Object.assign({}, action.state);
+      break;
     default:
-      return state;
+      newState = state;
   }
+
+  if (newState !== state) {
+    // only log if state has changed
+    log('action:', action, 'state:', state, 'newState:', newState);
+  }
+
+  return newState;
 };
 
 export default authReducer;

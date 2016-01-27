@@ -1,48 +1,62 @@
-export const SHOW_LOGIN = '@@auth/SHOW_LOGIN';
-export const LOGIN_REQUEST = '@@auth/LOGIN_REQUEST';
-export const LOGIN_SUCCESS = '@@auth/LOGIN_SUCCESS';
-export const LOGIN_FAILURE = '@@auth/LOGIN_FAILURE';
+/* @flow */
+
+import { getProfile } from 'api/user';
+import { setUser, clearUser } from '../user/user-actions';
+import { showSpinner, hideSpinner } from '../spinner/spinner';
+
+export const LOGIN_REQUEST = Symbol('@@auth/LOGIN_REQUEST');
+export const LOGIN_SUCCESS = Symbol('@@auth/LOGIN_SUCCESS');
+export const LOGIN_FAILURE = Symbol('@@auth/LOGIN_FAILURE');
+export const LOGOUT_REQUEST = Symbol('@@auth/LOGOUT_REQUEST');
+export const LOGOUT_SUCCESS = Symbol('@@auth/LOGOUT_SUCCESS');
 export const LOCAL_STORAGE_KEY = 'redux:auth';
 
-const initialState = {
-  isAuthenticated: false,
+type AuthState = {
+  isLoading: boolean;
+  isAuthenticated: boolean;
+  isAdmin: boolean;
+  token: ?string;
 };
 
-const persistState = (state) => {
+type AuthAction = {
+  type: Symbol;
+  state: ?AuthState;
+};
+
+const initialState = {
+  isLoading: true,
+  isAuthenticated: false,
+  isAdmin: false,
+  token: null,
+};
+
+const loginRequestAction: AuthAction = {
+  type: LOGIN_REQUEST,
+  state: initialState,
+};
+
+const persistState = (state: ?AuthState) => {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
 };
 
-export const getState = () => {
-  try {
-    const state = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    return state ? state : initialState;
-  } catch (e) {
-    return initialState;
+export const getState = (): AuthState => {
+  const storedState = localStorage.getItem(LOCAL_STORAGE_KEY);
+  let state: ?AuthState;
+
+  if (storedState) {
+    state = JSON.parse(storedState);
+  } else {
+    state = initialState;
   }
+
+  return state;
 };
 
-export const showLogin = () => ({
-  type: SHOW_LOGIN,
-});
-
-export const loginSuccess = () => {
+export const loginSuccess = (): AuthAction => {
   const state = {
+    isLoading: false,
     isAuthenticated: true,
     isAdmin: true,
-    user: {
-      userId: '1',
-      name: 'John Doe',
-      givenName: 'John',
-      familyName: 'Doe',
-      nickname: 'john.doe',
-      picture: '/images/default-profile.png',
-      email: 'john.doe@example.eg',
-      emailVerified: true,
-      roles: ['admin'],
-      createdAt: '2016-01-01T00:00:00.000Z',
-      updatedAt: '2016-01-01T00:00:00.000Z',
-      locale: 'en-GB',
-    },
     token: 'eyJ0eXAasdfiOi',
   };
 
@@ -54,30 +68,57 @@ export const loginSuccess = () => {
   };
 };
 
-export const loginFailure = () => {
-  const state = {
-    isAuthenticated: false,
-  };
-
-  persistState(state);
+export const loginFailure = (): AuthAction => {
+  persistState(initialState);
 
   return {
     type: LOGIN_FAILURE,
-    state,
+    state: initialState,
   };
 };
 
-export const LOGOUT_REQUEST = '@@auth/LOGOUT_REQUEST';
+export const loginRequest = (): Function => {
+  // Returning a function works because `redux-thunk` middleware is installed:
+  // https://github.com/gaearon/redux-thunk
+  // See `configure-store.js`.
+  return dispatch => {
+    dispatch(loginRequestAction);
+    dispatch(showSpinner('logging_in'));
 
-export const logoutRequest = () => {
-  const state = {
-    isAuthenticated: false,
+    getProfile().then(
+      response => {
+        // insert a short delay to simulate service call delay - remove in real application
+        setTimeout(() => {
+          dispatch(loginSuccess(response));
+          dispatch(hideSpinner());
+          dispatch(setUser(response));
+        }, 700);
+      },
+      () => {
+        dispatch(loginFailure());
+        dispatch(hideSpinner());
+        dispatch(clearUser());
+      }
+    );
   };
+};
 
-  persistState(state);
+export const logoutRequest = (): Function => {
+  return dispatch => {
+    dispatch({
+      type: LOGOUT_REQUEST,
+    });
+    dispatch(showSpinner('logging_out'));
 
-  return {
-    type: LOGOUT_REQUEST,
-    state,
+    // insert a short delay to simulate service call delay - remove in real application
+    setTimeout(() => {
+      persistState(initialState);
+      dispatch(clearUser());
+      dispatch(hideSpinner());
+      dispatch({
+        type: LOGOUT_SUCCESS,
+        state: initialState,
+      });
+    }, 700);
   };
 };

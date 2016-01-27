@@ -1,12 +1,18 @@
 import { combineReducers } from 'redux';
-import { routeReducer as routing } from 'redux-simple-router';
-import auth from './modules/auth/auth-reducer';
+import { routeReducer as routing } from 'react-router-redux';
+import { documentTitleReducer as documentTitle } from './modules/document-title/document-title';
+import { spinnerReducer as spinner } from './modules/spinner/spinner';
 import { languageReducer as language } from './modules/language/language';
+import user from './modules/user/user-reducer';
+import auth from './modules/auth/auth-reducer';
 import { mainReducer as theme } from './modules/theme'; // We're using all-in-one version for testing
 
 export default combineReducers({
   auth,
+  spinner,
+  user,
   language,
   theme,
   routing,
+  documentTitle,
 });
