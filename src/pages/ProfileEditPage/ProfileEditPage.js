@@ -1,9 +1,9 @@
 /* @flow */
 
 import debug from 'debug';
-import React, { PropTypes, ReactComponent } from 'react';
+import React, { PropTypes, Component, ReactComponent } from 'react';
 import { User } from 'declarations/app';
-import ProfileEdit from 'components/ProfileEdit/ProfileEdit';
+import ProfileEditForm from 'containers/ProfileEditForm/ProfileEditForm';
 import { updateUser } from 'redux/modules/user/user-actions';
 import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ if (__DEBUG__) {
 
 const log = debug('profile-edit-page:debug');
 
-export class ProfileEditPage extends React.Component {
+export class ProfileEditPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     user: PropTypes.object,
@@ -32,7 +32,7 @@ export class ProfileEditPage extends React.Component {
         <h2 className="box-title">Edit Profile</h2>
 
         <div className="box-content">
-          <ProfileEdit user={this.props.user} handleUpdate={this.handleUpdate}/>
+          <ProfileEditForm user={this.props.user} handleUpdate={this.handleUpdate}/>
         </div>
 
       </div>
