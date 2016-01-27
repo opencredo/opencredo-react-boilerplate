@@ -7,27 +7,33 @@ const RESET_DOCUMENT_TITLE = 'RESET_DOCUMENT_TITLE';
 
 type DocumentTitleAction = {
   type: string;
-  documentTitle: string;
+  documentTitle: Object;
+};
+
+const initialState: Object = {
+  id: 'site_name',
+  defaultMessage: config.name,
 };
 
 // Action Creators
 
-export function updateDocumentTitle(documentTitle: string): DocumentTitleAction {
+export function updateDocumentTitle(documentTitle: Object): DocumentTitleAction {
   return {
     type: UPDATE_DOCUMENT_TITLE,
-    documentTitle: `${documentTitle} - ${config.name}`,
+    documentTitle,
   };
 }
 
 export function resetDocumentTitle(): DocumentTitleAction {
   return {
     type: RESET_DOCUMENT_TITLE,
-    documentTitle: config.name,
+    documentTitle: initialState,
   };
 }
 
+
 // Reducer
-export function documentTitleReducer(state: string = config.name, action: DocumentTitleAction): string {
+export function documentTitleReducer(state: Object = initialState, action: DocumentTitleAction): Object {
   switch (action.type) {
     case RESET_DOCUMENT_TITLE:
     case UPDATE_DOCUMENT_TITLE:

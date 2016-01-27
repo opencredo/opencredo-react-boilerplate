@@ -1,14 +1,18 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react';
+import { injectIntl } from 'react-intl';
 
 type DocumentTitleProps = {
-  title: string;
+  title: Object;
   children: any;
+  intl: {
+    formatMessage: Function;
+  };
 };
 
 class DocumentTitle extends Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.object.isRequired,
     children: PropTypes.element.isRequired,
   };
 
@@ -23,7 +27,7 @@ class DocumentTitle extends Component {
   props: DocumentTitleProps;
 
   updateDocumentTitle(props: DocumentTitleProps): void {
-    document.title = props.title;
+    document.title = props.intl.formatMessage(props.title);
   }
 
   render(): React.Element {
@@ -35,4 +39,4 @@ class DocumentTitle extends Component {
   }
 }
 
-export default DocumentTitle;
+export default injectIntl(DocumentTitle);

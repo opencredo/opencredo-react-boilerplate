@@ -9,7 +9,7 @@ const mapStateToProps = ({ language, documentTitle }) => ({ language, documentTi
 class AppContainer extends Component {
   static propTypes = {
     language: PropTypes.string.isRequired,
-    documentTitle: PropTypes.string.isRequired,
+    documentTitle: PropTypes.object.isRequired,
     children: PropTypes.element.isRequired,
   };
 

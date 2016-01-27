@@ -4,7 +4,10 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { HeroBackground, Hero } from 'components/Hero';
 import { updateDocumentTitle, resetDocumentTitle } from 'redux/modules/document-title/document-title';
 
-const PAGE_TITLE = 'About Us';
+const PAGE_TITLE = {
+  id: 'titles_about_us',
+  defaultMessage: 'About Us',
+};
 
 class AboutPage extends Component {
   static propTypes = {

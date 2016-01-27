@@ -12,7 +12,11 @@ if (__DEBUG__) {
 }
 
 const log = debug('landing-page:info');
-const DOCUMENT_TITLE = 'Landing Page';
+const PAGE_TITLE = {
+  description: 'i18n token for the landing page title',
+  id: 'titles_landing_page',
+  defaultMessage: 'Landing Page',
+};
 
 export class LandingPage extends React.Component {
 
@@ -23,7 +27,7 @@ export class LandingPage extends React.Component {
 
   // executes only on the client
   componentDidMount() {
-    this.props.dispatch(updateDocumentTitle(DOCUMENT_TITLE));
+    this.props.dispatch(updateDocumentTitle(PAGE_TITLE));
   }
 
   componentWillUnmount() {
