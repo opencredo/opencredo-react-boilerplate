@@ -1,51 +1,44 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import {wrapper, container} from '../styles/styleGuide';
+import { wrapper, container } from '../styles/styleGuide';
 import { IntlProvider } from 'react-intl';
 import DocumentTitle from 'components/DocumentTitle';
 import messages from 'translations';
-import {updateThemeColor} from '../redux/modules/theme';
-import ThemeSelect from '../components/ThemeSelect';
+import ThemeSelect from '../components/Theme';
 import 'styles/app.scss';
 
-const mapStateToProps = ({ language, documentTitle }) => ({ language, documentTitle });
+const mapStateToProps = ({ language, documentTitle, theme }) => ({ language, documentTitle, theme });
 class AppContainer extends Component {
   static propTypes = {
     language: PropTypes.string.isRequired,
     documentTitle: PropTypes.object.isRequired,
     children: PropTypes.element.isRequired,
-    theme: PropTypes.object.isRequired,
+    theme: PropTypes.element.isRequired,
     updateThemeColor: PropTypes.func.isRequired,
   };
 
-
   render() {
-    const { language, children, theme, updateThemeColor } = this.props;
+    const { language, children } = this.props;
 
     return (
-    <div style={wrapper}>
-      <div
-        style={{
+      <div style={wrapper}>
+        <div
+          style={{
             ...container,
-            background: theme.color
+            background: this.props.theme.color,
           }}
-      >
+        >
+        </div>
+        <IntlProvider locale={ language } messages={ messages[language] }>
+          <DocumentTitle title={this.props.documentTitle}>
+            { children }
+          </DocumentTitle>
+        </IntlProvider>
+        <ThemeSelect theme={ this.props.theme } updateThemeColor={ this.props.updateThemeColor }/>
       </div>
-      <IntlProvider locale={language} messages={messages[language]}>
-        <DocumentTitle title={this.props.documentTitle}>
-          {children}
-        </DocumentTitle>
-      </IntlProvider>
-      <ThemeSelect theme={theme} updateThemeColor={updateThemeColor} />
-    </div>
 
     );
   }
 }
 
-// Adding this
-function select(state) {return { theme: state.theme }; }
-//export default connect(select, { updateThemeColor })(AppContainer);
-
-// Existing but modified prefixing with: (select, { updateThemeColor })
-export default connect(select, { updateThemeColor })(mapStateToProps)(AppContainer);
+export default connect(mapStateToProps)(AppContainer);

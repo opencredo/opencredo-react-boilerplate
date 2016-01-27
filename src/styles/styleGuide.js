@@ -12,23 +12,23 @@ export const BORDER_RADIUS_MEDIUM = '7px';
 
 export const wrapper = {
   background: COLOR_LIGHT_GRAY,
-  minHeight: '100vh'
+  minHeight: '100vh',
 };
 
 export const container = {
-  padding: SPACING_MEDIUM
+  padding: SPACING_MEDIUM,
 };
 
 export const cushion = {
-  marginBottom: SPACING_MEDIUM
+  marginBottom: SPACING_MEDIUM,
 };
 
 export const rounded = {
-  borderRadius: BORDER_RADIUS_MEDIUM
+  borderRadius: BORDER_RADIUS_MEDIUM,
 };
 
 export const verticalAlignmentFix = {
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
 };
 
 export const input = {
@@ -38,7 +38,7 @@ export const input = {
   padding: `${SPACING_SMALL} ${SPACING_MEDIUM}`,
   fontSize: FONT_SIZE_MEDIUM,
   ...rounded,
-  ...verticalAlignmentFix
+  ...verticalAlignmentFix,
 };
 
 export const button = {
@@ -47,33 +47,33 @@ export const button = {
   padding: `${SPACING_SMALL} ${SPACING_MEDIUM}`,
   display: 'block',
   textAlign: 'center',
-  ...rounded
+  ...rounded,
 };
 
 export const emphasis = {
-  fontStyle: 'italic'
+  fontStyle: 'italic',
 };
 
 export const subtle = {
-  color: COLOR_LIGHT_BLACK
+  color: COLOR_LIGHT_BLACK,
 };
 
 export const alignRight = {
-  textAlign: 'right'
+  textAlign: 'right',
 };
 
 export const centerSpaced = {
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
 };
 
 export const spaceBetween = {
   display: 'flex',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
 };
 
 export const corner = {
   position: 'fixed',
   bottom: SPACING_MEDIUM,
-  right: SPACING_MEDIUM
+  right: SPACING_MEDIUM,
 };

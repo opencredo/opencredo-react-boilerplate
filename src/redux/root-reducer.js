@@ -5,7 +5,7 @@ import { spinnerReducer as spinner } from './modules/spinner/spinner';
 import { languageReducer as language } from './modules/language/language';
 import user from './modules/user/user-reducer';
 import auth from './modules/auth/auth-reducer';
-import { mainReducer as theme } from './modules/theme'; // We're using all-in-one version for testing
+import { themeReducer as theme } from './modules/theme/theme';
 
 export default combineReducers({
   auth,
