@@ -53,7 +53,7 @@ Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
   - `react-dom`, `react-addons-test-utils`.
 * [Redux](http://rackt.org/redux/) (`^3.0.5`)
 * [react-router](https://github.com/rackt/react-router) (`^3.0.5`)
-* [react-router-redux](https://github.com/rackt/react-router-redux) (`^3.0.5`)
+* [react-router-redux](https://github.com/rackt/react-router-redux) (`^2.1.0`)
   - Synchronize react router state with your redux store.
 * [Webpack](https://webpack.github.io) (`^1.12.11`)
   - Configured with `webpack-dev-middleware` and `webpack-hot-middlware`.
