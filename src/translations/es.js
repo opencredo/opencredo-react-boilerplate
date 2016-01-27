@@ -17,4 +17,6 @@ export default {
   logging_in: 'Iniciando sesión...',
   logging_out: 'Terminando sesion...',
   updating_user_details: 'Actualizando detalles del usuario...',
+  titles_landing_page: 'Inicio',
+  titles_about_us: 'Sobre Nosotros',
 };

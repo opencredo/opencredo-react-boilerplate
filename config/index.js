@@ -29,10 +29,10 @@ const config = {
 
   webpack: {
     vendor: [
-      'lodash',
       'react',
       'react-redux',
       'react-router',
+      'react-intl',
       'redux',
       'redux-simple-router',
       'react-bootstrap',
