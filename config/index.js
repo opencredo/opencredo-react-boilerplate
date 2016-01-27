@@ -34,6 +34,7 @@ const config = {
       'react-router',
       'react-intl',
       'redux',
+      'redux-form',
       'react-router-redux',
       'react-bootstrap',
       'react-router-bootstrap',
