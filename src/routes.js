@@ -3,8 +3,8 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import { requireAuthentication as restrict } from 'containers/AuthenticatedComponent';
 
 import AppContainer from 'containers/AppContainer';
-import HeroPageLayout from 'components/HeroPageLayout';
-import AdminPageLayout from 'components/AdminPageLayout';
+import HeroPageLayout from 'containers/HeroPageLayout';
+import AdminPageLayout from 'containers/AdminPageLayout';
 import LandingPage from 'pages/LandingPage/LandingPage';
 import AboutPage from 'pages/AboutPage/AboutPage';
 import ProfileEditPage from 'pages/ProfileEditPage/ProfileEditPage';
