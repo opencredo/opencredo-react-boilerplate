@@ -22,6 +22,7 @@
     "no-dupe-class-members": 2,
     "no-this-before-super": 1,
     "prefer-template": 2,
-    "max-len": [1, 120]
+    "max-len": [1, 120],
+    "arrow-body-style":[1, "as-needed"]
   }
 }
