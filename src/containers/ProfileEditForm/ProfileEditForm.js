@@ -44,14 +44,14 @@ class ProfileEditForm extends React.Component {
             <Col sm={2}>
               <img className={styles.picture} src={this.props.user.picture}/>
             </Col>
-            <Col sm={3}>
+            <Col sm={5}>
               <Input type="text" placeholder={formatMessage(messages.givenName.placeholder)} {...givenName} />
               <Input type="text" placeholder={formatMessage(messages.familyName.placeholder)} {...familyName} />
               <Input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname} />
               <Input type="text" placeholder={formatMessage(messages.email.placeholder)} {...email} />
               <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
             </Col>
-            <Col sm={3}>
+            <Col sm={5}>
               <Input>
                 {
                   // Support for radio buttons in react-bootstrap is currently lame.

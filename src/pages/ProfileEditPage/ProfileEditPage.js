@@ -28,7 +28,7 @@ export class ProfileEditPage extends Component {
 
   render(): ReactComponent {
     return (
-      <div className="content">
+      <div className="content container">
         <h2 className="box-title">Edit Profile</h2>
 
         <div className="box-content">
