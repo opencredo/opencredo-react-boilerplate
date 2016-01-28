@@ -1,7 +1,7 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react';
-import { Button } from 'react-bootstrap';
-import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
+import { Button, Input, Row, Col } from 'react-bootstrap';
+import { intlShape, injectIntl } from 'react-intl';
 import { reduxForm } from 'redux-form';
 import { messages } from './ProfileEditForm.i18n';
 import styles from './ProfileEditForm.scss';
@@ -40,81 +40,47 @@ class ProfileEditForm extends React.Component {
     return (
       <div className={styles.container}>
         <form onSubmit={this.onUpdateClick}>
-          <img className={styles.picture} src={this.props.user.picture}/>
-          <div className={styles.details}>
-            <div className={styles.fullName}>
-              <input type="text" placeholder={formatMessage(messages.givenName.placeholder)} {...givenName} />
-              <input type="text" placeholder={formatMessage(messages.familyName.placeholder)} {...familyName}/>
-            </div>
-            <div>
-              <input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname}/>
-            </div>
-            <div>
-              <input type="text" placeholder={formatMessage(messages.email.placeholder)} {...email}/>
-            </div>
-            <div>
-              <label>
-                <input type="checkbox" {...emailVerified}/>
-                <FormattedMessage
-                  id={'profile.form.email_verified.label'}
-                  defaultMessage="Email verified"
-                />
-              </label>
-            </div>
-            <div>
-              <label>
-                <FormattedMessage
-                  id={'profile.form.gender.label'}
-                  defaultMessage="GENDER"
-                />
-              </label>
-              <div>
-                <label>
-                  <input type="radio" {...gender} value={MALE} checked={gender.value === MALE}/>
-                  <FormattedMessage
-                    id={'profile.form.gender.male.label'}
-                    defaultMessage="MALE"
-                  />
+          <Row>
+            <Col sm={2}>
+              <img className={styles.picture} src={this.props.user.picture}/>
+            </Col>
+            <Col sm={3}>
+              <Input type="text" placeholder={formatMessage(messages.givenName.placeholder)} {...givenName} />
+              <Input type="text" placeholder={formatMessage(messages.familyName.placeholder)} {...familyName} />
+              <Input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname} />
+              <Input type="text" placeholder={formatMessage(messages.email.placeholder)} {...email} />
+              <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
+            </Col>
+            <Col sm={3}>
+              <Input>
+                {
+                  // Support for radio buttons in react-bootstrap is currently lame.
+                  // It's worth watching this though:
+                  // https://github.com/react-bootstrap/react-bootstrap/pull/962
+                }
+                <label className="radio-inline">
+                  <input type="radio" className="radio" {...gender} value={MALE} checked={gender.value === MALE}/>
+                  {formatMessage(messages.gender.male.label)}
                 </label>
-                <label>
-                  <input type="radio" {...gender} value={FEMALE} checked={gender.value === FEMALE}/>
-                  <FormattedMessage
-                    id={'profile.form.gender.female.label'}
-                    defaultMessage="FEMALE"
-                  />
+                <label className="radio-inline">
+                  <input type="radio" className="radio" {...gender} value={FEMALE} checked={gender.value === FEMALE}/>
+                  {formatMessage(messages.gender.female.label)}
                 </label>
+              </Input>
+              <Input type="select" label={formatMessage(messages.locale.label)} {...locale}>
+                {locales.map(_locale => <option key={_locale} value={_locale}>{_locale}</option>)}
+              </Input>
+              <Input type="textarea" label={formatMessage(messages.notes.label)} {...notes} />
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={2}/>
+            <Col sm={10}>
+              <div className={styles.updateButton}>
+                <Button bsStyle="primary" onClick={this.onUpdateClick}>Update</Button>
               </div>
-              <div>
-                <label>
-                  <FormattedMessage
-                    id={'profile.form.locale.label'}
-                    defaultMessage="LOCALE"
-                  />
-                </label>
-                <div>
-                  <select {...locale} value={locale.value || ''}>
-                    <option />
-                    {locales.map(_locale => <option key={_locale} value={_locale}>{_locale}</option>)}
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div>
-              <label>
-                <FormattedMessage
-                  id={'profile.form.notes.label'}
-                  defaultMessage="NOTES"
-                />
-              </label>
-              <div>
-                <textarea {...notes} value={notes.value || ''} />
-              </div>
-            </div>
-
-            <div className={styles.updateButton}>
-              <Button bsStyle="primary" onClick={this.onUpdateClick}>Update</Button>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </form>
       </div>
     );

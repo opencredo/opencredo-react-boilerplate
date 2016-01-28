@@ -23,4 +23,36 @@ export const messages = {
       defaultMessage: 'email',
     },
   },
+  emailVerified: {
+    label: {
+      id: 'profile.form.emailVerified.label',
+      defaultMessage: 'email verified?',
+    },
+  },
+  gender: {
+    male: {
+      label: {
+        id: 'profile.form.gender.male.label',
+        defaultMessage: 'male',
+      },
+    },
+    female: {
+      label: {
+        id: 'profile.form.gender.female.label',
+        defaultMessage: 'female',
+      },
+    },
+  },
+  locale: {
+    label: {
+      id: 'profile.form.locale.label',
+      defaultMessage: 'locale',
+    },
+  },
+  notes: {
+    label: {
+      id: 'profile.form.notes.label',
+      defaultMessage: 'notes',
+    },
+  },
 };
