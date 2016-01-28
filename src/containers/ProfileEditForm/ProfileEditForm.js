@@ -21,6 +21,7 @@ class ProfileEditForm extends React.Component {
     fields: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
     values: PropTypes.object.isRequired,
+    resetForm: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     handleUpdate: PropTypes.func.isRequired,
   };
@@ -29,6 +30,12 @@ class ProfileEditForm extends React.Component {
   onUpdateClick() {
     log('onUpdateClick(): user:', this.props.user);
     this.props.handleUpdate(Object.assign({}, this.props.user, this.props.values));
+  }
+
+  @autobind
+  onResetClick() {
+    this.props.resetForm();
+    log('after onResetClick(): user:', this.props.user);
   }
 
   render(): Component {
@@ -74,11 +81,10 @@ class ProfileEditForm extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Col sm={2}/>
+            <Col sm={2} />
             <Col sm={10}>
-              <div className={styles.updateButton}>
-                <Button bsStyle="primary" onClick={this.onUpdateClick}>Update</Button>
-              </div>
+              <Button bsStyle="primary" onClick={this.onUpdateClick}>Update</Button>&nbsp;
+              <Button bsStyle="default" onClick={this.onResetClick}>Reset</Button>
             </Col>
           </Row>
         </form>
