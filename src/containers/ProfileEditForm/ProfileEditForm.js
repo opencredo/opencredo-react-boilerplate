@@ -21,6 +21,7 @@ class ProfileEditForm extends React.Component {
     fields: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
     values: PropTypes.object.isRequired,
+    pristine: PropTypes.bool.isRequired,
     resetForm: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     handleUpdate: PropTypes.func.isRequired,
@@ -36,6 +37,14 @@ class ProfileEditForm extends React.Component {
   onResetClick() {
     this.props.resetForm();
     log('after onResetClick(): user:', this.props.user);
+  }
+
+  isUpdateButtonDisabled(): boolean {
+    return this.props.pristine;
+  }
+
+  isResetButtonDisabled(): boolean {
+    return this.props.pristine;
   }
 
   render(): Component {
@@ -83,8 +92,20 @@ class ProfileEditForm extends React.Component {
           <Row>
             <Col sm={2} />
             <Col sm={10}>
-              <Button bsStyle="primary" onClick={this.onUpdateClick}>Update</Button>&nbsp;
-              <Button bsStyle="default" onClick={this.onResetClick}>Reset</Button>
+              <Button
+                bsStyle="primary"
+                onClick={this.onUpdateClick}
+                disabled={this.isUpdateButtonDisabled()}
+              >
+                Update
+              </Button>&nbsp;
+              <Button
+                bsStyle="default"
+                onClick={this.onResetClick}
+                disabled={this.isResetButtonDisabled()}
+              >
+                Reset
+              </Button>
             </Col>
           </Row>
         </form>
