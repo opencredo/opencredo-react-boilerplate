@@ -55,4 +55,16 @@ export const messages = {
       defaultMessage: 'notes',
     },
   },
+  reset: {
+    label: {
+      id: 'profile.form.reset.label',
+      defaultMessage: 'reset',
+    },
+  },
+  save: {
+    label: {
+      id: 'profile.form.save.label',
+      defaultMessage: 'save',
+    },
+  },
 };

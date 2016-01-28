@@ -1,7 +1,7 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react';
 import { Button, Input, Row, Col } from 'react-bootstrap';
-import { intlShape, injectIntl } from 'react-intl';
+import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
 import { reduxForm } from 'redux-form';
 import { messages } from './ProfileEditForm.i18n';
 import styles from './ProfileEditForm.scss';
@@ -97,14 +97,14 @@ class ProfileEditForm extends React.Component {
                 onClick={this.onUpdateClick}
                 disabled={this.isUpdateButtonDisabled()}
               >
-                Update
+                <FormattedMessage {...messages.save.label} />
               </Button>&nbsp;
               <Button
                 bsStyle="default"
                 onClick={this.onResetClick}
                 disabled={this.isResetButtonDisabled()}
               >
-                Reset
+                <FormattedMessage {...messages.reset.label} />
               </Button>
             </Col>
           </Row>

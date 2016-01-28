@@ -23,6 +23,8 @@ export default {
   'profile.form.locale.label': 'Idioma',
   'profile.form.nickname.placeholder': 'nickname',
   'profile.form.notes.label': 'Apuntes',
+  'profile.form.reset.label': 'Resetear',
+  'profile.form.save.label': 'Guardar',
   site_description: 'Un relatively minimal boilerplate for React + Redux web apps.',
   site_name: 'Opencredo React Boilerplate',
   titles_about_us: 'Sobre Nosotros',
