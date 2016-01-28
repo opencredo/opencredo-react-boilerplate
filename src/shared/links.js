@@ -9,7 +9,7 @@ export const links = {
   },
 
   aboutUs: {
-    to: '/',
+    to: '/pages/about-us',
     id: 'navigation_about_us',
     description: 'About Us page link',
     defaultMessage: 'About Us',
