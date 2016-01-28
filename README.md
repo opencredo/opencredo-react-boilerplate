@@ -67,7 +67,7 @@ Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
 * [Babel](https://babeljs.io) for ES2015 and _beyond_.
   - Presets: `es2015`, `react`, `stage-0`, and `react-hmre` (development).
 * [React Bootstrap](https://react-bootstrap.github.io) and [react-router-bootstrap](https://github.com/react-bootstrap/react-router-bootstrap)
-* [react-intl](https://github.com/yahoo/react-intl/) for i18n support with a couple of example translations.
+* [react-intl](https://github.com/yahoo/react-intl/) for i18n support with several example translations; using v2 beta: keep an eye on the [RFC](https://github.com/yahoo/react-intl/issues/162)
 * Example production build script (`npm run build`).
 * Basic support for restricted pages. Check `src/routes.js` for examples of restricted routes.
 
