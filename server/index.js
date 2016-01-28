@@ -34,9 +34,17 @@ log(`Serving static content from ${config.paths.static}`);
 app.use(express.static(config.paths.static));
 
 const port = yargs.argv.port || config.server.port;
-app.listen(4000, config.server.hostname);
+app.listen(port, config.server.hostname, () => {
+  log(`Server is now running at http://${config.server.hostname}:${port}.`);
+});
+
 browserSync.init({
-  proxy: `${config.server.hostname}:4000`
+  proxy: `${config.server.hostname}:${port}`,
+  port: 4000,
+  ui: {
+    port: 4040,
+    weinre: { port: 4444 },
+  },
 });
 
 module.exports = app;
