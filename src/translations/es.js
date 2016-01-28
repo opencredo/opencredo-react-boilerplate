@@ -1,5 +1,7 @@
 // Spanish translations
 export default {
+  'common.form.error.required': 'Este campo es obligatorio',
+  'common.form.error.email': 'Coreo no válido',
   lang_en: 'English',
   lang_es: 'Español',
   logging_in: 'Iniciando sesión...',

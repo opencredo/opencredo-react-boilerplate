@@ -2,17 +2,13 @@
 import React, { PropTypes, Component } from 'react';
 import { Button, Input, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
+import FormMessages, { generateValidation } from 'redux-form-validation';
+import validations from './ProfileEditForm.validations';
 import { reduxForm } from 'redux-form';
 import { messages } from './ProfileEditForm.i18n';
 import styles from './ProfileEditForm.scss';
-import debug from 'debug';
 import { autobind } from 'core-decorators';
 
-if (__DEBUG__) {
-  debug.enable('profile-edit-form:*');
-}
-
-const log = debug('profile-edit-form:debug');
 const MALE: string = 'male';
 const FEMALE: string = 'female';
 
@@ -22,6 +18,7 @@ class ProfileEditForm extends React.Component {
     intl: intlShape.isRequired,
     values: PropTypes.object.isRequired,
     pristine: PropTypes.bool.isRequired,
+    invalid: PropTypes.bool.isRequired,
     resetForm: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     handleUpdate: PropTypes.func.isRequired,
@@ -29,22 +26,20 @@ class ProfileEditForm extends React.Component {
 
   @autobind
   onUpdateClick() {
-    log('onUpdateClick(): user:', this.props.user);
     this.props.handleUpdate(Object.assign({}, this.props.user, this.props.values));
   }
 
   @autobind
   onResetClick() {
     this.props.resetForm();
-    log('after onResetClick(): user:', this.props.user);
   }
 
   isUpdateButtonDisabled(): boolean {
-    return this.props.pristine;
+    return this.props.pristine || this.props.invalid;
   }
 
   isResetButtonDisabled(): boolean {
-    return this.props.pristine;
+    return this.props.pristine || this.props.invalid;
   }
 
   render(): Component {
@@ -61,10 +56,42 @@ class ProfileEditForm extends React.Component {
               <img className={styles.picture} src={this.props.user.picture}/>
             </Col>
             <Col sm={5}>
-              <Input type="text" placeholder={formatMessage(messages.givenName.placeholder)} {...givenName} />
-              <Input type="text" placeholder={formatMessage(messages.familyName.placeholder)} {...familyName} />
+              <div className="form-group">
+                <input type="text" className="form-control" placeholder={formatMessage(messages.givenName.placeholder)} {...givenName} />
+                <FormMessages tagName="span" errorCount={1} field={givenName}>
+                  <span when="required" className="help-block">
+                    <FormattedMessage {...messages.error.required} />
+                  </span>
+                  <span when="bugfixer">
+                    There is a bug, whereby if the `FormMessages` element has only one child, no errors are displayed,
+                    even when there is an error.
+                  </span>
+                </FormMessages>
+              </div>
+              <div className="form-group">
+                <input type="text" className="form-control" placeholder={formatMessage(messages.familyName.placeholder)} {...familyName} />
+                <FormMessages tagName="span" errorCount="1" field={familyName}>
+                  <span when="required" className="help-block">
+                    <FormattedMessage {...messages.error.required} />
+                  </span>
+                  <span when="bugfixer">
+                    There is a bug, whereby if the `FormMessages` element has only one child, no errors are displayed,
+                    even when there is an error.
+                  </span>
+                </FormMessages>
+              </div>
               <Input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname} />
-              <Input type="text" placeholder={formatMessage(messages.email.placeholder)} {...email} />
+              <div className="form-group">
+                <input type="text" className="form-control" placeholder={formatMessage(messages.email.placeholder)} {...email} />
+                <FormMessages tagName="span" errorCount="1" field={email}>
+                  <span when="required" className="help-block">
+                    <FormattedMessage {...messages.error.required} />
+                  </span>
+                  <span when="email" className="help-block">
+                    <FormattedMessage {...messages.error.email} />
+                  </span>
+                </FormMessages>
+              </div>
               <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
             </Col>
             <Col sm={5}>
@@ -115,8 +142,8 @@ class ProfileEditForm extends React.Component {
 }
 
 const reduxFormConfig: Object = {
-  fields: ['givenName', 'familyName', 'nickname', 'email', 'emailVerified', 'gender', 'locale', 'notes'],
   form: 'editProfile',
+  ...generateValidation(validations),
 };
 
 const mapStateToProps = (state, props) => ({ initialValues: props.user });

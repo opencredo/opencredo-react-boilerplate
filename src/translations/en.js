@@ -1,5 +1,7 @@
 // English translations
 export default {
+  'common.form.error.required': 'This field is required',
+  'common.form.error.email': 'Email address is invalid',
   lang_en: 'English',
   lang_es: 'Español',
   logging_in: 'Logging in...',
