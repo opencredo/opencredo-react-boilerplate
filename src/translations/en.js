@@ -16,6 +16,7 @@ export default {
   navigation_policies: 'Policies',
   navigation_privacy: 'Privacy',
   navigation_terms: 'Terms & Conditions',
+  'profile.edit.title': 'Edit Profile',
   'profile.form.emailVerified.label': 'Email verified',
   'profile.form.email.placeholder': 'email',
   'profile.form.familyName.placeholder': 'family name',
