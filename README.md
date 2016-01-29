@@ -11,7 +11,7 @@ React and Redux boilerplate codebase.
 * [`redux`](http://rackt.org/redux/)
 * [`react-router`](https://github.com/rackt/react-router)
 * [`react-router-redux`](https://github.com/rackt/react-router-redux) &ndash; synchronises react router state with your redux store
-* [Webpack](https://webpack.github.io)
+* [`webpack`](https://webpack.github.io)
   - Configured with [`webpack-dev-middleware`](https://github.com/webpack/webpack-dev-middleware) and [`webpack-hot-middleware`](https://github.com/glenjamin/webpack-hot-middleware)
   - Hot Module Replacement with [`react-transform-hmr`](https://github.com/gaearon/react-transform-hmr) and [`babel-preset-react-hmre`](https://github.com/danmartinez101/babel-preset-react-hmre)
   - SASS / SCSS
@@ -56,6 +56,8 @@ npm run build   # run this just before you commit - the Travis-CI job runs this 
 ```
 
 ### Production
+
+To test a production build:
 
 ``` sh
 npm run build && (cd dist && python -m SimpleHTTPServer)
