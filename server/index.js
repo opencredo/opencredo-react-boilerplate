@@ -7,6 +7,7 @@ const history = require('connect-history-api-fallback');
 const webpackconfig = require('../webpack.config');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const browserSync = require('browser-sync');
 
 debug.enable('app:*');
 
@@ -36,5 +37,16 @@ const port = yargs.argv.port || config.server.port;
 app.listen(port, config.server.hostname, () => {
   log(`Server is now running at http://${config.server.hostname}:${port}.`);
 });
+
+if (yargs.argv.withBrowsersync) {
+  browserSync.init({
+    proxy: `${config.server.hostname}:${port}`,
+    port: 4000,
+    ui: {
+      port: 4040,
+      weinre: { port: 4444 },
+    },
+  });
+}
 
 module.exports = app;
