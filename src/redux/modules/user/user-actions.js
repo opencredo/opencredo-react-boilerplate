@@ -5,15 +5,15 @@ import { User } from 'declarations/app';
 import { updateProfile } from 'api/user';
 import { showSpinner, hideSpinner } from '../spinner/spinner';
 
-export const SET_USER = Symbol('@@user/SET_USER');
-export const CLEAR_USER = Symbol('@@user/CLEAR_USER');
-export const UPDATE_USER_REQUEST = Symbol('@@user/UPDATE_USER_REQUEST');
-export const UPDATE_USER_SUCCESS = Symbol('@@user/UPDATE_USER_SUCCESS');
-export const UPDATE_USER_FAILURE = Symbol('@@user/UPDATE_USER_FAILURE');
+export const SET_USER = '@@user/SET_USER';
+export const CLEAR_USER = '@@user/CLEAR_USER';
+export const UPDATE_USER_REQUEST = '@@user/UPDATE_USER_REQUEST';
+export const UPDATE_USER_SUCCESS = '@@user/UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILURE = '@@user/UPDATE_USER_FAILURE';
 export const LOCAL_STORAGE_KEY:string = 'redux:user';
 
 type UserAction = {
-  type: Symbol;
+  type: string;
   user: ?User;
 };
 
@@ -78,7 +78,7 @@ export const updateUser = (user: User): Function => {
       type: UPDATE_USER_REQUEST,
       user,
     });
-    dispatch(showSpinner('updating_user_details'));
+    dispatch(showSpinner('profile.message.updatingUserDetails'));
 
     updateProfile(user).then(
       response => {

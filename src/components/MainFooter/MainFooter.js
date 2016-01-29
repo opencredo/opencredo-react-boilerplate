@@ -18,7 +18,7 @@ export default class MainFooter extends React.Component {
 
   render() {
     return (
-      <footer className={`container footer footer-main ${styles.footer}`}>
+      <footer className={`footer footer-main ${styles.footer}`}>
         <nav>
           <ul className="inline-list">
             {footerLinks.map((link) =>

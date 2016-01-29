@@ -12,8 +12,12 @@ export const updateProfile = (user: User): Promise<User> => {
   // it is mocked here in order to keep things simple (ie, no actual service needs to be built)
   // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
   return new Promise((resolve) => {
+    // updated user needs to have given and family names concatenated to produce the `name` property
+    const name = `${user.givenName} ${user.familyName}`;
+    const updatedUser = Object.assign({}, user, { name });
+
     // insert a short delay to simulate service call delay
-    setTimeout(() => resolve(user), 700);
+    setTimeout(() => resolve(updatedUser), 700);
   });
   // So to simulate an http request that fails:
   // return new Promise((resolve, reject) => reject());

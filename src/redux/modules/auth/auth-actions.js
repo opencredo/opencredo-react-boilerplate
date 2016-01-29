@@ -4,11 +4,11 @@ import { getProfile } from 'api/user';
 import { setUser, clearUser } from '../user/user-actions';
 import { showSpinner, hideSpinner } from '../spinner/spinner';
 
-export const LOGIN_REQUEST = Symbol('@@auth/LOGIN_REQUEST');
-export const LOGIN_SUCCESS = Symbol('@@auth/LOGIN_SUCCESS');
-export const LOGIN_FAILURE = Symbol('@@auth/LOGIN_FAILURE');
-export const LOGOUT_REQUEST = Symbol('@@auth/LOGOUT_REQUEST');
-export const LOGOUT_SUCCESS = Symbol('@@auth/LOGOUT_SUCCESS');
+export const LOGIN_REQUEST = '@@auth/LOGIN_REQUEST';
+export const LOGIN_SUCCESS = '@@auth/LOGIN_SUCCESS';
+export const LOGIN_FAILURE = '@@auth/LOGIN_FAILURE';
+export const LOGOUT_REQUEST = '@@auth/LOGOUT_REQUEST';
+export const LOGOUT_SUCCESS = '@@auth/LOGOUT_SUCCESS';
 export const LOCAL_STORAGE_KEY = 'redux:auth';
 
 type AuthState = {
@@ -19,7 +19,7 @@ type AuthState = {
 };
 
 type AuthAction = {
-  type: Symbol;
+  type: string;
   state: ?AuthState;
 };
 
@@ -83,7 +83,7 @@ export const loginRequest = (): Function => {
   // See `configure-store.js`.
   return dispatch => {
     dispatch(loginRequestAction);
-    dispatch(showSpinner('logging_in'));
+    dispatch(showSpinner('site.message.loggingIn'));
 
     getProfile().then(
       response => {
@@ -108,7 +108,7 @@ export const logoutRequest = (): Function => {
     dispatch({
       type: LOGOUT_REQUEST,
     });
-    dispatch(showSpinner('logging_out'));
+    dispatch(showSpinner('site.message.loggingOut'));
 
     // insert a short delay to simulate service call delay - remove in real application
     setTimeout(() => {

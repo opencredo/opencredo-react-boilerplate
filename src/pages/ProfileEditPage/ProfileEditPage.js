@@ -1,12 +1,23 @@
 /* @flow */
 
 import debug from 'debug';
-import React, { PropTypes, ReactComponent } from 'react';
+import React, { PropTypes, Component, ReactComponent } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { User } from 'declarations/app';
-import ProfileEdit from 'components/ProfileEdit/ProfileEdit';
+import ProfileEditForm from 'containers/ProfileEditForm/ProfileEditForm';
 import { updateUser } from 'redux/modules/user/user-actions';
 import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
+import { FormattedMessageType } from 'declarations/i18n-types';
+import {
+  updateDocumentTitle,
+  resetDocumentTitle,
+} from 'redux/modules/document-title/document-title';
+
+const PAGE_TITLE: FormattedMessageType = {
+  id: 'profile.edit.title',
+  defaultMessage: 'Edit Profile',
+};
 
 if (__DEBUG__) {
   debug.enable('profile-edit-page:*');
@@ -14,11 +25,19 @@ if (__DEBUG__) {
 
 const log = debug('profile-edit-page:debug');
 
-export class ProfileEditPage extends React.Component {
+export class ProfileEditPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     user: PropTypes.object,
   };
+
+  componentDidMount() {
+    this.props.dispatch(updateDocumentTitle(PAGE_TITLE));
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(resetDocumentTitle());
+  }
 
   @autobind
   handleUpdate(user: User) {
@@ -28,11 +47,13 @@ export class ProfileEditPage extends React.Component {
 
   render(): ReactComponent {
     return (
-      <div className="content">
-        <h2 className="box-title">Edit Profile</h2>
+      <div className="content container">
+        <h2 className="box-title">
+          <FormattedMessage {...PAGE_TITLE} />
+        </h2>
 
         <div className="box-content">
-          <ProfileEdit user={this.props.user} handleUpdate={this.handleUpdate}/>
+          <ProfileEditForm user={this.props.user} handleUpdate={this.handleUpdate}/>
         </div>
 
       </div>

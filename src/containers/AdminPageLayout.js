@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MainHeader from 'containers/MainHeader/MainHeader';
 import MainFooter from 'components/MainFooter/MainFooter';
 import Spinner from 'components/Spinner/Spinner';
+import 'styles/admin.scss';
 
 const mapStateToProps = ({ spinner }) => ({ spinner });
 const AdminPageLayout = (props) => {
