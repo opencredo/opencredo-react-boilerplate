@@ -16,10 +16,7 @@ export default {
     email: true,
     validateOnBlur: true,
   },
-  emailVerified: {
-    required: true,
-    validateOnBlur: true,
-  },
+  emailVerified: true,
   gender: {
     required: true,
     validateOnBlur: true,
