@@ -4,8 +4,8 @@ import { Hero, HeroContent, HeroBackground } from 'components/Hero/index';
 import { VAContainer, VAMiddle } from 'components/VAlign/VAlign';
 import styles from './LandingPage.scss';
 
-const LandingPageHero = (props) => {
-  return (
+const LandingPageHero = (props) =>
+  (
     <Hero displayUnderNavbar>
       <HeroBackground image={props.backgroundImage} />
       <HeroContent>
@@ -25,7 +25,6 @@ const LandingPageHero = (props) => {
       </HeroContent>
     </Hero>
   );
-};
 
 LandingPageHero.propTypes = {
   backgroundImage: PropTypes.string.isRequired,

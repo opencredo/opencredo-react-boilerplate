@@ -73,10 +73,7 @@ export class LandingPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.isAuthenticated,
-  };
-};
+const mapStateToProps = (state) =>
+  ({ isAuthenticated: state.isAuthenticated });
 
 export default connect(mapStateToProps)(LandingPage);

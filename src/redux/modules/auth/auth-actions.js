@@ -77,11 +77,11 @@ export const loginFailure = (): AuthAction => {
   };
 };
 
-export const loginRequest = (): Function => {
+export const loginRequest = (): Function =>
   // Returning a function works because `redux-thunk` middleware is installed:
   // https://github.com/gaearon/redux-thunk
   // See `configure-store.js`.
-  return dispatch => {
+  dispatch => {
     dispatch(loginRequestAction);
     dispatch(showSpinner('site.message.loggingIn'));
 
@@ -101,10 +101,9 @@ export const loginRequest = (): Function => {
       }
     );
   };
-};
 
-export const logoutRequest = (): Function => {
-  return dispatch => {
+export const logoutRequest = (): Function =>
+  dispatch => {
     dispatch({
       type: LOGOUT_REQUEST,
     });
@@ -121,4 +120,3 @@ export const logoutRequest = (): Function => {
       });
     }, 700);
   };
-};
