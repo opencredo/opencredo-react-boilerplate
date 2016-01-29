@@ -18,6 +18,7 @@
     "karma": "NODE_ENV=test karma start --single-run",
     "lint": "eslint . ./",
     "start": "npm run dev",
+    "start:bs": "npm run dev:bs",
     "test": "npm run flow-check && npm run lint && npm run karma"
   },
   "repository": {
