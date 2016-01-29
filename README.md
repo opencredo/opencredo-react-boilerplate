@@ -70,7 +70,7 @@ Note: see [Dan Abramov's explanation about "Smart and Dumb Components"](https://
 * [Flowtype](http://flowtype.org) Static type checker (see [FLOWTYPE.md](./FLOWTYPE.md) for more info)
 * [Babel](https://babeljs.io) for ES2015 and _beyond_
   - Presets: `es2015`, `react`, `stage-0`, and `react-hmre` (development)
-* [React Bootstrap](https://react-bootstrap.github.io) and [`react-router-bootstrap`](https://github.com/react-bootstrap/react-router-bootstrap)
+* [`react-bootstrap`](https://react-bootstrap.github.io) and [`react-router-bootstrap`](https://github.com/react-bootstrap/react-router-bootstrap)
 * [`react-intl`](https://github.com/yahoo/react-intl/) for i18n support with several example translations; using v2 beta: keep an eye on the [RFC](https://github.com/yahoo/react-intl/issues/162)
 * [`redux-form`](https://github.com/erikras/redux-form) and [`redux-form-validation`](https://github.com/CosticaPuntaru/redux-form-validation) for form integration and validation
 * Example production build script (`npm run build`)
