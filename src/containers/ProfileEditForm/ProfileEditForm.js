@@ -57,7 +57,12 @@ class ProfileEditForm extends React.Component {
             </Col>
             <Col sm={5}>
               <div className="form-group">
-                <input type="text" className="form-control" placeholder={formatMessage(messages.givenName.placeholder)} {...givenName} />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder={formatMessage(messages.givenName.placeholder)}
+                  {...givenName}
+                />
                 <FormMessages tagName="span" errorCount={1} field={givenName}>
                   <span when="required" className="help-block">
                     <FormattedMessage {...messages.error.required} />
@@ -69,7 +74,12 @@ class ProfileEditForm extends React.Component {
                 </FormMessages>
               </div>
               <div className="form-group">
-                <input type="text" className="form-control" placeholder={formatMessage(messages.familyName.placeholder)} {...familyName} />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder={formatMessage(messages.familyName.placeholder)}
+                  {...familyName}
+                />
                 <FormMessages tagName="span" errorCount="1" field={familyName}>
                   <span when="required" className="help-block">
                     <FormattedMessage {...messages.error.required} />
@@ -82,7 +92,12 @@ class ProfileEditForm extends React.Component {
               </div>
               <Input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname} />
               <div className="form-group">
-                <input type="text" className="form-control" placeholder={formatMessage(messages.email.placeholder)} {...email} />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder={formatMessage(messages.email.placeholder)}
+                  {...email}
+                />
                 <FormMessages tagName="span" errorCount="1" field={email}>
                   <span when="required" className="help-block">
                     <FormattedMessage {...messages.error.required} />
