@@ -11,7 +11,7 @@ export type DocumentTitleAction = {
 };
 
 const initialState: FormattedMessageType = {
-  id: 'site_name',
+  id: 'site.name',
   defaultMessage: config.name,
 };
 
