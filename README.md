@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/opencredo/opencredo-react-boilerplate.svg?branch=master)](https://travis-ci.org/opencredo/opencredo-react-boilerplate)
 [![Dependency Status](https://david-dm.org/opencredo/opencredo-react-boilerplate.svg)](https://david-dm.org/opencredo/opencredo-react-boilerplate)
+[![devDependency Status](https://david-dm.org/opencredo/opencredo-react-boilerplate/dev-status.svg)](https://david-dm.org/opencredo/opencredo-react-boilerplate#info=devDependencies)
 
 React and Redux boilerplate codebase.
 
