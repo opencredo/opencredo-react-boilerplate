@@ -1,10 +1,10 @@
 /* @flow */
-export const CHANGE_LANGUAGE = Symbol('@@language/CHANGE_LANGUAGE');
+export const CHANGE_LANGUAGE = '@@language/CHANGE_LANGUAGE';
 export const LOCAL_STORAGE_KEY = 'redux:language';
 export const DEFAULT_LANGUAGE = 'en';
 
 type LanguageAction = {
-  type: Symbol;
+  type: string;
   language: string;
 };
 
