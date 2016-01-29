@@ -63,13 +63,20 @@ class ProfileEditForm extends React.Component {
                   placeholder={formatMessage(messages.givenName.placeholder)}
                   {...givenName}
                 />
-                <FormMessages tagName="span" errorCount={1} field={givenName}>
+                {
+                  // Putting the `has-error` class on the wrapping element makes the nested
+                  // children with `help-block` class show in the Bootstrap error colour.
+                }
+                <FormMessages tagName="span" errorCount={1} field={givenName} className="has-error">
                   <span when="required" className="help-block">
                     <FormattedMessage {...messages.error.required} />
                   </span>
+                  {
+                    // There is a bug, whereby if the `FormMessages` element has only one child,
+                    // no errors are displayed, even when there is an error.
+                    // The workaround is to include another child element that will never be displayed.
+                  }
                   <span when="bugfixer">
-                    There is a bug, whereby if the `FormMessages` element has only one child, no errors are displayed,
-                    even when there is an error.
                   </span>
                 </FormMessages>
               </div>
@@ -80,13 +87,11 @@ class ProfileEditForm extends React.Component {
                   placeholder={formatMessage(messages.familyName.placeholder)}
                   {...familyName}
                 />
-                <FormMessages tagName="span" errorCount="1" field={familyName}>
+                <FormMessages tagName="span" errorCount={1} field={familyName} className="has-error">
                   <span when="required" className="help-block">
                     <FormattedMessage {...messages.error.required} />
                   </span>
                   <span when="bugfixer">
-                    There is a bug, whereby if the `FormMessages` element has only one child, no errors are displayed,
-                    even when there is an error.
                   </span>
                 </FormMessages>
               </div>
@@ -98,7 +103,7 @@ class ProfileEditForm extends React.Component {
                   placeholder={formatMessage(messages.email.placeholder)}
                   {...email}
                 />
-                <FormMessages tagName="span" errorCount="1" field={email}>
+                <FormMessages tagName="span" errorCount={1} field={email} className="has-error">
                   <span when="required" className="help-block">
                     <FormattedMessage {...messages.error.required} />
                   </span>
@@ -141,6 +146,11 @@ class ProfileEditForm extends React.Component {
               >
                 <FormattedMessage {...messages.save.label} />
               </Button>&nbsp;
+              {
+                // Need to include the preceding non-breaking space, because when React renders the HTML,
+                // there is no gap in the markup between the buttons - which results in the buttons being
+                // flush up against each other.
+              }
               <Button
                 bsStyle="default"
                 onClick={this.onResetClick}
