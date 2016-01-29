@@ -42,7 +42,8 @@ Windows users need to follow the instructions in [FLOWTYPE.md](./FLOWTYPE.md#win
 When you're developing, start webpack as follows:
 
 ``` sh
-npm start
+npm run start       # standard development
+npm run start:bs    # as above, but with browser-sync
 ```
 
 Then open a browser at [`http://localhost:3000/`](http://localhost:3000/).
