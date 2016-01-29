@@ -89,7 +89,7 @@ Note: see [Dan Abramov's explanation about "Smart and Dumb Components"](https://
   - [CSS modules](https://github.com/css-modules/css-modules)
   - `.eslintrc` pre-loader
   - Support for production and development builds based on `NODE_ENV`
-* [Hot Module Replacement](https://github.com/gaearon/react-transform-hmr) in the form of `react-transform-hmr`, and `babel-preset-react-hmre`
+* Hot Module Replacement in the form of [`react-transform-hmr`](https://github.com/gaearon/react-transform-hmr), and [`babel-preset-react-hmre`](https://github.com/danmartinez101/babel-preset-react-hmre)
 * [`react-addons-test-utils`](https://facebook.github.io/react/docs/test-utils.html) for unit testing
 * [Flowtype](http://flowtype.org) Static type checker (see [FLOWTYPE.md](./FLOWTYPE.md) for more info)
 * [Babel](https://babeljs.io) for ES2015 and _beyond_
