@@ -39,7 +39,7 @@ class ProfileEditForm extends React.Component {
   }
 
   isResetButtonDisabled(): boolean {
-    return this.props.pristine || this.props.invalid;
+    return this.props.pristine;
   }
 
   render(): Component {
