@@ -5,8 +5,8 @@ import MainFooter from 'components/MainFooter/MainFooter';
 import Spinner from 'components/Spinner/Spinner';
 
 const mapStateToProps = ({ spinner }) => ({ spinner });
-const HeroPageLayout = (props) => {
-  return (
+const HeroPageLayout = (props) =>
+  (
     <div className="page-container">
       <MainHeader />
       <div className="view-container">
@@ -19,7 +19,6 @@ const HeroPageLayout = (props) => {
       />
     </div>
   );
-};
 
 HeroPageLayout.propTypes = {
   spinner: PropTypes.object,
