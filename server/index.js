@@ -38,13 +38,15 @@ app.listen(port, config.server.hostname, () => {
   log(`Server is now running at http://${config.server.hostname}:${port}.`);
 });
 
-browserSync.init({
-  proxy: `${config.server.hostname}:${port}`,
-  port: 4000,
-  ui: {
-    port: 4040,
-    weinre: { port: 4444 },
-  },
-});
+if (yargs.argv.withBrowsersync) {
+  browserSync.init({
+    proxy: `${config.server.hostname}:${port}`,
+    port: 4000,
+    ui: {
+      port: 4040,
+      weinre: { port: 4444 },
+    },
+  });
+}
 
 module.exports = app;

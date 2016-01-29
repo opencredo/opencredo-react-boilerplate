@@ -13,6 +13,7 @@
     "copy:static": "cp -r src/static/* dist",
     "compile": "NODE_ENV=production webpack -p --bail",
     "dev": "node --harmony server",
+    "dev:bs": "node --harmony server --with-browsersync",
     "flow-check": "flow check",
     "karma": "NODE_ENV=test karma start --single-run",
     "lint": "eslint . ./",
