@@ -3,61 +3,61 @@ import config from 'app-config';
 export const links = {
   home: {
     to: '/',
-    id: 'navigation_home',
+    id: 'navigation.home',
     description: 'Go to Home / Landing Page',
     defaultMessage: config.name,
   },
 
   aboutUs: {
     to: '/pages/about-us',
-    id: 'navigation_about_us',
+    id: 'navigation.aboutUs',
     description: 'About Us page link',
     defaultMessage: 'About Us',
   },
 
   logIn: {
-    id: 'navigation_log_in',
+    id: 'navigation.logIn',
     description: 'Log in',
     defaultMessage: 'Log in',
   },
 
   logOut: {
-    id: 'navigation_log_out',
+    id: 'navigation.logOut',
     description: 'Log out',
     defaultMessage: 'Log out',
   },
 
   account: {
     to: '/account',
-    id: 'navigation_account',
+    id: 'navigation.account',
     description: 'Account',
     defaultMessage: 'Account',
   },
 
   faq: {
     to: '/pages/faq',
-    id: 'navigation_faq',
+    id: 'navigation.faq',
     description: 'FAQ',
     defaultMessage: 'FAQ',
   },
 
   policies: {
     to: '/pages/policies',
-    id: 'navigation_policies',
+    id: 'navigation.policies',
     description: 'Policies',
     defaultMessage: 'Policies',
   },
 
   terms: {
     to: '/pages/terms',
-    id: 'navigation_terms',
+    id: 'navigation.terms',
     description: 'Terms & Privacy',
     defaultMessage: 'Terms & Privacy',
   },
 
   help: {
     to: '/pages/help',
-    id: 'navigation_help',
+    id: 'navigation.help',
     description: 'Help',
     defaultMessage: 'Help',
   },

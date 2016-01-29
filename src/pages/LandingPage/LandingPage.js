@@ -18,7 +18,7 @@ if (__DEBUG__) {
 const log = debug('landing-page:info');
 const PAGE_TITLE: FormattedMessageType = {
   description: 'i18n token for the landing page title',
-  id: 'titles_landing_page',
+  id: 'landingPage.title',
   defaultMessage: 'Landing Page',
 };
 

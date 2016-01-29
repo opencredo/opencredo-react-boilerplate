@@ -83,7 +83,7 @@ export const loginRequest = (): Function => {
   // See `configure-store.js`.
   return dispatch => {
     dispatch(loginRequestAction);
-    dispatch(showSpinner('logging_in'));
+    dispatch(showSpinner('site.message.loggingIn'));
 
     getProfile().then(
       response => {
@@ -108,7 +108,7 @@ export const logoutRequest = (): Function => {
     dispatch({
       type: LOGOUT_REQUEST,
     });
-    dispatch(showSpinner('logging_out'));
+    dispatch(showSpinner('site.message.loggingOut'));
 
     // insert a short delay to simulate service call delay - remove in real application
     setTimeout(() => {

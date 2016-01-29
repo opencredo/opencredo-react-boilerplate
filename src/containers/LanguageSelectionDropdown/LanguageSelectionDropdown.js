@@ -7,13 +7,13 @@ import find from 'lodash/find';
 
 const supportedLanguages = [
   {
-    id: 'lang_en',
+    id: 'lang.en',
     key: 'en',
     description: 'English',
     defaultMessage: 'English',
   },
   {
-    id: 'lang_es',
+    id: 'lang.es',
     key: 'es',
     description: 'Español',
     defaultMessage: 'Español',

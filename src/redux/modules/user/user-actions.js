@@ -78,7 +78,7 @@ export const updateUser = (user: User): Function => {
       type: UPDATE_USER_REQUEST,
       user,
     });
-    dispatch(showSpinner('updating_user_details'));
+    dispatch(showSpinner('profile.message.updatingUserDetails'));
 
     updateProfile(user).then(
       response => {
