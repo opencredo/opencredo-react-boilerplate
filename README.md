@@ -7,14 +7,38 @@ React and Redux boilerplate codebase.
 
 ## Usage
 
-Clone repo, then run:
+### First time
+
+Clone this repo, then run `npm install`.
+
+Windows users need to follow the instructions in [FLOWTYPE.md](./FLOWTYPE.md#windows-installation) to install the `flow` binaries.
+
+### Development
+
+When you're developing, start webpack as follows:
 
 ``` sh
-npm install # one-time execution
 npm start
 ```
 
-Then open browser at [`http://localhost:3000/`](http://localhost:3000/).
+Then open a browser at [`http://localhost:3000/`](http://localhost:3000/).
+
+Some useful commands:
+
+``` sh
+npm run lint    # execute the eslint process on the codebase
+npm run karma   # execute just the unit tests
+npm run test    # execute flow checks, eslint and unit tests
+npm run build   # run this just before you commit - the Travis-CI job runs this command
+```
+
+### Production
+
+``` sh
+npm run build && (cd dist && python -m SimpleHTTPServer)
+```
+
+Then open a browser at [`http://localhost:8000/`](http://localhost:8000/).
 
 ## Directory Structure
 ```
