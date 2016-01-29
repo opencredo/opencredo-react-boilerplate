@@ -45,7 +45,7 @@ Then open a browser at [`http://localhost:8000/`](http://localhost:8000/).
 .
 ├── config                      # Config: mostly used by build & webpack
 │   ├── environments/           # Config overrides for different NODE_ENVs
-│   └── index.js                # Config entry point. Modify to suit your needs.
+│   └── index.js                # Config entry point. Modify to suit your needs
 ├── dist/                       # Built artifacts get put here (e.g. webpack.output)
 ├── server/                     # Express server files go here
 │   ├── index.js                # Launches the express() server with webpack-hmr
@@ -60,7 +60,7 @@ Then open a browser at [`http://localhost:8000/`](http://localhost:8000/).
 │   │   ├── configure-store.js  # Redux store configured here (middleware, initial state, reducers...)
 │   │   └── root-reducer.js     # Here we combine all our reducers
 │   ├── shared/                 # Shared resources
-│   ├── static/                 # Static assetes. Some call this `public/`
+│   ├── static/                 # Static assets. Some call this `public/`
 │   ├── styles/                 # Global CSS styles (class names left intact)
 │   ├── translations/           # Our i18n translations go here
 │   ├── app.js                  # Application entry point
