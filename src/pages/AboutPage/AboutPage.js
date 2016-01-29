@@ -10,7 +10,7 @@ import {
 } from 'redux/modules/document-title/document-title';
 
 const PAGE_TITLE: FormattedMessageType = {
-  id: 'titles_about_us',
+  id: 'aboutPage.title',
   defaultMessage: 'About Us',
 };
 

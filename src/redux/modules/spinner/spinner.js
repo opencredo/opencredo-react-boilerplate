@@ -7,12 +7,12 @@ type SpinnerState = {
 };
 
 type SpinnerAction = {
-  type: Symbol;
+  type: string;
   state: SpinnerState;
 };
 
-export const SHOW_SPINNER: Symbol = Symbol('@@spinner/SHOW_SPINNER');
-export const HIDE_SPINNER: Symbol = Symbol('@@spinner/HIDE_SPINNER');
+export const SHOW_SPINNER: string = '@@spinner/SHOW_SPINNER';
+export const HIDE_SPINNER: string = '@@spinner/HIDE_SPINNER';
 
 export const DEFAULT_SPINNER_STATE: SpinnerState = {
   canShow: false,
