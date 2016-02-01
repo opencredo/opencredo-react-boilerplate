@@ -64,7 +64,7 @@ class ProfileEditForm extends React.Component {
               <TextInput field={familyName} placeholder={formatMessage(messages.familyName.placeholder)}>
                 <FormErrorMessages field={familyName} />
               </TextInput>
-              <Input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname} />
+              <TextInput field={nickname} placeholder={formatMessage(messages.nickname.placeholder)} />
               <div className="form-group">
                 <input
                   type="text"
