@@ -3,6 +3,8 @@ import React, { PropTypes, Component } from 'react';
 import { Button, Input, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
 import FormMessages, { generateValidation } from 'redux-form-validation';
+import TextInput from 'components/FormFields/TextInput';
+import FormErrorMessages from 'components/FormFields/FormErrorMessages';
 import validations from './ProfileEditForm.validations';
 import { reduxForm } from 'redux-form';
 import { messages } from './ProfileEditForm.i18n';
@@ -56,45 +58,12 @@ class ProfileEditForm extends React.Component {
               <img className={styles.picture} src={this.props.user.picture}/>
             </Col>
             <Col sm={5}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={formatMessage(messages.givenName.placeholder)}
-                  {...givenName}
-                />
-                {
-                  // Putting the `has-error` class on the wrapping element makes the nested
-                  // children with `help-block` class show in the Bootstrap error colour.
-                }
-                <FormMessages tagName="span" errorCount={1} field={givenName} className="has-error">
-                  <span when="required" className="help-block">
-                    <FormattedMessage {...messages.error.required} />
-                  </span>
-                  {
-                    // There is a bug, whereby if the `FormMessages` element has only one child,
-                    // no errors are displayed, even when there is an error.
-                    // The workaround is to include another child element that will never be displayed.
-                  }
-                  <span when="bugfixer">
-                  </span>
-                </FormMessages>
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={formatMessage(messages.familyName.placeholder)}
-                  {...familyName}
-                />
-                <FormMessages tagName="span" errorCount={1} field={familyName} className="has-error">
-                  <span when="required" className="help-block">
-                    <FormattedMessage {...messages.error.required} />
-                  </span>
-                  <span when="bugfixer">
-                  </span>
-                </FormMessages>
-              </div>
+              <TextInput field={givenName} placeholder={formatMessage(messages.givenName.placeholder)}>
+                <FormErrorMessages field={givenName} />
+              </TextInput>
+              <TextInput field={familyName} placeholder={formatMessage(messages.familyName.placeholder)}>
+                <FormErrorMessages field={familyName} />
+              </TextInput>
               <Input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname} />
               <div className="form-group">
                 <input
