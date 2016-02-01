@@ -2,7 +2,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Button, Input, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
-import FormMessages, { generateValidation } from 'redux-form-validation';
+import { generateValidation } from 'redux-form-validation';
 import TextInput from 'components/FormFields/TextInput';
 import FormErrorMessages from 'components/FormFields/FormErrorMessages';
 import validations from './ProfileEditForm.validations';
@@ -65,22 +65,9 @@ class ProfileEditForm extends React.Component {
                 <FormErrorMessages field={familyName} />
               </TextInput>
               <TextInput field={nickname} placeholder={formatMessage(messages.nickname.placeholder)} />
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={formatMessage(messages.email.placeholder)}
-                  {...email}
-                />
-                <FormMessages tagName="span" errorCount={1} field={email} className="has-error">
-                  <span when="required" className="help-block">
-                    <FormattedMessage {...messages.error.required} />
-                  </span>
-                  <span when="email" className="help-block">
-                    <FormattedMessage {...messages.error.email} />
-                  </span>
-                </FormMessages>
-              </div>
+              <TextInput field={email} type="email" placeholder={formatMessage(messages.email.placeholder)}>
+                <FormErrorMessages field={email} />
+              </TextInput>
               <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
             </Col>
             <Col sm={5}>
