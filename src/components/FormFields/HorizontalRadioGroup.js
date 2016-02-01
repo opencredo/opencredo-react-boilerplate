@@ -1,6 +1,5 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react';
-import { Input } from 'react-bootstrap';
 
 // Support for radio buttons in react-bootstrap is currently lame.
 // It's worth watching this though:
@@ -15,22 +14,22 @@ class HorizontalRadioGroup extends React.Component {
     const { field, values } = this.props;
 
     return (
-      <Input>
+      <div className="form-group">
         {
           values.map(value =>
-            <label className="radio-inline">
+            <label className="radio-inline" key={`${field.name}-${value.value}`}>
               <input
                 type="radio"
                 className="radio"
+                {...field}
                 value={value.value}
                 checked={field.value === value.value}
-                {...field}
               />
               {value.label}
             </label>
           )
         }
-      </Input>
+      </div>
     );
   }
 }
