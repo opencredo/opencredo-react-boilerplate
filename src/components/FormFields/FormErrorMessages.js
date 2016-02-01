@@ -14,13 +14,8 @@ const FormErrorMessages = (props: Object): ReactElement => {
       <span when="required" className="help-block">
         <FormattedMessage {...messages.error.required} />
       </span>
-      <span when="bugfixer">
-        {
-          // Note: there is a bug whereby if the `FormMessages` element has only one child,
-          // no errors are displayed, even when there is a validation error.
-          // The workaround is to include another child element (ie, this one) that will
-          // never be matched, and hence will never be displayed.
-        }
+      <span when="email" className="help-block">
+        <FormattedMessage {...messages.error.email} />
       </span>
     </FormMessages>
   );
