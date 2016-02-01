@@ -22,9 +22,9 @@ class HorizontalRadioGroup extends React.Component {
               <input
                 type="radio"
                 className="radio"
-                {...field}
                 value={value.value}
                 checked={field.value === value.value}
+                {...field}
               />
               {value.label}
             </label>

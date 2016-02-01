@@ -16,16 +16,17 @@ class TextInput extends React.Component {
       'has-error': this.props.field.invalid,
     });
     const type = this.props.type || 'text';
+    const { field, placeholder, children } = this.props;
 
     return (
       <div className={inputClasses}>
         <input
           type={type}
           className="form-control"
-          placeholder={this.props.placeholder}
-          {...this.props.field}
+          placeholder={placeholder}
+          {...field}
         />
-        { this.props.children }
+        { children }
       </div>
     );
   }
