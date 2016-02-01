@@ -4,6 +4,7 @@ import { Button, Input, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
 import { generateValidation } from 'redux-form-validation';
 import TextInput from 'components/FormFields/TextInput';
+import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup';
 import FormErrorMessages from 'components/FormFields/FormErrorMessages';
 import validations from './ProfileEditForm.validations';
 import { reduxForm } from 'redux-form';
@@ -47,6 +48,17 @@ class ProfileEditForm extends React.Component {
   render(): Component {
     const { fields: { givenName, familyName, nickname, email, emailVerified, gender, locale, notes } } = this.props;
     const { formatMessage } = this.props.intl;
+    const genderValues = [
+      {
+        label: formatMessage(messages.gender.male.label),
+        value: MALE,
+      },
+      {
+        label: formatMessage(messages.gender.female.label),
+        value: FEMALE,
+      },
+    ];
+
     // in a real app, the locales would be populated via service call:
     const locales: string[] = ['en-GB', 'en-AU', 'es-ES', 'es-CR', 'es-NI'];
 
@@ -71,21 +83,7 @@ class ProfileEditForm extends React.Component {
               <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
             </Col>
             <Col sm={5}>
-              <Input>
-                {
-                  // Support for radio buttons in react-bootstrap is currently lame.
-                  // It's worth watching this though:
-                  // https://github.com/react-bootstrap/react-bootstrap/pull/962
-                }
-                <label className="radio-inline">
-                  <input type="radio" className="radio" {...gender} value={MALE} checked={gender.value === MALE}/>
-                  {formatMessage(messages.gender.male.label)}
-                </label>
-                <label className="radio-inline">
-                  <input type="radio" className="radio" {...gender} value={FEMALE} checked={gender.value === FEMALE}/>
-                  {formatMessage(messages.gender.female.label)}
-                </label>
-              </Input>
+              <HorizontalRadioGroup field={gender} values={genderValues} />
               <Input type="select" label={formatMessage(messages.locale.label)} {...locale}>
                 {locales.map(_locale => <option key={_locale} value={_locale}>{_locale}</option>)}
               </Input>
