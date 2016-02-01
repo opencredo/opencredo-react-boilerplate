@@ -7,6 +7,7 @@ class TextInput extends React.Component {
     field: PropTypes.object.isRequired,
     children: PropTypes.object,
     placeholder: PropTypes.string,
+    type: PropTypes.string,
   };
 
   render(): Component {
@@ -14,11 +15,12 @@ class TextInput extends React.Component {
       'form-group': true,
       'has-error': this.props.field.invalid,
     });
+    const type = this.props.type || 'text';
 
     return (
       <div className={inputClasses}>
         <input
-          type="text"
+          type={type}
           className="form-control"
           placeholder={this.props.placeholder}
           {...this.props.field}
