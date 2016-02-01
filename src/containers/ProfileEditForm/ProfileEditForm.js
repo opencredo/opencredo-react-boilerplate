@@ -5,6 +5,7 @@ import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
 import { generateValidation } from 'redux-form-validation';
 import TextInput from 'components/FormFields/TextInput';
 import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup';
+import DropDown from 'components/FormFields/DropDown';
 import FormErrorMessages from 'components/FormFields/FormErrorMessages';
 import validations from './ProfileEditForm.validations';
 import { reduxForm } from 'redux-form';
@@ -84,9 +85,7 @@ class ProfileEditForm extends React.Component {
             </Col>
             <Col sm={5}>
               <HorizontalRadioGroup field={gender} values={genderValues} />
-              <Input type="select" label={formatMessage(messages.locale.label)} {...locale}>
-                {locales.map(_locale => <option key={_locale} value={_locale}>{_locale}</option>)}
-              </Input>
+              <DropDown label={formatMessage(messages.locale.label)} field={locale} values={locales} />
               <Input type="textarea" label={formatMessage(messages.notes.label)} {...notes} />
             </Col>
           </Row>
