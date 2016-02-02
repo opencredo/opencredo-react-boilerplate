@@ -33,4 +33,24 @@ the recommended packages above.
 
 
 ## WebStorm / IntelliJ
-*Coming Soon*
+
+The minimum versions required are:
+
+* WebStorm &ndash; version 11
+* Intellij &ndash; version 15
+
+Open the project's preferences:
+
+* Languages & Frameworks
+  * JavaScript
+    * **JavaScript language version**: _Flow_
+    * Libraries
+      * tick _ECMAScript 6_
+      * tick _HTML_
+      * tick _HTML5 / ECMAScript 5_
+    * Code Quality Tools
+      * ESLint
+        * tick the **Enable** checkbox
+        * **Node interpreter** &ndash; default value should be correct
+        * **ESLint package** &ndash; ditto
+        * **Configuration file** &ndash; _Search for .eslintrc_
