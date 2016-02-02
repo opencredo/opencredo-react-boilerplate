@@ -16,7 +16,6 @@ function shallowRenderWithProps(props = {}) {
 
 describe('[Page] Landing Page', function landingPageSpec() {
   beforeEach(() => {
-    this.spies = {};
     this.props = {
       picture: 'picture',
       name: 'A User',

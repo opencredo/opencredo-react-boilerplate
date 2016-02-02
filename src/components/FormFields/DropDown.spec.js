@@ -17,7 +17,6 @@ function shallowRenderWithProps(props = {}) {
 
 describe('[FormField] DropDown', function dropDownSpec() {
   beforeEach(() => {
-    this.spies = {};
     this.props = {
       label: 'a label',
       field: {},

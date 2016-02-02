@@ -16,7 +16,6 @@ const shallowRenderWithProps = (props = {}) => {
 
 describe('[FormField] HorizontalRadioGroup', function horizontalRadioGroupSpec() {
   beforeEach(() => {
-    this.spies = {};
     this.props = {
       field: {
         name: 'Home town',
