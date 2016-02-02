@@ -2,6 +2,7 @@ export default {
   givenName: {
     required: true,
     validateOnBlur: true,
+    minLength: 2,
   },
   familyName: {
     required: true,

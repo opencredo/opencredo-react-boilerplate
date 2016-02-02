@@ -72,7 +72,7 @@ class ProfileEditForm extends React.Component {
             </Col>
             <Col sm={5}>
               <TextInput field={givenName} placeholder={formatMessage(messages.givenName.placeholder)}>
-                <FormErrorMessages field={givenName} />
+                <FormErrorMessages field={givenName} minLength={validations.givenName.minLength} />
               </TextInput>
               <TextInput field={familyName} placeholder={formatMessage(messages.familyName.placeholder)}>
                 <FormErrorMessages field={familyName} />
