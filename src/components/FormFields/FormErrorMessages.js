@@ -18,10 +18,10 @@ const FormErrorMessages = (props: Object): ReactElement => {
         <FormattedMessage {...messages.error.email} />
       </span>
       <span when="minLength" className="help-block">
-        <FormattedMessage minLength={props.minLength} {...messages.error.minLength} />
+        <FormattedMessage values={{ minLength: props.minLength }} {...messages.error.minLength} />
       </span>
       <span when="maxLength" className="help-block">
-        <FormattedMessage maxLength={props.maxLength} {...messages.error.maxLength} />
+        <FormattedMessage values={{ maxLength: props.maxLength }} {...messages.error.maxLength} />
       </span>
     </FormMessages>
   );

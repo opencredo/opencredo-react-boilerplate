@@ -10,11 +10,11 @@ export const messages = {
     },
     minLength: {
       id: 'common.form.error.minLength',
-      defaultMessage: 'must be longer',
+      defaultMessage: 'minimum length: {minLength}',
     },
     maxLength: {
       id: 'common.form.error.maxLength',
-      defaultMessage: 'must be shorter',
+      defaultMessage: 'maximum length: {maxLength}',
     },
   },
 };
