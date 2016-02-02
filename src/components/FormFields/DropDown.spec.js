@@ -26,7 +26,7 @@ describe('[FormField] DropDown', function dropDownSpec() {
     this.component = shallowRenderWithProps(this.props);
   });
 
-  it('Should render as <Input>.', () => {
+  it('Should render as <Input>', () => {
     expect(this.component.type).to.equal(Input);
   });
 

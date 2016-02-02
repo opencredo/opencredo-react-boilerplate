@@ -25,7 +25,7 @@ describe('[Page] Landing Page', function landingPageSpec() {
     this.component = shallowRenderWithProps(this.props);
   });
 
-  it('Should render as a <Link>.', () => {
+  it('Should render as a <Link>', () => {
     expect(this.component.type).to.equal(Link);
   });
 
