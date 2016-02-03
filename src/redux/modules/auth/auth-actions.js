@@ -102,21 +102,20 @@ export const loginRequest = (): Function =>
     );
   };
 
-export const logoutRequest = (): Function =>
-  dispatch => {
-    dispatch({
-      type: LOGOUT_REQUEST,
-    });
-    dispatch(showSpinner('site.message.loggingOut'));
+export const logoutRequest = (): Function => dispatch => {
+  dispatch({
+    type: LOGOUT_REQUEST,
+  });
+  dispatch(showSpinner('site.message.loggingOut'));
 
-    // insert a short delay to simulate service call delay - remove in real application
-    setTimeout(() => {
-      persistState(initialState);
-      dispatch(clearUser());
-      dispatch(hideSpinner());
-      dispatch({
-        type: LOGOUT_SUCCESS,
-        state: initialState,
-      });
-    }, 700);
-  };
+  // insert a short delay to simulate service call delay - remove in real application
+  setTimeout(() => {
+    persistState(initialState);
+    dispatch(clearUser());
+    dispatch(hideSpinner());
+    dispatch({
+      type: LOGOUT_SUCCESS,
+      state: initialState,
+    });
+  }, 700);
+};

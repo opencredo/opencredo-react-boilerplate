@@ -31,8 +31,8 @@ class LanguageSelectionDropdown extends Component {
     return <FormattedMessage {...lang} />;
   }
 
-  handleLanguageChange = (lang: string) =>
-    () => this.props.dispatch(changeLanguage(lang));
+  handleLanguageChange = (lang: string) => () =>
+    this.props.dispatch(changeLanguage(lang));
 
   render() {
     const currentLanguage = find(supportedLanguages, { key: this.props.language });

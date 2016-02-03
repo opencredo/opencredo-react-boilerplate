@@ -70,25 +70,25 @@ export const updateUserFailure = (): UserAction =>
     user: null,
   });
 
-export const updateUser = (user: User): Function =>
-  dispatch =>
-    (dispatch({
-      type: UPDATE_USER_REQUEST,
-      user,
-    }),
-    dispatch(showSpinner('profile.message.updatingUserDetails')),
+export const updateUser = (user: User): Function => dispatch => {
+  dispatch({
+    type: UPDATE_USER_REQUEST,
+    user,
+  });
+  dispatch(showSpinner('profile.message.updatingUserDetails'));
 
-    updateProfile(user).then(
-      response => {
-        dispatch(updateUserSuccess(response));
-        dispatch(hideSpinner());
-        dispatch(setUser(response));
-      },
-      () => {
-        dispatch(updateUserFailure());
-        dispatch(hideSpinner());
-      }
-    ));
+  updateProfile(user).then(
+    response => {
+      dispatch(updateUserSuccess(response));
+      dispatch(hideSpinner());
+      dispatch(setUser(response));
+    },
+    () => {
+      dispatch(updateUserFailure());
+      dispatch(hideSpinner());
+    }
+  );
+};
 
 export const clearUser = ():UserAction => {
   persistUser(null);
