@@ -10,9 +10,8 @@ const shallowRender = (component) => {
   return renderer.getRenderOutput();
 };
 
-const shallowRenderWithProps = (props = {}) => {
-  return shallowRender(<HorizontalRadioGroup {...props} />);
-};
+const shallowRenderWithProps = (props = {}) =>
+  shallowRender(<HorizontalRadioGroup {...props} />);
 
 describe('[FormField] HorizontalRadioGroup', function horizontalRadioGroupSpec() {
   beforeEach(() => {

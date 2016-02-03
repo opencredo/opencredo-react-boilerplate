@@ -10,9 +10,8 @@ const shallowRender = (component) => {
   return renderer.getRenderOutput();
 };
 
-const shallowRenderWithProps = (props = {}) => {
-  return shallowRender(<TextInput {...props} />);
-};
+const shallowRenderWithProps = (props = {}) =>
+  shallowRender(<TextInput {...props} />);
 
 describe('[FormField] TextInput', function textInputSpec() {
   beforeEach(() => {
