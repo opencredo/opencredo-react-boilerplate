@@ -16,6 +16,12 @@ const FormErrorMessages = (props: Object): ReactElement => (
     <span when="email" className="help-block">
       <FormattedMessage {...messages.error.email} />
     </span>
+    <span when="min" className="help-block">
+      <FormattedMessage values={{ min: props.min }} {...messages.error.min} />
+    </span>
+    <span when="max" className="help-block">
+      <FormattedMessage values={{ max: props.max }} {...messages.error.max} />
+    </span>
     <span when="minLength" className="help-block">
       <FormattedMessage values={{ minLength: props.minLength }} {...messages.error.minLength} />
     </span>
@@ -27,6 +33,8 @@ const FormErrorMessages = (props: Object): ReactElement => (
 
 FormErrorMessages.propTypes = {
   field: PropTypes.object.isRequired,
+  min: PropTypes.number,
+  max: PropTypes.number,
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
 };

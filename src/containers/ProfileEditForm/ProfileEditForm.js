@@ -47,7 +47,19 @@ class ProfileEditForm extends React.Component {
   }
 
   render(): Component {
-    const { fields: { givenName, familyName, nickname, email, emailVerified, gender, locale, notes } } = this.props;
+    const {
+      fields: {
+        givenName,
+        familyName,
+        nickname,
+        email,
+        emailVerified,
+        age,
+        gender,
+        locale,
+        notes,
+        },
+      } = this.props;
     const { formatMessage } = this.props.intl;
     const genderValues = [
       {
@@ -86,6 +98,9 @@ class ProfileEditForm extends React.Component {
               <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
             </Col>
             <Col sm={5}>
+              <TextInput field={age} type="number" placeholder={formatMessage(messages.age.placeholder)}>
+                <FormErrorMessages field={age} min={validations.age.min} max={validations.age.max} />
+              </TextInput>
               <HorizontalRadioGroup field={gender} values={genderValues} />
               <DropDown label={formatMessage(messages.locale.label)} field={locale} values={locales} />
               <Input type="textarea" label={formatMessage(messages.notes.label)} {...notes} />
