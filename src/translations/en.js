@@ -3,6 +3,10 @@ export default {
   'aboutPage.title': 'About Us',
   'common.form.error.required': 'This field is required',
   'common.form.error.email': 'Email address is invalid',
+  'common.form.error.maxLength': `May not be more than
+    {maxLength, plural, one {1 character} other {{maxLength} characters}} long`,
+  'common.form.error.minLength': `Must be at least
+    {minLength, plural, one {1 character} other {{minLength} characters}} long`,
   'landingPage.title': 'Landing Page',
   'lang.en': 'English',
   'lang.es': 'Español',
