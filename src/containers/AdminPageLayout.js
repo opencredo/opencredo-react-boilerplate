@@ -6,8 +6,8 @@ import Spinner from 'components/Spinner/Spinner';
 import 'styles/admin.scss';
 
 const mapStateToProps = ({ spinner }) => ({ spinner });
-const AdminPageLayout = (props) => {
-  return (
+const AdminPageLayout = (props) =>
+  (
     <div id="admin-layout" className="page-container">
       <MainHeader />
       <div className="view-container">
@@ -20,7 +20,6 @@ const AdminPageLayout = (props) => {
       />
     </div>
   );
-};
 
 AdminPageLayout.propTypes = {
   spinner: PropTypes.object,

@@ -58,40 +58,36 @@ export const setUser = (user: ?User): UserAction => {
   };
 };
 
-export const updateUserSuccess = (user: User): UserAction => {
-  return {
+export const updateUserSuccess = (user: User): UserAction =>
+  ({
     type: UPDATE_USER_SUCCESS,
     user,
-  };
-};
+  });
 
-export const updateUserFailure = (): UserAction => {
-  return {
+export const updateUserFailure = (): UserAction =>
+  ({
     type: UPDATE_USER_FAILURE,
     user: null,
-  };
-};
+  });
 
-export const updateUser = (user: User): Function => {
-  return (dispatch) => {
-    dispatch({
-      type: UPDATE_USER_REQUEST,
-      user,
-    });
-    dispatch(showSpinner('profile.message.updatingUserDetails'));
+export const updateUser = (user: User): Function => dispatch => {
+  dispatch({
+    type: UPDATE_USER_REQUEST,
+    user,
+  });
+  dispatch(showSpinner('profile.message.updatingUserDetails'));
 
-    updateProfile(user).then(
-      response => {
-        dispatch(updateUserSuccess(response));
-        dispatch(hideSpinner());
-        dispatch(setUser(response));
-      },
-      () => {
-        dispatch(updateUserFailure());
-        dispatch(hideSpinner());
-      }
-    );
-  };
+  updateProfile(user).then(
+    response => {
+      dispatch(updateUserSuccess(response));
+      dispatch(hideSpinner());
+      dispatch(setUser(response));
+    },
+    () => {
+      dispatch(updateUserFailure());
+      dispatch(hideSpinner());
+    }
+  );
 };
 
 export const clearUser = ():UserAction => {
