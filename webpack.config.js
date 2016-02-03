@@ -1,4 +1,3 @@
-'use strict';
 const head = require('lodash/head');
 const tail = require('lodash/tail');
 const path = require('path');

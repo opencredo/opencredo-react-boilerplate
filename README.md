@@ -51,11 +51,17 @@ Then open a browser at [`http://localhost:3000/`](http://localhost:3000/).
 Some useful commands:
 
 ``` sh
-npm run lint    # execute the eslint process on the codebase
-npm run karma   # execute just the unit tests
-npm run test    # execute flow checks, eslint and unit tests
-npm run build   # run this just before you commit - the Travis-CI job runs this command
+npm run lint        # execute the eslint process on the codebase
+npm run karma       # execute just the unit tests
+npm run flow-check  # alias for `flow check`
+npm run test        # execute flow checks, eslint and unit tests
+npm run build       # run this just before you commit - the Travis-CI job runs this command
 ```
+
+Most editors will report lint and type errors if properly configured. If you need help setting up
+your editor, we've put together a few tips for some of the more popular ones in the [Editors](./EDITORS.md) document.
+If your editor is not listed and you'd like to contribute some tips, feel free to make a PR :-)
+
 
 ### Production
 
