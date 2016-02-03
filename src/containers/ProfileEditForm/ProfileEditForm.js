@@ -2,7 +2,11 @@
 import React, { PropTypes, Component } from 'react';
 import { Button, Input, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
-import FormMessages, { generateValidation } from 'redux-form-validation';
+import { generateValidation } from 'redux-form-validation';
+import TextInput from 'components/FormFields/TextInput';
+import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup';
+import DropDown from 'components/FormFields/DropDown';
+import FormErrorMessages from 'components/FormFields/FormErrorMessages';
 import validations from './ProfileEditForm.validations';
 import { reduxForm } from 'redux-form';
 import { messages } from './ProfileEditForm.i18n';
@@ -45,6 +49,17 @@ class ProfileEditForm extends React.Component {
   render(): Component {
     const { fields: { givenName, familyName, nickname, email, emailVerified, gender, locale, notes } } = this.props;
     const { formatMessage } = this.props.intl;
+    const genderValues = [
+      {
+        label: formatMessage(messages.gender.male.label),
+        value: MALE,
+      },
+      {
+        label: formatMessage(messages.gender.female.label),
+        value: FEMALE,
+      },
+    ];
+
     // in a real app, the locales would be populated via service call:
     const locales: string[] = ['en-GB', 'en-AU', 'es-ES', 'es-CR', 'es-NI'];
 
@@ -56,83 +71,23 @@ class ProfileEditForm extends React.Component {
               <img className={styles.picture} src={this.props.user.picture}/>
             </Col>
             <Col sm={5}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={formatMessage(messages.givenName.placeholder)}
-                  {...givenName}
-                />
-                {
-                  // Putting the `has-error` class on the wrapping element makes the nested
-                  // children with `help-block` class show in the Bootstrap error colour.
-                }
-                <FormMessages tagName="span" errorCount={1} field={givenName} className="has-error">
-                  <span when="required" className="help-block">
-                    <FormattedMessage {...messages.error.required} />
-                  </span>
-                  {
-                    // There is a bug, whereby if the `FormMessages` element has only one child,
-                    // no errors are displayed, even when there is an error.
-                    // The workaround is to include another child element that will never be displayed.
-                  }
-                  <span when="bugfixer">
-                  </span>
-                </FormMessages>
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={formatMessage(messages.familyName.placeholder)}
-                  {...familyName}
-                />
-                <FormMessages tagName="span" errorCount={1} field={familyName} className="has-error">
-                  <span when="required" className="help-block">
-                    <FormattedMessage {...messages.error.required} />
-                  </span>
-                  <span when="bugfixer">
-                  </span>
-                </FormMessages>
-              </div>
-              <Input type="text" placeholder={formatMessage(messages.nickname.placeholder)} {...nickname} />
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={formatMessage(messages.email.placeholder)}
-                  {...email}
-                />
-                <FormMessages tagName="span" errorCount={1} field={email} className="has-error">
-                  <span when="required" className="help-block">
-                    <FormattedMessage {...messages.error.required} />
-                  </span>
-                  <span when="email" className="help-block">
-                    <FormattedMessage {...messages.error.email} />
-                  </span>
-                </FormMessages>
-              </div>
+              <TextInput field={givenName} placeholder={formatMessage(messages.givenName.placeholder)}>
+                <FormErrorMessages field={givenName} minLength={validations.givenName.minLength} />
+              </TextInput>
+              <TextInput field={familyName} placeholder={formatMessage(messages.familyName.placeholder)}>
+                <FormErrorMessages field={familyName} minLength={validations.familyName.minLength} />
+              </TextInput>
+              <TextInput field={nickname} placeholder={formatMessage(messages.nickname.placeholder)}>
+                <FormErrorMessages field={nickname} maxLength={validations.nickname.maxLength} />
+              </TextInput>
+              <TextInput field={email} type="email" placeholder={formatMessage(messages.email.placeholder)}>
+                <FormErrorMessages field={email} />
+              </TextInput>
               <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
             </Col>
             <Col sm={5}>
-              <Input>
-                {
-                  // Support for radio buttons in react-bootstrap is currently lame.
-                  // It's worth watching this though:
-                  // https://github.com/react-bootstrap/react-bootstrap/pull/962
-                }
-                <label className="radio-inline">
-                  <input type="radio" className="radio" {...gender} value={MALE} checked={gender.value === MALE}/>
-                  {formatMessage(messages.gender.male.label)}
-                </label>
-                <label className="radio-inline">
-                  <input type="radio" className="radio" {...gender} value={FEMALE} checked={gender.value === FEMALE}/>
-                  {formatMessage(messages.gender.female.label)}
-                </label>
-              </Input>
-              <Input type="select" label={formatMessage(messages.locale.label)} {...locale}>
-                {locales.map(_locale => <option key={_locale} value={_locale}>{_locale}</option>)}
-              </Input>
+              <HorizontalRadioGroup field={gender} values={genderValues} />
+              <DropDown label={formatMessage(messages.locale.label)} field={locale} values={locales} />
               <Input type="textarea" label={formatMessage(messages.notes.label)} {...notes} />
             </Col>
           </Row>

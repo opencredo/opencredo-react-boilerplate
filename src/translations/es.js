@@ -2,7 +2,11 @@
 export default {
   'aboutPage.title': 'Sobre Nosotros',
   'common.form.error.required': 'Este campo es obligatorio',
-  'common.form.error.email': 'Coreo no válido',
+  'common.form.error.email': 'Correo no válido',
+  'common.form.error.maxLength': `No puede tener más de
+    {maxLength, plural, one {1 carácter} other {{maxLength} caracteres}}`,
+  'common.form.error.minLength': `Debe tener al menos
+    {minLength, plural, one {1 carácter} other {{minLength} caracteres}}`,
   'landingPage.title': 'Inicio',
   'lang.en': 'English',
   'lang.es': 'Español',
