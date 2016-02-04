@@ -11,6 +11,7 @@
     "admin"
   ],
   "gender": "male",
+  "age": 46,
   "notes": "this\nand that",
   "createdAt": "2016-01-01T00:00:00.000Z",
   "updatedAt": "2016-01-01T00:00:00.000Z",

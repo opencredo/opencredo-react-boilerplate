@@ -3,8 +3,10 @@ export default {
   'aboutPage.title': 'About Us',
   'common.form.error.required': 'This field is required',
   'common.form.error.email': 'Email address is invalid',
+  'common.form.error.max': 'May not be greater than {max}',
   'common.form.error.maxLength': `May not be more than
     {maxLength, plural, one {1 character} other {{maxLength} characters}} long`,
+  'common.form.error.min': 'Must be at least {min}',
   'common.form.error.minLength': `Must be at least
     {minLength, plural, one {1 character} other {{minLength} characters}} long`,
   'landingPage.title': 'Landing Page',
@@ -21,6 +23,7 @@ export default {
   'navigation.privacy': 'Privacy',
   'navigation.terms': 'Terms & Conditions',
   'profile.edit.title': 'Edit Profile',
+  'profile.form.age.placeholder': 'Age',
   'profile.form.emailVerified.label': 'Email verified',
   'profile.form.email.placeholder': 'email',
   'profile.form.familyName.placeholder': 'family name',

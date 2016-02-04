@@ -3,8 +3,10 @@ export default {
   'aboutPage.title': 'Sobre Nosotros',
   'common.form.error.required': 'Este campo es obligatorio',
   'common.form.error.email': 'Correo no válido',
+  'common.form.error.max': 'No puede ser más que {max}',
   'common.form.error.maxLength': `No puede tener más de
     {maxLength, plural, one {1 carácter} other {{maxLength} caracteres}}`,
+  'common.form.error.min': 'Debe ser al menos {min}',
   'common.form.error.minLength': `Debe tener al menos
     {minLength, plural, one {1 carácter} other {{minLength} caracteres}}`,
   'landingPage.title': 'Inicio',
@@ -21,6 +23,7 @@ export default {
   'navigation.privacy': 'Privacidad',
   'navigation.terms': 'Términos & Condiciones',
   'profile.edit.title': 'Editar Perfil',
+  'profile.form.age.placeholder': 'Edad',
   'profile.form.emailVerified.label': 'Correo verificado',
   'profile.form.email.placeholder': 'correo',
   'profile.form.familyName.placeholder': 'appellido',

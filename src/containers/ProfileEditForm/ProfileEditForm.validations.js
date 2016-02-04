@@ -1,18 +1,8 @@
 export default {
-  givenName: {
+  age: {
     required: true,
-    validateOnBlur: true,
-    minLength: 1,
-  },
-  familyName: {
-    required: true,
-    validateOnBlur: true,
-    minLength: 2,
-  },
-  nickname: {
-    required: false,
-    validateOnBlur: true,
-    maxLength: 10,
+    min: 18,
+    max: 99,
   },
   email: {
     required: true,
@@ -20,13 +10,28 @@ export default {
     validateOnBlur: true,
   },
   emailVerified: true,
+  familyName: {
+    required: true,
+    validateOnBlur: true,
+    minLength: 2,
+  },
   gender: {
     required: true,
     validateOnBlur: true,
   },
+  givenName: {
+    required: true,
+    validateOnBlur: true,
+    minLength: 1,
+  },
   locale: {
     required: true,
     validateOnBlur: true,
+  },
+  nickname: {
+    required: false,
+    validateOnBlur: true,
+    maxLength: 10,
   },
   notes: {
     required: false,
