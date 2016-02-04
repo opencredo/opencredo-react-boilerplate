@@ -2,7 +2,6 @@ import debug from 'debug';
 import {
   getUser,
   SET_USER,
-  UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILURE,
   CLEAR_USER,
@@ -21,8 +20,8 @@ const userReducer = (state = getUser(), action) => {
     case SET_USER:
       newState = Object.assign({}, action.user);
       break;
-    case UPDATE_USER_REQUEST:
-      newState = Object.assign({}, action.user);
+    case CLEAR_USER:
+      newState = null;
       break;
     case UPDATE_USER_SUCCESS:
       newState = Object.assign({}, action.user);
@@ -30,9 +29,6 @@ const userReducer = (state = getUser(), action) => {
     case UPDATE_USER_FAILURE:
       // NOTE: this is not essential, but it's useful to explicitly define
       newState = state;
-      break;
-    case CLEAR_USER:
-      newState = null;
       break;
     default:
       newState = state;

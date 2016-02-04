@@ -14,7 +14,7 @@ export const LOCAL_STORAGE_KEY:string = 'redux:user';
 
 type UserAction = {
   type: string;
-  user: ?User;
+  user?: ?User;
 };
 
 const initialUser: User = {
@@ -58,23 +58,34 @@ export const setUser = (user: ?User): UserAction => {
   };
 };
 
-export const updateUserSuccess = (user: User): UserAction =>
-  ({
-    type: UPDATE_USER_SUCCESS,
-    user,
-  });
+export const clearUser = ():UserAction => {
+  persistUser(null);
 
-export const updateUserFailure = (): UserAction =>
-  ({
-    type: UPDATE_USER_FAILURE,
-    user: null,
-  });
+  return {
+    type: CLEAR_USER,
+    user: undefined,
+  };
+};
+
+export const updateUserRequest = (): UserAction => ({
+  type: UPDATE_USER_REQUEST,
+});
+
+export const updateUserSuccess = (user: User): UserAction => ({
+  type: UPDATE_USER_SUCCESS,
+  user,
+});
+
+export const updateUserFailure = (): UserAction => ({
+  type: UPDATE_USER_FAILURE,
+});
 
 export const updateUser = (user: User): Function => dispatch => {
   dispatch({
     type: UPDATE_USER_REQUEST,
     user,
   });
+
   dispatch(showSpinner('profile.message.updatingUserDetails'));
 
   updateProfile(user).then(
@@ -88,13 +99,4 @@ export const updateUser = (user: User): Function => dispatch => {
       dispatch(hideSpinner());
     }
   );
-};
-
-export const clearUser = ():UserAction => {
-  persistUser(null);
-
-  return {
-    type: CLEAR_USER,
-    user: undefined,
-  };
 };
