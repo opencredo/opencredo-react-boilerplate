@@ -1,3 +1,3 @@
-## 1.0.1 (February 4, 2016)
+## 1.0.1 (2015-02-04)
 
 * Initial public release (and first Changelog entry)
