@@ -111,3 +111,7 @@ Note: see [Dan Abramov's explanation about "Smart and Dumb Components"](https://
 ## Contributing
 
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get involved.
+
+## Changelog
+
+[Changelog](./CHANGELOG.md)
