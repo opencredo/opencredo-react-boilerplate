@@ -1,20 +1,8 @@
 export const messages = {
-  givenName: {
+  age: {
     placeholder: {
-      id: 'profile.form.givenName.placeholder',
-      defaultMessage: 'given name',
-    },
-  },
-  familyName: {
-    placeholder: {
-      id: 'profile.form.familyName.placeholder',
-      defaultMessage: 'family name',
-    },
-  },
-  nickname: {
-    placeholder: {
-      id: 'profile.form.nickname.placeholder',
-      defaultMessage: 'nickname',
+      id: 'profile.form.age.placeholder',
+      defaultMessage: 'age',
     },
   },
   email: {
@@ -27,6 +15,12 @@ export const messages = {
     label: {
       id: 'profile.form.emailVerified.label',
       defaultMessage: 'email verified?',
+    },
+  },
+  familyName: {
+    placeholder: {
+      id: 'profile.form.familyName.placeholder',
+      defaultMessage: 'family name',
     },
   },
   gender: {
@@ -43,10 +37,22 @@ export const messages = {
       },
     },
   },
+  givenName: {
+    placeholder: {
+      id: 'profile.form.givenName.placeholder',
+      defaultMessage: 'given name',
+    },
+  },
   locale: {
     label: {
       id: 'profile.form.locale.label',
       defaultMessage: 'locale',
+    },
+  },
+  nickname: {
+    placeholder: {
+      id: 'profile.form.nickname.placeholder',
+      defaultMessage: 'nickname',
     },
   },
   notes: {
