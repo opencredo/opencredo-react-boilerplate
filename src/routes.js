@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute, IndexRedirect } from 'react-router';
+import { Route, IndexRedirect } from 'react-router';
 import { requireAuthentication as restrict } from 'containers/AuthenticatedComponent';
 
 import AppContainer from 'containers/AppContainer';
@@ -8,7 +8,6 @@ import AdminPageLayout from 'containers/AdminPageLayout';
 import LandingPage from 'pages/LandingPage/LandingPage';
 import AboutPage from 'pages/AboutPage/AboutPage';
 import ProfileEditPage from 'pages/ProfileEditPage/ProfileEditPage';
-import AccountPage from 'pages/AccountPage/AccountPage';
 
 export default(
   // Route components without path will render their children...
@@ -26,7 +25,6 @@ export default(
     </Route>
 
     <Route path="/account" component={AdminPageLayout}>
-      <IndexRoute component={restrict(AccountPage)} />
       <Route path="/profile/edit" component={restrict(ProfileEditPage)} />
     </Route>
   </Route>
