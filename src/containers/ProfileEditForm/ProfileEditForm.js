@@ -98,10 +98,16 @@ class ProfileEditForm extends React.Component {
               <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
             </Col>
             <Col sm={5}>
-              <TextInput field={age} type="number" placeholder={formatMessage(messages.age.placeholder)}>
-                <FormErrorMessages field={age} min={validations.age.min} max={validations.age.max} />
-              </TextInput>
-              <HorizontalRadioGroup field={gender} values={genderValues} />
+              <Row>
+                <Col sm={3}>
+                  <TextInput field={age} type="number" placeholder={formatMessage(messages.age.placeholder)}>
+                    <FormErrorMessages field={age} min={validations.age.min} max={validations.age.max}/>
+                  </TextInput>
+                </Col>
+                <Col sm={9}>
+                  <HorizontalRadioGroup field={gender} values={genderValues} />
+                </Col>
+              </Row>
               <DropDown label={formatMessage(messages.locale.label)} field={locale} values={locales} />
               <Input type="textarea" label={formatMessage(messages.notes.label)} {...notes} />
             </Col>
