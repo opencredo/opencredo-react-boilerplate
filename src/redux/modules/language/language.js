@@ -10,11 +10,13 @@ type LanguageAction = {
 
 function getLanguage() {
   const language = localStorage.getItem(LOCAL_STORAGE_KEY);
-  return language ? language : DEFAULT_LANGUAGE;
+
+  return language || DEFAULT_LANGUAGE;
 }
 
 export function changeLanguage(language: string): LanguageAction {
   localStorage.setItem(LOCAL_STORAGE_KEY, language);
+
   return {
     type: CHANGE_LANGUAGE,
     language,
