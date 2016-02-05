@@ -1,18 +1,14 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { HeroBackground, Hero } from 'components/Hero';
-import { FormattedMessageType } from 'declarations/i18n-types';
+import { messages } from './AboutPage.i18n';
 import {
   updateDocumentTitle,
   resetDocumentTitle,
 } from 'redux/modules/document-title/document-title';
-
-const PAGE_TITLE: FormattedMessageType = {
-  id: 'aboutPage.title',
-  defaultMessage: 'About Us',
-};
 
 class AboutPage extends Component {
   static propTypes = {
@@ -20,7 +16,7 @@ class AboutPage extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(updateDocumentTitle(PAGE_TITLE));
+    this.props.dispatch(updateDocumentTitle(messages.title));
   }
 
   componentWillUnmount() {
@@ -30,16 +26,17 @@ class AboutPage extends Component {
   render() {
     return (
       <section id="about-page">
-      <Hero displayUnderNavbar>
-        <HeroBackground image="/images/workspace-cb.jpg" />
+        <Hero displayUnderNavbar>
+          <HeroBackground image="/images/workspace-cb.jpg"/>
         </Hero>
         <Grid>
           <Row>
             <Col xs={12} className="text-center">
-              <h1>About Page</h1>
+              <h1>
+                <FormattedMessage {...messages.title} />
+              </h1>
               <p>
-                Currently implemented as a stateless component,
-                so will not auto-update when chages are made.
+                <FormattedMessage {...messages.overview} />
               </p>
             </Col>
           </Row>
@@ -48,6 +45,5 @@ class AboutPage extends Component {
     );
   }
 }
-
 
 export default connect(() => ({}))(AboutPage);

@@ -1,6 +1,8 @@
 // English translations
 export default {
   'aboutPage.title': 'About Us',
+  'aboutPage.overview': `Currently implemented as a stateless component,
+    so will not auto-update when changes are made.`,
   'common.form.error.required': 'This field is required',
   'common.form.error.email': 'Email address is invalid',
   'common.form.error.max': 'May not be greater than {max}',

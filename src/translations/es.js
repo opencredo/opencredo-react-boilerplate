@@ -1,6 +1,7 @@
 // Spanish translations
 export default {
   'aboutPage.title': 'Sobre Nosotros',
+  'aboutPage.overview': 'para traducar...',
   'common.form.error.required': 'Este campo es obligatorio',
   'common.form.error.email': 'Correo no válido',
   'common.form.error.max': 'No puede ser más que {max}',
