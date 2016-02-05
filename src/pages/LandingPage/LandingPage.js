@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import styles from './LandingPage.scss';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import debug from 'debug';
 import { autobind } from 'core-decorators';
+import { messages } from './LandingPage.i18n';
 import LandingPageHero from './LandingPageHero';
 import {
   updateDocumentTitle,
   resetDocumentTitle,
-  FormattedMessageType,
 } from 'redux/modules/document-title/document-title';
 
 if (__DEBUG__) {
@@ -16,11 +17,6 @@ if (__DEBUG__) {
 }
 
 const log = debug('landing-page:info');
-const PAGE_TITLE: FormattedMessageType = {
-  description: 'i18n token for the landing page title',
-  id: 'landingPage.title',
-  defaultMessage: 'Landing Page',
-};
 
 export class LandingPage extends React.Component {
 
@@ -31,7 +27,7 @@ export class LandingPage extends React.Component {
 
   // executes only on the client
   componentDidMount() {
-    this.props.dispatch(updateDocumentTitle(PAGE_TITLE));
+    this.props.dispatch(updateDocumentTitle(messages.title));
   }
 
   componentWillUnmount() {
@@ -47,23 +43,28 @@ export class LandingPage extends React.Component {
   render() {
     return (
       <div id="landing-page">
-        <LandingPageHero backgroundImage="/images/workspace-cc.jpg" />
+        <LandingPageHero backgroundImage="/images/workspace-cc.jpg"/>
         <Grid>
           <Row>
             <Col xs={12}>
-              <h1 className={styles.title}>Landing Page zappy</h1>
-              <p> Press <code>ctrl-h</code> to toggle Redux Dev Tools (development mode only)</p>
-              <p>This pages auto-updates when you make changes and save.</p>
+              <h1 className={styles.title}>
+                <FormattedMessage {...messages.title} />
+              </h1>
               <p>
-                This page also demonstrates the use of ES7 decorators
-                <code>@autobind</code> and <code>@deprecated</code>
+                <FormattedHTMLMessage {...messages.para.pressCtrlH} />
+              </p>
+              <p>
+                <FormattedHTMLMessage {...messages.para.autoUpdate} />
+              </p>
+              <p>
+                <FormattedHTMLMessage {...messages.para.es7Decorator} />
               </p>
             </Col>
           </Row>
           <Row>
             <Col xs={6} md={2}>
               <Button bsStyle="primary" onClick={this.handleButtonClick}>
-                Click Me (log)
+                <FormattedMessage {...messages.button.clickMe} />
               </Button>
             </Col>
           </Row>
