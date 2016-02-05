@@ -49,7 +49,7 @@
     "react-router-redux": "^2.1.0",
     "redux": "^3.0.5",
     "redux-form": "^4.1.5",
-    "@mcalthrop/redux-form-validation": "^0.0.8",
+    "@mcalthrop/redux-form-validation": "^0.0.9",
     "redux-logger": "^2.3.2",
     "redux-thunk": "^1.0.3",
     "url": "^0.11.0"
