@@ -2,7 +2,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Button, Input, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
-import { generateValidation } from 'redux-form-validation';
+import { generateValidation } from '@mcalthrop/redux-form-validation';
 import TextInput from 'components/FormFields/TextInput';
 import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup';
 import DropDown from 'components/FormFields/DropDown';

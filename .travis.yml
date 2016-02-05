@@ -2,8 +2,10 @@ language: node_js
 
 env:
   - NODE_ENV=development NPM_CONFIG_PROGRESS=false
+
 node_js:
   - '5.4'
+
 script:
   - npm run build
 

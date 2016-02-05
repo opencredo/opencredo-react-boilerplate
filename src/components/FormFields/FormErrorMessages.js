@@ -1,7 +1,7 @@
 /* @flow */
 import React, { PropTypes, ReactElement } from 'react';
 import { FormattedMessage } from 'react-intl';
-import FormMessages from 'redux-form-validation';
+import FormMessages from '@mcalthrop/redux-form-validation';
 import { messages } from 'shared/forms';
 
 const FormErrorMessages = (props: Object): ReactElement => (
