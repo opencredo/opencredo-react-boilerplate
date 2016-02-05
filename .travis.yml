@@ -6,13 +6,6 @@ env:
 node_js:
   - '5.4'
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-
 script:
   - npm run build
 
