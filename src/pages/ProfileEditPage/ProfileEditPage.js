@@ -8,16 +8,11 @@ import ProfileEditForm from 'containers/ProfileEditForm/ProfileEditForm';
 import { updateUser } from 'redux/modules/user/user-actions';
 import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
-import { FormattedMessageType } from 'declarations/i18n-types';
+import { messages } from './ProfileEditPage.i18n';
 import {
   updateDocumentTitle,
   resetDocumentTitle,
 } from 'redux/modules/document-title/document-title';
-
-const PAGE_TITLE: FormattedMessageType = {
-  id: 'profile.edit.title',
-  defaultMessage: 'Edit Profile',
-};
 
 if (__DEBUG__) {
   debug.enable('profile-edit-page:*');
@@ -32,7 +27,7 @@ export class ProfileEditPage extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(updateDocumentTitle(PAGE_TITLE));
+    this.props.dispatch(updateDocumentTitle(messages.title));
   }
 
   componentWillUnmount() {
@@ -49,7 +44,7 @@ export class ProfileEditPage extends Component {
     return (
       <div className="content container">
         <h2 className="box-title">
-          <FormattedMessage {...PAGE_TITLE} />
+          <FormattedMessage {...messages.title} />
         </h2>
 
         <div className="box-content">
