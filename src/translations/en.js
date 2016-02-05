@@ -1,6 +1,8 @@
 // English translations
 export default {
   'aboutPage.title': 'About Us',
+  'aboutPage.overview': `Currently implemented as a stateless component,
+    so will not auto-update when changes are made.`,
   'common.form.error.required': 'This field is required',
   'common.form.error.email': 'Email address is invalid',
   'common.form.error.max': 'May not be greater than {max}',
@@ -10,6 +12,11 @@ export default {
   'common.form.error.minLength': `Must be at least
     {minLength, plural, one {1 character} other {{minLength} characters}} long`,
   'landingPage.title': 'Landing Page',
+  'landingPage.button.clickMe': 'Click me (log)',
+  'landingPage.para.pressCtrlH': 'Press <code>ctrl-h</code> to toggle Redux Dev Tools (development mode only).',
+  'landingPage.para.autoUpdate': 'This pages auto-updates when you make changes and save.',
+  'landingPage.para.es7Decorator': `This page also demonstrates the use of the
+    <code>@autobind</code> ES7 decorator.`,
   'lang.en': 'English',
   'lang.es': 'Español',
   'navigation.aboutUs': 'About Us',

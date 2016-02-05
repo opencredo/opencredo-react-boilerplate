@@ -1,6 +1,7 @@
 // Spanish translations
 export default {
   'aboutPage.title': 'Sobre Nosotros',
+  'aboutPage.overview': 'para traducir...',
   'common.form.error.required': 'Este campo es obligatorio',
   'common.form.error.email': 'Correo no válido',
   'common.form.error.max': 'No puede ser más que {max}',
@@ -10,6 +11,11 @@ export default {
   'common.form.error.minLength': `Debe tener al menos
     {minLength, plural, one {1 carácter} other {{minLength} caracteres}}`,
   'landingPage.title': 'Inicio',
+  'landingPage.button.clickMe': 'Cliquéame (log)',
+  'landingPage.para.pressCtrlH': 'Presione <code>ctrl-h</code> para alternar el panel de Redux Dev Tools.',
+  'landingPage.para.autoUpdate': 'Esta página se actualiza automáticamente cuando haces cambios y guardas.',
+  'landingPage.para.es7Decorator': `Esta página también demuestra el uso del decorador
+    <code>@autobind</code>.`,
   'lang.en': 'English',
   'lang.es': 'Español',
   'navigation.aboutUs': 'Sobre Nosotros',
