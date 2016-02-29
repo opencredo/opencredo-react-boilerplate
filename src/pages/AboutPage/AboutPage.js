@@ -27,7 +27,7 @@ class AboutPage extends Component {
     return (
       <section id="about-page">
         <Hero displayUnderNavbar>
-          <HeroBackground image="/images/workspace-cb.jpg"/>
+          <HeroBackground image="/images/workspace-cb.jpg" />
         </Hero>
         <Grid>
           <Row>

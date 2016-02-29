@@ -10,16 +10,17 @@ export default class Root extends React.Component {
     routes: PropTypes.element.isRequired,
   };
 
-  constructor(props, state, c) {
-    super(props, state, c);
-  }
-
   // redux devtools pane
   get devTools() {
+    let returnValue = <span />;
+
     if (DEVELOPMENT) {
       const DevTools = require('./DevTools');
-      return <DevTools />;
+
+      returnValue = <DevTools />;
     }
+
+    return returnValue;
   }
 
   render() {

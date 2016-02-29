@@ -37,13 +37,13 @@ export class LandingPage extends React.Component {
 
   @autobind
   handleButtonClick() {
-    log(`button click handler context:`, this);
+    log('button click handler context:', this);
   }
 
   render() {
     return (
       <div id="landing-page">
-        <LandingPageHero backgroundImage="/images/workspace-cc.jpg"/>
+        <LandingPageHero backgroundImage="/images/workspace-cc.jpg" />
         <Grid>
           <Row>
             <Col xs={12}>

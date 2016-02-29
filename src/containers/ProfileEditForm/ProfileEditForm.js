@@ -80,7 +80,7 @@ class ProfileEditForm extends React.Component {
         <form onSubmit={this.onUpdateClick}>
           <Row>
             <Col sm={2}>
-              <img className={styles.picture} src={this.props.user.picture}/>
+              <img className={styles.picture} src={this.props.user.picture} />
             </Col>
             <Col sm={5}>
               <TextInput field={givenName} placeholder={formatMessage(messages.givenName.placeholder)}>
@@ -101,7 +101,7 @@ class ProfileEditForm extends React.Component {
               <Row>
                 <Col sm={3}>
                   <TextInput field={age} type="number" placeholder={formatMessage(messages.age.placeholder)}>
-                    <FormErrorMessages field={age} min={validations.age.min} max={validations.age.max}/>
+                    <FormErrorMessages field={age} min={validations.age.min} max={validations.age.max} />
                   </TextInput>
                 </Col>
                 <Col sm={9}>

@@ -48,7 +48,7 @@ export class ProfileEditPage extends Component {
         </h2>
 
         <div className="box-content">
-          <ProfileEditForm user={this.props.user} handleUpdate={this.handleUpdate}/>
+          <ProfileEditForm user={this.props.user} handleUpdate={this.handleUpdate} />
         </div>
 
       </div>

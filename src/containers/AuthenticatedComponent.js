@@ -43,7 +43,7 @@ const requireAuthentication = (ComposedComponent) => {
 
       return (
         <div className={wrapperClass}>
-          { isAuthenticated ? <ComposedComponent {...this.props}/> : null }
+          { isAuthenticated ? <ComposedComponent {...this.props} /> : null }
         </div>
       );
     }

@@ -9,9 +9,9 @@ const Spinner = ({ canShow, messageId }) => {
   return (
     <Modal show={canShow} bsSize="small">
       <Modal.Body>
-        <i className={className}/>
+        <i className={className} />
         {canShow &&
-        <FormattedMessage id={messageId} defaultMessage="Please wait..."/>
+        <FormattedMessage id={messageId} defaultMessage="Please wait..." />
         }
       </Modal.Body>
     </Modal>
