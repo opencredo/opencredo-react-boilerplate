@@ -1,8 +1,8 @@
 /* @flow */
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Element } from 'react';
 import { Button, Input, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
-import { generateValidation } from '@mcalthrop/redux-form-validation';
+import { generateValidation } from 'redux-form-validation';
 import TextInput from 'components/FormFields/TextInput';
 import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup';
 import DropDown from 'components/FormFields/DropDown';
@@ -46,7 +46,7 @@ class ProfileEditForm extends React.Component {
     return this.props.pristine;
   }
 
-  render(): Component {
+  render(): Element {
     const {
       fields: {
         givenName,

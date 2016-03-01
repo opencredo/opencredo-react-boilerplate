@@ -1,7 +1,7 @@
 /* @flow */
 
 import axios from 'axios';
-import { User } from 'declarations/app';
+import type { User } from 'declarations/app';
 
 export const getProfile = (): Promise<User> =>
   axios.get('/api/profile.json').then(response => response.data);

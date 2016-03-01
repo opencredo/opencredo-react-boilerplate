@@ -1,9 +1,9 @@
 /* @flow */
 
 import debug from 'debug';
-import React, { PropTypes, Component, ReactComponent } from 'react';
+import React, { PropTypes, Component, Element } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { User } from 'declarations/app';
+import type { User } from 'declarations/app';
 import ProfileEditForm from 'containers/ProfileEditForm/ProfileEditForm';
 import { updateUser } from 'redux/modules/user/user-actions';
 import { autobind } from 'core-decorators';
@@ -40,7 +40,7 @@ export class ProfileEditPage extends Component {
     this.props.dispatch(updateUser(user));
   }
 
-  render(): ReactComponent {
+  render(): Element {
     return (
       <div className="content container">
         <h2 className="box-title">

@@ -1,5 +1,5 @@
 /* @flow */
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Element } from 'react';
 import classNames from 'classnames';
 
 class TextInput extends React.Component {
@@ -10,7 +10,7 @@ class TextInput extends React.Component {
     type: PropTypes.string,
   };
 
-  render(): Component {
+  render(): Element {
     const inputClasses = classNames({
       'form-group': true,
       'has-error': this.props.field.invalid,
