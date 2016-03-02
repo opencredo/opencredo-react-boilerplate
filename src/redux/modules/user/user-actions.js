@@ -1,6 +1,6 @@
 /* @flow */
 
-import { User } from 'declarations/app';
+import type { User } from 'declarations/app';
 
 import { updateProfile } from 'api/user';
 import { showSpinner, hideSpinner } from '../spinner/spinner';

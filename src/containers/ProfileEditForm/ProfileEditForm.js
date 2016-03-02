@@ -1,8 +1,8 @@
 /* @flow */
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Element } from 'react';
 import { Button, Input, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
-import { generateValidation } from '@mcalthrop/redux-form-validation';
+import { generateValidation } from 'redux-form-validation';
 import TextInput from 'components/FormFields/TextInput';
 import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup';
 import DropDown from 'components/FormFields/DropDown';
@@ -46,7 +46,7 @@ class ProfileEditForm extends React.Component {
     return this.props.pristine;
   }
 
-  render(): Component {
+  render(): Element {
     const {
       fields: {
         givenName,
@@ -80,7 +80,7 @@ class ProfileEditForm extends React.Component {
         <form onSubmit={this.onUpdateClick}>
           <Row>
             <Col sm={2}>
-              <img className={styles.picture} src={this.props.user.picture}/>
+              <img className={styles.picture} src={this.props.user.picture} />
             </Col>
             <Col sm={5}>
               <TextInput field={givenName} placeholder={formatMessage(messages.givenName.placeholder)}>
@@ -101,7 +101,7 @@ class ProfileEditForm extends React.Component {
               <Row>
                 <Col sm={3}>
                   <TextInput field={age} type="number" placeholder={formatMessage(messages.age.placeholder)}>
-                    <FormErrorMessages field={age} min={validations.age.min} max={validations.age.max}/>
+                    <FormErrorMessages field={age} min={validations.age.min} max={validations.age.max} />
                   </TextInput>
                 </Col>
                 <Col sm={9}>

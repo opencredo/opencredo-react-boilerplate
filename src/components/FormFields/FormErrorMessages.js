@@ -1,10 +1,10 @@
 /* @flow */
-import React, { PropTypes, ReactElement } from 'react';
+import React, { PropTypes, Element } from 'react';
 import { FormattedMessage } from 'react-intl';
-import FormMessages from '@mcalthrop/redux-form-validation';
+import FormMessages from 'redux-form-validation';
 import { messages } from 'shared/forms';
 
-const FormErrorMessages = (props: Object): ReactElement => (
+const FormErrorMessages = (props: Object): Element => (
   <FormMessages
     tagName="span"
     errorCount={1}

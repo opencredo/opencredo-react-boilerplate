@@ -21,3 +21,12 @@ VAContainer.propTypes = {
   horizontal: React.PropTypes.bool,
   vertical: React.PropTypes.bool,
 };
+VAMiddle.propTypes = {
+  children: React.PropTypes.node,
+};
+VATop.propTypes = {
+  children: React.PropTypes.node,
+};
+VABottom.propTypes = {
+  children: React.PropTypes.node,
+};

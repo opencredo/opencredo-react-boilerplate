@@ -1,5 +1,5 @@
 /* @flow */
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Element } from 'react';
 import { Input } from 'react-bootstrap';
 
 class DropDown extends React.Component {
@@ -9,7 +9,7 @@ class DropDown extends React.Component {
     values: PropTypes.array.isRequired,
   };
 
-  render(): Component {
+  render(): Element {
     const { label, field, values } = this.props;
 
     return (

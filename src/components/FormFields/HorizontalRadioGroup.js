@@ -1,5 +1,5 @@
 /* @flow */
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Element } from 'react';
 
 // Support for radio buttons in react-bootstrap is currently lame.
 // It's worth watching this though:
@@ -10,7 +10,7 @@ class HorizontalRadioGroup extends React.Component {
     values: PropTypes.array.isRequired,
   };
 
-  render(): Component {
+  render(): Element {
     const { field, values } = this.props;
 
     return (

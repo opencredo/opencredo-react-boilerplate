@@ -1,5 +1,5 @@
 /* @flow */
-import { FormattedMessageType } from 'declarations/i18n-types';
+import type { FormattedMessageType } from 'declarations/i18n-types';
 import config from 'app-config';
 
 const UPDATE_DOCUMENT_TITLE = '@@document-title/UPDATE';

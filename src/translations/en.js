@@ -13,7 +13,7 @@ export default {
     {minLength, plural, one {1 character} other {{minLength} characters}} long`,
   'landingPage.title': 'Landing Page',
   'landingPage.button.clickMe': 'Click me (log)',
-  'landingPage.para.pressCtrlH': 'Press <code>ctrl-h</code> to toggle Redux Dev Tools (development mode only).',
+  'landingPage.para.pressCtrlH': 'Press <code>ctrl-h</code> to toggle Redux Dev Tools (development build only).',
   'landingPage.para.autoUpdate': 'This pages auto-updates when you make changes and save.',
   'landingPage.para.es7Decorator': `This page also demonstrates the use of the
     <code>@autobind</code> ES7 decorator.`,
