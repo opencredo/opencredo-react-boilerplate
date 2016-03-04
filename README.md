@@ -115,3 +115,7 @@ Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get involved.
 ## Changelog
 
 [Changelog](./CHANGELOG.md)
+
+## Credits
+
+Much of the original codebase was taken from Dave Zuko's excellent [react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit). Thanks Dave!
