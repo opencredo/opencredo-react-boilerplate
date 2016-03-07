@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './Hero.scss';
+import React from 'react'
+import styles from './Hero.scss'
 
 export default class HeroBackground extends React.Component {
   static propTypes = {
@@ -10,6 +10,6 @@ export default class HeroBackground extends React.Component {
     return (
       <div className={styles.background} style={{ backgroundImage: `url(${this.props.image})` }}>
       </div>
-    );
+    )
   }
 }

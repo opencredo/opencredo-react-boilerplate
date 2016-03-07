@@ -1,11 +1,11 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import MainHeader from 'containers/MainHeader/MainHeader';
-import MainFooter from 'components/MainFooter/MainFooter';
-import Spinner from 'components/Spinner/Spinner';
-import 'styles/admin.scss';
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import MainHeader from 'containers/MainHeader/MainHeader'
+import MainFooter from 'components/MainFooter/MainFooter'
+import Spinner from 'components/Spinner/Spinner'
+import 'styles/admin.scss'
 
-const mapStateToProps = ({ spinner }) => ({ spinner });
+const mapStateToProps = ({ spinner }) => ({ spinner })
 const AdminPageLayout = (props) =>
   (
     <div id="admin-layout" className="page-container">
@@ -19,11 +19,11 @@ const AdminPageLayout = (props) =>
         messageId={props.spinner.messageId}
       />
     </div>
-  );
+  )
 
 AdminPageLayout.propTypes = {
   spinner: PropTypes.object,
   children: PropTypes.element,
-};
+}
 
-export default connect(mapStateToProps)(AdminPageLayout);
+export default connect(mapStateToProps)(AdminPageLayout)

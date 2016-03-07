@@ -1,4 +1,4 @@
-import config from 'app-config';
+import config from 'app-config'
 
 export const links = {
   home: {
@@ -55,4 +55,4 @@ export const links = {
     defaultMessage: 'Help',
   },
 
-};
+}

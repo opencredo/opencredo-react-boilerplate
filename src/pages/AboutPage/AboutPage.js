@@ -1,14 +1,14 @@
 /* @flow */
-import React, { PropTypes, Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { HeroBackground, Hero } from 'components/Hero';
-import { messages } from './AboutPage.i18n';
+import React, { PropTypes, Component } from 'react'
+import { FormattedMessage } from 'react-intl'
+import { connect } from 'react-redux'
+import { Grid, Row, Col } from 'react-bootstrap'
+import { HeroBackground, Hero } from 'components/Hero'
+import { messages } from './AboutPage.i18n'
 import {
   updateDocumentTitle,
   resetDocumentTitle,
-} from 'redux/modules/document-title/document-title';
+} from 'redux/modules/document-title/document-title'
 
 class AboutPage extends Component {
   static propTypes = {
@@ -16,11 +16,11 @@ class AboutPage extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(updateDocumentTitle(messages.title));
+    this.props.dispatch(updateDocumentTitle(messages.title))
   }
 
   componentWillUnmount() {
-    this.props.dispatch(resetDocumentTitle());
+    this.props.dispatch(resetDocumentTitle())
   }
 
   render() {
@@ -42,8 +42,8 @@ class AboutPage extends Component {
           </Row>
         </Grid>
       </section>
-    );
+    )
   }
 }
 
-export default connect(() => ({}))(AboutPage);
+export default connect(() => ({}))(AboutPage)

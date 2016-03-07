@@ -1,20 +1,20 @@
 /* @flow */
-import React, { PropTypes, Element } from 'react';
-import { Button, Input, Row, Col } from 'react-bootstrap';
-import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
-import { generateValidation } from 'redux-form-validation';
-import TextInput from 'components/FormFields/TextInput';
-import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup';
-import DropDown from 'components/FormFields/DropDown';
-import FormErrorMessages from 'components/FormFields/FormErrorMessages';
-import validations from './ProfileEditForm.validations';
-import { reduxForm } from 'redux-form';
-import { messages } from './ProfileEditForm.i18n';
-import styles from './ProfileEditForm.scss';
-import { autobind } from 'core-decorators';
+import React, { PropTypes, Element } from 'react'
+import { Button, Input, Row, Col } from 'react-bootstrap'
+import { FormattedMessage, intlShape, injectIntl } from 'react-intl'
+import { generateValidation } from 'redux-form-validation'
+import TextInput from 'components/FormFields/TextInput'
+import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup'
+import DropDown from 'components/FormFields/DropDown'
+import FormErrorMessages from 'components/FormFields/FormErrorMessages'
+import validations from './ProfileEditForm.validations'
+import { reduxForm } from 'redux-form'
+import { messages } from './ProfileEditForm.i18n'
+import styles from './ProfileEditForm.scss'
+import { autobind } from 'core-decorators'
 
-const MALE: string = 'male';
-const FEMALE: string = 'female';
+const MALE: string = 'male'
+const FEMALE: string = 'female'
 
 class ProfileEditForm extends React.Component {
   static propTypes = {
@@ -30,20 +30,20 @@ class ProfileEditForm extends React.Component {
 
   @autobind
   onUpdateClick() {
-    this.props.handleUpdate(Object.assign({}, this.props.user, this.props.values));
+    this.props.handleUpdate(Object.assign({}, this.props.user, this.props.values))
   }
 
   @autobind
   onResetClick() {
-    this.props.resetForm();
+    this.props.resetForm()
   }
 
   isUpdateButtonDisabled(): boolean {
-    return this.props.pristine || this.props.invalid;
+    return this.props.pristine || this.props.invalid
   }
 
   isResetButtonDisabled(): boolean {
-    return this.props.pristine;
+    return this.props.pristine
   }
 
   render(): Element {
@@ -59,8 +59,8 @@ class ProfileEditForm extends React.Component {
         locale,
         notes,
         },
-      } = this.props;
-    const { formatMessage } = this.props.intl;
+      } = this.props
+    const { formatMessage } = this.props.intl
     const genderValues = [
       {
         label: formatMessage(messages.gender.male.label),
@@ -70,10 +70,10 @@ class ProfileEditForm extends React.Component {
         label: formatMessage(messages.gender.female.label),
         value: FEMALE,
       },
-    ];
+    ]
 
     // in a real app, the locales would be populated via service call:
-    const locales: string[] = ['en-GB', 'en-AU', 'es-ES', 'es-CR', 'es-NI'];
+    const locales: string[] = ['en-GB', 'en-AU', 'es-ES', 'es-CR', 'es-NI']
 
     return (
       <div className={styles.container}>
@@ -138,15 +138,15 @@ class ProfileEditForm extends React.Component {
           </Row>
         </form>
       </div>
-    );
+    )
   }
 }
 
 const reduxFormConfig: Object = {
   form: 'editProfile',
   ...generateValidation(validations),
-};
+}
 
-const mapStateToProps = (state, props) => ({ initialValues: props.user });
+const mapStateToProps = (state, props) => ({ initialValues: props.user })
 
-export default reduxForm(reduxFormConfig, mapStateToProps)(injectIntl(ProfileEditForm));
+export default reduxForm(reduxFormConfig, mapStateToProps)(injectIntl(ProfileEditForm))

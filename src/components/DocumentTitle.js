@@ -1,6 +1,6 @@
 /* @flow */
-import React, { PropTypes, Component } from 'react';
-import { injectIntl } from 'react-intl';
+import React, { PropTypes, Component } from 'react'
+import { injectIntl } from 'react-intl'
 
 type DocumentTitleProps = {
   title: Object;
@@ -17,17 +17,17 @@ class DocumentTitle extends Component {
   };
 
   componentWillMount(): void {
-    this.updateDocumentTitle(this.props);
+    this.updateDocumentTitle(this.props)
   }
 
   componentWillUpdate(newProps: DocumentTitleProps): void {
-    this.updateDocumentTitle(newProps);
+    this.updateDocumentTitle(newProps)
   }
 
   props: DocumentTitleProps;
 
   updateDocumentTitle(props: DocumentTitleProps): void {
-    document.title = props.intl.formatMessage(props.title);
+    document.title = props.intl.formatMessage(props.title)
   }
 
   render(): React.Element {
@@ -35,8 +35,8 @@ class DocumentTitle extends Component {
       <div>
         {this.props.children}
       </div>
-    );
+    )
   }
 }
 
-export default injectIntl(DocumentTitle);
+export default injectIntl(DocumentTitle)

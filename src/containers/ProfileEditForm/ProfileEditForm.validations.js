@@ -37,4 +37,4 @@ export default {
     required: false,
     validateOnBlur: true,
   },
-};
+}

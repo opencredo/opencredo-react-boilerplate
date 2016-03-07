@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
-import config from 'app-config';
-import { Hero, HeroContent, HeroBackground } from 'components/Hero/index';
-import { VAContainer, VAMiddle } from 'components/VAlign/VAlign';
-import styles from './LandingPage.scss';
+import React, { PropTypes } from 'react'
+import config from 'app-config'
+import { Hero, HeroContent, HeroBackground } from 'components/Hero/index'
+import { VAContainer, VAMiddle } from 'components/VAlign/VAlign'
+import styles from './LandingPage.scss'
 
 const LandingPageHero = (props) =>
   (
@@ -24,10 +24,10 @@ const LandingPageHero = (props) =>
         </VAContainer>
       </HeroContent>
     </Hero>
-  );
+  )
 
 LandingPageHero.propTypes = {
   backgroundImage: PropTypes.string.isRequired,
-};
+}
 
-export default LandingPageHero;
+export default LandingPageHero

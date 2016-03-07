@@ -1,11 +1,11 @@
-import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
-import { IntlProvider } from 'react-intl';
-import DocumentTitle from 'components/DocumentTitle';
-import messages from 'translations';
-import 'styles/app.scss';
+import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
+import { IntlProvider } from 'react-intl'
+import DocumentTitle from 'components/DocumentTitle'
+import messages from 'translations'
+import 'styles/app.scss'
 
-const mapStateToProps = ({ language, documentTitle }) => ({ language, documentTitle });
+const mapStateToProps = ({ language, documentTitle }) => ({ language, documentTitle })
 class AppContainer extends Component {
   static propTypes = {
     language: PropTypes.string.isRequired,
@@ -14,7 +14,7 @@ class AppContainer extends Component {
   };
 
   render() {
-    const { language, children } = this.props;
+    const { language, children } = this.props
 
     return (
       <IntlProvider locale={language} messages={messages[language]}>
@@ -22,8 +22,8 @@ class AppContainer extends Component {
           {children}
         </DocumentTitle>
       </IntlProvider>
-    );
+    )
   }
 }
 
-export default connect(mapStateToProps)(AppContainer);
+export default connect(mapStateToProps)(AppContainer)

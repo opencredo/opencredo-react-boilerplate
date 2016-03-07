@@ -1,22 +1,22 @@
-import React, { PropTypes } from 'react';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import styles from './LandingPage.scss';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
-import debug from 'debug';
-import { autobind } from 'core-decorators';
-import { messages } from './LandingPage.i18n';
-import LandingPageHero from './LandingPageHero';
+import React, { PropTypes } from 'react'
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl'
+import { connect } from 'react-redux'
+import styles from './LandingPage.scss'
+import { Grid, Row, Col, Button } from 'react-bootstrap'
+import debug from 'debug'
+import { autobind } from 'core-decorators'
+import { messages } from './LandingPage.i18n'
+import LandingPageHero from './LandingPageHero'
 import {
   updateDocumentTitle,
   resetDocumentTitle,
-} from 'redux/modules/document-title/document-title';
+} from 'redux/modules/document-title/document-title'
 
 if (__DEBUG__) {
-  debug.enable('landing-page:*');
+  debug.enable('landing-page:*')
 }
 
-const log = debug('landing-page:info');
+const log = debug('landing-page:info')
 
 export class LandingPage extends React.Component {
 
@@ -27,17 +27,17 @@ export class LandingPage extends React.Component {
 
   // executes only on the client
   componentDidMount() {
-    this.props.dispatch(updateDocumentTitle(messages.title));
+    this.props.dispatch(updateDocumentTitle(messages.title))
   }
 
   componentWillUnmount() {
-    log('remove custom document title');
-    this.props.dispatch(resetDocumentTitle());
+    log('remove custom document title')
+    this.props.dispatch(resetDocumentTitle())
   }
 
   @autobind
   handleButtonClick() {
-    log('button click handler context:', this);
+    log('button click handler context:', this)
   }
 
   render() {
@@ -70,11 +70,11 @@ export class LandingPage extends React.Component {
           </Row>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) =>
-  ({ isAuthenticated: state.isAuthenticated });
+  ({ isAuthenticated: state.isAuthenticated })
 
-export default connect(mapStateToProps)(LandingPage);
+export default connect(mapStateToProps)(LandingPage)

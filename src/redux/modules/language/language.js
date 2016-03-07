@@ -1,7 +1,7 @@
 /* @flow */
-export const CHANGE_LANGUAGE = '@@language/CHANGE_LANGUAGE';
-export const LOCAL_STORAGE_KEY = 'redux:language';
-export const DEFAULT_LANGUAGE = 'en';
+export const CHANGE_LANGUAGE = '@@language/CHANGE_LANGUAGE'
+export const LOCAL_STORAGE_KEY = 'redux:language'
+export const DEFAULT_LANGUAGE = 'en'
 
 type LanguageAction = {
   type: string;
@@ -9,20 +9,20 @@ type LanguageAction = {
 };
 
 function getLanguage() {
-  const language = localStorage.getItem(LOCAL_STORAGE_KEY);
+  const language = localStorage.getItem(LOCAL_STORAGE_KEY)
 
-  return language || DEFAULT_LANGUAGE;
+  return language || DEFAULT_LANGUAGE
 }
 
 export function changeLanguage(language: string): LanguageAction {
-  localStorage.setItem(LOCAL_STORAGE_KEY, language);
+  localStorage.setItem(LOCAL_STORAGE_KEY, language)
 
   return {
     type: CHANGE_LANGUAGE,
     language,
-  };
+  }
 }
 
 export function languageReducer(state: string = getLanguage(), action: LanguageAction): string {
-  return (action.type === CHANGE_LANGUAGE) ? action.language : state;
+  return (action.type === CHANGE_LANGUAGE) ? action.language : state
 }

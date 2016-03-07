@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './Hero.scss';
-import classNames from 'classnames';
+import React from 'react'
+import styles from './Hero.scss'
+import classNames from 'classnames'
 
 export default class Hero extends React.Component {
   static propTypes = {
@@ -14,12 +14,12 @@ export default class Hero extends React.Component {
       [styles.hero]: true,
       [styles['move-up']]: this.props.displayUnderNavbar,
       [styles['hero-small']]: this.props.small,
-    });
+    })
 
     return (
       <div className={classes}>
         {this.props.children}
       </div>
-    );
+    )
   }
 }

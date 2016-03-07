@@ -25,4 +25,4 @@ export const messages = {
       defaultMessage: 'this field is required',
     },
   },
-};
+}

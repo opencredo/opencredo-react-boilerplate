@@ -23,4 +23,4 @@ export const messages = {
       defaultMessage: 'It also demonstrates use of the <code>@autobind</code> ES7 decorator.',
     },
   },
-};
+}

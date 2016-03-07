@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './Hero.scss';
+import React from 'react'
+import styles from './Hero.scss'
 
 export default class HeroContent extends React.Component {
   static propTypes = {
@@ -7,11 +7,11 @@ export default class HeroContent extends React.Component {
   };
 
   render() {
-    const children = this.props.children;
+    const children = this.props.children
     return (
       <div className={styles.content}>
         {children || ''}
       </div>
-    );
+    )
   }
 }

@@ -1,6 +1,6 @@
 /* @flow */
-import React, { PropTypes, Element } from 'react';
-import { Input } from 'react-bootstrap';
+import React, { PropTypes, Element } from 'react'
+import { Input } from 'react-bootstrap'
 
 class DropDown extends React.Component {
   static propTypes = {
@@ -10,14 +10,14 @@ class DropDown extends React.Component {
   };
 
   render(): Element {
-    const { label, field, values } = this.props;
+    const { label, field, values } = this.props
 
     return (
       <Input type="select" label={label} {...field}>
         {values.map(value => <option key={value} value={value}>{value}</option>)}
       </Input>
-    );
+    )
   }
 }
 
-export default DropDown;
+export default DropDown

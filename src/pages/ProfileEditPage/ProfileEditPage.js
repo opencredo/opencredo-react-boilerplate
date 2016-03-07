@@ -1,24 +1,24 @@
 /* @flow */
 
-import debug from 'debug';
-import React, { PropTypes, Component, Element } from 'react';
-import { FormattedMessage } from 'react-intl';
-import type { User } from 'declarations/app';
-import ProfileEditForm from 'containers/ProfileEditForm/ProfileEditForm';
-import { updateUser } from 'redux/modules/user/user-actions';
-import { autobind } from 'core-decorators';
-import { connect } from 'react-redux';
-import { messages } from './ProfileEditPage.i18n';
+import debug from 'debug'
+import React, { PropTypes, Component, Element } from 'react'
+import { FormattedMessage } from 'react-intl'
+import type { User } from 'declarations/app'
+import ProfileEditForm from 'containers/ProfileEditForm/ProfileEditForm'
+import { updateUser } from 'redux/modules/user/user-actions'
+import { autobind } from 'core-decorators'
+import { connect } from 'react-redux'
+import { messages } from './ProfileEditPage.i18n'
 import {
   updateDocumentTitle,
   resetDocumentTitle,
-} from 'redux/modules/document-title/document-title';
+} from 'redux/modules/document-title/document-title'
 
 if (__DEBUG__) {
-  debug.enable('profile-edit-page:*');
+  debug.enable('profile-edit-page:*')
 }
 
-const log = debug('profile-edit-page:debug');
+const log = debug('profile-edit-page:debug')
 
 export class ProfileEditPage extends Component {
   static propTypes = {
@@ -27,17 +27,17 @@ export class ProfileEditPage extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(updateDocumentTitle(messages.title));
+    this.props.dispatch(updateDocumentTitle(messages.title))
   }
 
   componentWillUnmount() {
-    this.props.dispatch(resetDocumentTitle());
+    this.props.dispatch(resetDocumentTitle())
   }
 
   @autobind
   handleUpdate(user: User) {
-    log('handleUpdate(): user:', user);
-    this.props.dispatch(updateUser(user));
+    log('handleUpdate(): user:', user)
+    this.props.dispatch(updateUser(user))
   }
 
   render(): Element {
@@ -52,12 +52,12 @@ export class ProfileEditPage extends Component {
         </div>
 
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   user: state.user,
-});
+})
 
-export default connect(mapStateToProps)(ProfileEditPage);
+export default connect(mapStateToProps)(ProfileEditPage)

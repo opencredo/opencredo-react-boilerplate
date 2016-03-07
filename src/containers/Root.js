@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router';
+import React, { PropTypes } from 'react'
+import { Provider } from 'react-redux'
+import { Router } from 'react-router'
 
 export default class Root extends React.Component {
 
@@ -12,15 +12,15 @@ export default class Root extends React.Component {
 
   // redux devtools pane
   get devTools() {
-    let returnValue = <span />;
+    let returnValue = <span />
 
     if (DEVELOPMENT) {
-      const DevTools = require('./DevTools');
+      const DevTools = require('./DevTools')
 
-      returnValue = <DevTools />;
+      returnValue = <DevTools />
     }
 
-    return returnValue;
+    return returnValue
   }
 
   render() {
@@ -33,6 +33,6 @@ export default class Root extends React.Component {
           {this.devTools}
         </div>
       </Provider>
-    );
+    )
   }
 }

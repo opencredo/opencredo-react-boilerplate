@@ -45,4 +45,4 @@ export default {
   'site.message.loggingIn': 'Iniciando sesión...',
   'site.message.loggingOut': 'Terminando sesion...',
   'site.name': 'Opencredo React Boilerplate',
-};
+}

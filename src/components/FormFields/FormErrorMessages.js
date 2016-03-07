@@ -1,8 +1,8 @@
 /* @flow */
-import React, { PropTypes, Element } from 'react';
-import { FormattedMessage } from 'react-intl';
-import FormMessages from 'redux-form-validation';
-import { messages } from 'shared/forms';
+import React, { PropTypes, Element } from 'react'
+import { FormattedMessage } from 'react-intl'
+import FormMessages from 'redux-form-validation'
+import { messages } from 'shared/forms'
 
 const FormErrorMessages = (props: Object): Element => (
   <FormMessages
@@ -29,7 +29,7 @@ const FormErrorMessages = (props: Object): Element => (
       <FormattedMessage values={{ maxLength: props.maxLength }} {...messages.error.maxLength} />
     </span>
   </FormMessages>
-);
+)
 
 FormErrorMessages.propTypes = {
   field: PropTypes.object.isRequired,
@@ -37,6 +37,6 @@ FormErrorMessages.propTypes = {
   max: PropTypes.number,
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
-};
+}
 
-export default FormErrorMessages;
+export default FormErrorMessages

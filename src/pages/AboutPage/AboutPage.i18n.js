@@ -7,4 +7,4 @@ export const messages = {
     id: 'aboutPage.overview',
     defaultMessage: 'overview',
   },
-};
+}

@@ -1,9 +1,9 @@
-import React, { PropTypes, Component } from 'react';
-import { NavDropdown, MenuItem } from 'react-bootstrap';
-import { FormattedMessage } from 'react-intl';
-import { changeLanguage } from 'redux/modules/language/language';
-import { connect } from 'react-redux';
-import find from 'lodash/find';
+import React, { PropTypes, Component } from 'react'
+import { NavDropdown, MenuItem } from 'react-bootstrap'
+import { FormattedMessage } from 'react-intl'
+import { changeLanguage } from 'redux/modules/language/language'
+import { connect } from 'react-redux'
+import find from 'lodash/find'
 
 const supportedLanguages = [
   {
@@ -18,7 +18,7 @@ const supportedLanguages = [
     description: 'Español',
     defaultMessage: 'Español',
   },
-];
+]
 
 class LanguageSelectionDropdown extends Component {
 
@@ -28,14 +28,14 @@ class LanguageSelectionDropdown extends Component {
   };
 
   languageText(lang) {
-    return <FormattedMessage {...lang} />;
+    return <FormattedMessage {...lang} />
   }
 
   handleLanguageChange = (lang: string) => () =>
     this.props.dispatch(changeLanguage(lang));
 
   render() {
-    const currentLanguage = find(supportedLanguages, { key: this.props.language });
+    const currentLanguage = find(supportedLanguages, { key: this.props.language })
 
     return (
       <NavDropdown id="language-menu" title={this.languageText(currentLanguage)}>
@@ -45,10 +45,10 @@ class LanguageSelectionDropdown extends Component {
           </MenuItem>
         )}
       </NavDropdown>
-    );
+    )
   }
 }
 
-const mapStateToProps = ({ language }) => ({ language });
+const mapStateToProps = ({ language }) => ({ language })
 
-export default connect(mapStateToProps)(LanguageSelectionDropdown);
+export default connect(mapStateToProps)(LanguageSelectionDropdown)

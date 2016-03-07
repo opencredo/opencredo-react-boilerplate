@@ -1,15 +1,15 @@
 /* @flow */
 
-import { getProfile } from 'api/user';
-import { setUser, clearUser } from '../user/user-actions';
-import { showSpinner, hideSpinner } from '../spinner/spinner';
+import { getProfile } from 'api/user'
+import { setUser, clearUser } from '../user/user-actions'
+import { showSpinner, hideSpinner } from '../spinner/spinner'
 
-export const LOGIN_REQUEST = '@@auth/LOGIN_REQUEST';
-export const LOGIN_SUCCESS = '@@auth/LOGIN_SUCCESS';
-export const LOGIN_FAILURE = '@@auth/LOGIN_FAILURE';
-export const LOGOUT_REQUEST = '@@auth/LOGOUT_REQUEST';
-export const LOGOUT_SUCCESS = '@@auth/LOGOUT_SUCCESS';
-export const LOCAL_STORAGE_KEY = 'redux:auth';
+export const LOGIN_REQUEST = '@@auth/LOGIN_REQUEST'
+export const LOGIN_SUCCESS = '@@auth/LOGIN_SUCCESS'
+export const LOGIN_FAILURE = '@@auth/LOGIN_FAILURE'
+export const LOGOUT_REQUEST = '@@auth/LOGOUT_REQUEST'
+export const LOGOUT_SUCCESS = '@@auth/LOGOUT_SUCCESS'
+export const LOCAL_STORAGE_KEY = 'redux:auth'
 
 type AuthState = {
   isLoading: boolean;
@@ -28,29 +28,29 @@ const initialState = {
   isAuthenticated: false,
   isAdmin: false,
   token: null,
-};
+}
 
 const loginRequestAction: AuthAction = {
   type: LOGIN_REQUEST,
   state: initialState,
-};
+}
 
 const persistState = (state: ?AuthState) => {
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
-};
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state))
+}
 
 export const getState = (): AuthState => {
-  const storedState = localStorage.getItem(LOCAL_STORAGE_KEY);
-  let state: ?AuthState;
+  const storedState = localStorage.getItem(LOCAL_STORAGE_KEY)
+  let state: ?AuthState
 
   if (storedState) {
-    state = JSON.parse(storedState);
+    state = JSON.parse(storedState)
   } else {
-    state = initialState;
+    state = initialState
   }
 
-  return state;
-};
+  return state
+}
 
 export const loginSuccess = (): AuthAction => {
   const state = {
@@ -58,64 +58,64 @@ export const loginSuccess = (): AuthAction => {
     isAuthenticated: true,
     isAdmin: true,
     token: 'eyJ0eXAasdfiOi',
-  };
+  }
 
-  persistState(state);
+  persistState(state)
 
   return {
     type: LOGIN_SUCCESS,
     state,
-  };
-};
+  }
+}
 
 export const loginFailure = (): AuthAction => {
-  persistState(initialState);
+  persistState(initialState)
 
   return {
     type: LOGIN_FAILURE,
     state: initialState,
-  };
-};
+  }
+}
 
 export const loginRequest = (): Function =>
   // Returning a function works because `redux-thunk` middleware is installed:
   // https://github.com/gaearon/redux-thunk
   // See `configure-store.js`.
   dispatch => {
-    dispatch(loginRequestAction);
-    dispatch(showSpinner('site.message.loggingIn'));
+    dispatch(loginRequestAction)
+    dispatch(showSpinner('site.message.loggingIn'))
 
     getProfile().then(
       response => {
         // insert a short delay to simulate service call delay - remove in real application
         setTimeout(() => {
-          dispatch(loginSuccess(response));
-          dispatch(hideSpinner());
-          dispatch(setUser(response));
-        }, 700);
+          dispatch(loginSuccess(response))
+          dispatch(hideSpinner())
+          dispatch(setUser(response))
+        }, 700)
       },
       () => {
-        dispatch(loginFailure());
-        dispatch(hideSpinner());
-        dispatch(clearUser());
+        dispatch(loginFailure())
+        dispatch(hideSpinner())
+        dispatch(clearUser())
       }
-    );
-  };
+    )
+  }
 
 export const logoutRequest = (): Function => dispatch => {
   dispatch({
     type: LOGOUT_REQUEST,
-  });
-  dispatch(showSpinner('site.message.loggingOut'));
+  })
+  dispatch(showSpinner('site.message.loggingOut'))
 
   // insert a short delay to simulate service call delay - remove in real application
   setTimeout(() => {
-    persistState(initialState);
-    dispatch(clearUser());
-    dispatch(hideSpinner());
+    persistState(initialState)
+    dispatch(clearUser())
+    dispatch(hideSpinner())
     dispatch({
       type: LOGOUT_SUCCESS,
       state: initialState,
-    });
-  }, 700);
-};
+    })
+  }, 700)
+}

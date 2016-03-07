@@ -3,4 +3,4 @@ export const messages = {
     id: 'profile.edit.title',
     defaultMessage: 'Edit Profile',
   },
-};
+}

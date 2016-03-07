@@ -1,6 +1,6 @@
-import React, { PropTypes, Component } from 'react';
-import { Link } from 'react-router';
-import { connect } from 'react-redux';
+import React, { PropTypes, Component } from 'react'
+import { Link } from 'react-router'
+import { connect } from 'react-redux'
 
 class Sidebar extends Component {
   static propTypes = {
@@ -33,7 +33,7 @@ class Sidebar extends Component {
           </Link>
         </li>
       </ul>
-    );
+    )
   }
 }
 
@@ -41,6 +41,6 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   isAdmin: state.auth.isAdmin,
   user: state.user,
-});
+})
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps)(Sidebar)

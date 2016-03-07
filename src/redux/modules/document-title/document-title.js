@@ -1,9 +1,9 @@
 /* @flow */
-import type { FormattedMessageType } from 'declarations/i18n-types';
-import config from 'app-config';
+import type { FormattedMessageType } from 'declarations/i18n-types'
+import config from 'app-config'
 
-const UPDATE_DOCUMENT_TITLE = '@@document-title/UPDATE';
-const RESET_DOCUMENT_TITLE = '@@document-title/RESET';
+const UPDATE_DOCUMENT_TITLE = '@@document-title/UPDATE'
+const RESET_DOCUMENT_TITLE = '@@document-title/RESET'
 
 export type DocumentTitleAction = {
   type: string;
@@ -13,7 +13,7 @@ export type DocumentTitleAction = {
 const initialState: FormattedMessageType = {
   id: 'site.name',
   defaultMessage: config.name,
-};
+}
 
 // Action Creators
 
@@ -21,14 +21,14 @@ export function updateDocumentTitle(documentTitle: FormattedMessageType): Docume
   return {
     type: UPDATE_DOCUMENT_TITLE,
     documentTitle,
-  };
+  }
 }
 
 export function resetDocumentTitle(): DocumentTitleAction {
   return {
     type: RESET_DOCUMENT_TITLE,
     documentTitle: initialState,
-  };
+  }
 }
 
 // Reducer
@@ -38,8 +38,8 @@ export function documentTitleReducer(
   switch (action.type) {
     case RESET_DOCUMENT_TITLE:
     case UPDATE_DOCUMENT_TITLE:
-      return action.documentTitle;
+      return action.documentTitle
     default:
-      return state;
+      return state
   }
 }

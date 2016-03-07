@@ -5,7 +5,7 @@
   ],
   "env": {
     "browser": true,
-    "mocha": true,
+    "mocha": true
   },
   "globals": {
     "DEVELOPMENT": false,
@@ -16,12 +16,14 @@
     "assert": false
   },
   "rules": {
+    "semi" : [2, "never"],
     "no-console": 2,
     "block-spacing": [2, "always"],
     "new-parens": 2,
     "no-dupe-class-members": 2,
     "no-this-before-super": 1,
     "prefer-template": 2,
-    "max-len": [1, 120]
+    "max-len": [1, 120],
+    "react/prefer-stateless-function":  0
   }
 }

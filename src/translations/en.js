@@ -46,4 +46,4 @@ export default {
   'site.message.loggingIn': 'Logging in...',
   'site.message.loggingOut': 'Logging out...',
   'site.name': 'Opencredo React Boilerplate',
-};
+}

@@ -1,6 +1,6 @@
 /* @flow */
-import React, { PropTypes, Element } from 'react';
-import classNames from 'classnames';
+import React, { PropTypes, Element } from 'react'
+import classNames from 'classnames'
 
 class TextInput extends React.Component {
   static propTypes = {
@@ -14,9 +14,9 @@ class TextInput extends React.Component {
     const inputClasses = classNames({
       'form-group': true,
       'has-error': this.props.field.invalid,
-    });
-    const type = this.props.type || 'text';
-    const { field, placeholder, children } = this.props;
+    })
+    const type = this.props.type || 'text'
+    const { field, placeholder, children } = this.props
 
     return (
       <div className={inputClasses}>
@@ -28,8 +28,8 @@ class TextInput extends React.Component {
         />
         { children }
       </div>
-    );
+    )
   }
 }
 
-export default TextInput;
+export default TextInput
