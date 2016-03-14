@@ -3,6 +3,7 @@
 .*babel
 .*npmconf
 .*fbjs
+.*/node_modules/.*/test/
 
 [include]
 
