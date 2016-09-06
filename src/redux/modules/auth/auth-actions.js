@@ -1,6 +1,6 @@
 /* @flow */
 
-import { getProfile } from 'api/user';
+import { getProfile } from '../../../api/user';
 import { setUser, clearUser } from '../user/user-actions';
 import { showSpinner, hideSpinner } from '../spinner/spinner';
 

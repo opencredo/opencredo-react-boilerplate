@@ -1,3 +1,4 @@
+/* eslint global-require: 0 */
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 

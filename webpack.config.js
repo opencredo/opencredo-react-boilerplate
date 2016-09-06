@@ -27,6 +27,13 @@ const webpackconfig = {
   resolve: {
     root: config.paths.app,
     extensions: ['', '.js', '.jsx'],
+    alias: {
+      react: path.join(__dirname, 'node_modules', 'react'),
+    },
+  },
+
+  resolveLoader: {
+    fallback: path.join(__dirname, 'node_modules'),
   },
 
   entry: {
@@ -35,7 +42,7 @@ const webpackconfig = {
   },
 
   output: {
-    filename: `[name].[${config.compiler.hash_type}].js`,
+    filename: `[name].[${ config.compiler.hash_type }].js`,
     path: config.paths.dist,
     publicPath: config.webpack.output.publicPath,
   },
@@ -139,7 +146,10 @@ if (DEVELOPMENT) {
   log('Extending webpack configuration with development settings.');
 
   log('Adding HMR entry points');
-  webpackconfig.entry.app.push('webpack-hot-middleware/client');
+  webpackconfig.entry.app.unshift(
+    'webpack-hot-middleware/client',
+    'react-hot-loader/patch'
+  );
 
   log('Enable development plugins (HMR, NoErrors)');
   webpackconfig.plugins.push(

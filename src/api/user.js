@@ -13,7 +13,7 @@ export const updateProfile = (user: User): Promise<User> =>
   // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
   new Promise((resolve) => {
     // updated user needs to have given and family names concatenated to produce the `name` property
-    const name = `${user.givenName} ${user.familyName}`;
+    const name = `${ user.givenName } ${ user.familyName }`;
     const updatedUser = Object.assign({}, user, { name });
 
     // insert a short delay to simulate service call delay

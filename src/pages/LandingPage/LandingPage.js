@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import styles from './LandingPage.scss';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import debug from 'debug';
 import { autobind } from 'core-decorators';
+import styles from './LandingPage.scss';
 import { messages } from './LandingPage.i18n';
 import LandingPageHero from './LandingPageHero';
 import {
   updateDocumentTitle,
   resetDocumentTitle,
-} from 'redux/modules/document-title/document-title';
+} from '../../redux/modules/document-title/document-title';
 
 if (__DEBUG__) {
   debug.enable('landing-page:*');
@@ -19,7 +19,7 @@ if (__DEBUG__) {
 const log = debug('landing-page:info');
 
 export class LandingPage extends React.Component {
-
+  static displayName = 'LandingPage';
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     dispatch: PropTypes.func,
@@ -46,25 +46,25 @@ export class LandingPage extends React.Component {
         <LandingPageHero backgroundImage="/images/workspace-cc.jpg" />
         <Grid>
           <Row>
-            <Col xs={12}>
-              <h1 className={styles.title}>
-                <FormattedMessage {...messages.title} />
+            <Col xs={ 12 }>
+              <h1 className={ styles.title }>
+                <FormattedMessage { ...messages.title } />
               </h1>
               <p>
-                <FormattedHTMLMessage {...messages.para.pressCtrlH} />
+                <FormattedHTMLMessage { ...messages.para.pressCtrlH } />
               </p>
               <p>
-                <FormattedHTMLMessage {...messages.para.autoUpdate} />
+                <FormattedHTMLMessage { ...messages.para.autoUpdate } />
               </p>
               <p>
-                <FormattedHTMLMessage {...messages.para.es7Decorator} />
+                <FormattedHTMLMessage { ...messages.para.es7Decorator } />
               </p>
             </Col>
           </Row>
           <Row>
-            <Col xs={6} md={2}>
-              <Button bsStyle="primary" onClick={this.handleButtonClick}>
-                <FormattedMessage {...messages.button.clickMe} />
+            <Col xs={ 6 } md={ 2 }>
+              <Button bsStyle="primary" onClick={ this.handleButtonClick }>
+                <FormattedMessage { ...messages.button.clickMe } />
               </Button>
             </Col>
           </Row>

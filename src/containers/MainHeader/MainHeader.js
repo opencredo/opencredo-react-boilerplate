@@ -1,14 +1,16 @@
+/* eslint operator-linebreak: 0 */
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
-import { Navbar, Nav } from 'react-bootstrap';
-import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
-import { loginRequest, logoutRequest } from 'redux/modules/auth/auth-actions';
 import debug from 'debug';
+import UserDropdownMenu from '../../components/UserDropdownMenu/UserDropdownMenu';
+import { loginRequest, logoutRequest } from '../../redux/modules/auth/auth-actions';
 import LanguageSelectionDropdown from '../LanguageSelectionDropdown/LanguageSelectionDropdown';
-import { links } from 'shared/links';
+import { links } from '../../shared/links';
 
 if (__DEBUG__) {
   debug.enable('app:*');
@@ -17,6 +19,7 @@ if (__DEBUG__) {
 const log = debug('app:main-header');
 
 class MainHeader extends React.Component {
+  static displayName = 'MainHeader';
   static propTypes = {
     dispatch: PropTypes.func,
     isAuthenticated: PropTypes.bool,
@@ -38,12 +41,14 @@ class MainHeader extends React.Component {
   }
 
   render() {
+    const { user, isAuthenticated } = this.props;
+
     return (
       <Navbar staticTop fluid>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">
-              <FormattedMessage {...links.home} />
+              <FormattedMessage { ...links.home } />
               { /* The above is equivalent to
                 <FormattedMessage id={links.home.id}
                                   description={links.home.description}
@@ -55,19 +60,17 @@ class MainHeader extends React.Component {
         <Navbar.Collapse>
           <Nav pullRight>
             <LanguageSelectionDropdown />
-            <li role="presentation">
-              <Link activeClassName="active" to="/pages/about-us">
-                <FormattedMessage {...links.aboutUs} />
-              </Link>
-            </li>
-            {this.props.isAuthenticated && this.props.user ?
-              <UserDropdownMenu user={this.props.user} logout={this.onLogout} />
+            <LinkContainer to="/pages/about-us">
+              <NavItem role="presentation">
+                <FormattedMessage { ...links.aboutUs } />
+              </NavItem>
+            </LinkContainer>
+            {isAuthenticated && user ?
+              <UserDropdownMenu user={ user } logout={ this.onLogout } />
               :
-              <li role="presentation">
-                <a onClick={this.onLogin}>
-                  <FormattedMessage {...links.logIn} />
-                </a>
-              </li>
+              <NavItem role="presentation" onClick={ this.onLogin }>
+                <FormattedMessage { ...links.logIn } />
+              </NavItem>
             }
           </Nav>
         </Navbar.Collapse>

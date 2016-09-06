@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 class Sidebar extends Component {
+  static displayName = 'Sidebar';
   static propTypes = {
     dispatch: PropTypes.func,
     user: PropTypes.object,

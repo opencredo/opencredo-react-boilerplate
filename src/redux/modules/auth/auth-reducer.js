@@ -16,17 +16,17 @@ const authReducer = (state = getState(), action) => {
   let newState;
 
   switch (action.type) {
-    case LOGIN_SUCCESS:
-      newState = Object.assign({}, action.state);
-      break;
-    case LOGIN_FAILURE:
-      newState = Object.assign({}, action.state);
-      break;
-    case LOGOUT_REQUEST:
-      newState = Object.assign({}, action.state);
-      break;
-    default:
-      newState = state;
+  case LOGIN_SUCCESS:
+    newState = Object.assign({}, action.state);
+    break;
+  case LOGIN_FAILURE:
+    newState = Object.assign({}, action.state);
+    break;
+  case LOGOUT_REQUEST:
+    newState = Object.assign({}, action.state);
+    break;
+  default:
+    newState = state;
   }
 
   if (newState !== state) {

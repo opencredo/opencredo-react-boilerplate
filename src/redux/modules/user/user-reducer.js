@@ -17,21 +17,21 @@ const userReducer = (state = getUser(), action) => {
   let newState;
 
   switch (action.type) {
-    case SET_USER:
-      newState = Object.assign({}, action.user);
-      break;
-    case CLEAR_USER:
-      newState = null;
-      break;
-    case UPDATE_USER_SUCCESS:
-      newState = Object.assign({}, action.user);
-      break;
-    case UPDATE_USER_FAILURE:
+  case SET_USER:
+    newState = Object.assign({}, action.user);
+    break;
+  case CLEAR_USER:
+    newState = null;
+    break;
+  case UPDATE_USER_SUCCESS:
+    newState = Object.assign({}, action.user);
+    break;
+  case UPDATE_USER_FAILURE:
       // NOTE: this is not essential, but it's useful to explicitly define
-      newState = state;
-      break;
-    default:
-      newState = state;
+    newState = state;
+    break;
+  default:
+    newState = state;
   }
 
   if (newState !== state) {
