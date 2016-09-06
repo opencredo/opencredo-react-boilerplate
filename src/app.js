@@ -72,34 +72,3 @@ if (__DEBUG__) {
     rootElement
   );
 }
-
-
-// const initialState = window.__INITIAL_STATE__;
-// const store = configureStore(initialState, browserHistory);
-// const history = syncHistoryWithStore(browserHistory, store);
-//
-// // Render the React application to the DOM
-// render(
-//   <AppContainer documentTitle={'React-Hot-Loader'} language={'english'} errorReporter={Redbox} >
-//     <Root
-//       store={store}
-//       routes={routes}
-//     />
-//   </AppContainer>,
-//   document.getElementById('root')
-// );
-//
-// if (module.hot) {
-//   module.hot.accept('./containers/Root', () => {
-//     const RootContainer = require('./containers/Root').default;
-//     render(
-//       <AppContainer documentTitle={'React-Hot-Loader'} language={'english'} errorReporter={Redbox} >
-//         <RootContainer
-//           store={store}
-//           routes={routes}
-//         />
-//       </AppContainer>,
-//       document.getElementById('root')
-//     );
-//   });
-// }
