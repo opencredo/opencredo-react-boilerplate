@@ -1,3 +1,4 @@
+/* eslint new-cap: 0 */
 const head = require('lodash/head');
 const tail = require('lodash/tail');
 const path = require('path');
@@ -185,9 +186,7 @@ if (PRODUCTION) {
     /* eslint-enable */
   });
   webpackconfig.plugins.push(
-    new ExtractTextPlugin('[name].[contenthash].css', {
-      allChunks: true,
-    })
+    new ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader' })
   );
 }
 
