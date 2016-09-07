@@ -1,4 +1,3 @@
-/* eslint new-cap: 0 */
 const head = require('lodash/head');
 const tail = require('lodash/tail');
 const path = require('path');
@@ -87,19 +86,22 @@ const webpackconfig = {
       {
         test: /\.scss$/,
         include: /src\/(?!styles).+/,
-        loaders: [
-          'style',
-          'css?modules&sourceMap&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]',
-          'postcss',
-          'sass',
-        ],
+        loader: ExtractTextPlugin.extract(
+          { fallbackLoader: 'style-loader',
+            loader: 'css-loader?' +
+            'modules&sourceMap&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]&sourceMap?' +
+            'postcss?' +
+            'sass?' +
+            'sourceMap?',
+          }
+        ),
       },
       // Any .scss files in ./src/styles are treated as normal (not local)
       // sass files, and so class names and ids will remain as specified
       {
         test: /\.scss$/,
         include: /src\/styles/,
-        loader: 'style!css?sourceMap!postcss!sass',
+        loader: 'style!css!postcss!sass?sourceMap?',
       },
       // File loaders
       /* eslint-disable */
@@ -166,9 +168,11 @@ if (PRODUCTION) {
   log('Add uglify and dedupe plugins');
   webpackconfig.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         unused: true,
         dead_code: true,
+        warnings: false,
       },
     }),
     new webpack.optimize.DedupePlugin()
@@ -186,7 +190,7 @@ if (PRODUCTION) {
     /* eslint-enable */
   });
   webpackconfig.plugins.push(
-    new ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader' })
+    new ExtractTextPlugin('[name].[contenthash:20].css')
   );
 }
 
