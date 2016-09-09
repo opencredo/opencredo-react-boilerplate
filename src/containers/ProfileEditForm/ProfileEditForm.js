@@ -1,22 +1,26 @@
+/* eslint no-restricted-syntax: 0 */
 /* @flow */
 import React, { PropTypes, Element } from 'react';
-import { Button, Input, Row, Col } from 'react-bootstrap';
+import { Button, Checkbox, FormGroup, ControlLabel, FormControl, Row, Col } from 'react-bootstrap';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
-import { generateValidation } from 'redux-form-validation';
-import TextInput from 'components/FormFields/TextInput';
-import HorizontalRadioGroup from 'components/FormFields/HorizontalRadioGroup';
-import DropDown from 'components/FormFields/DropDown';
-import FormErrorMessages from 'components/FormFields/FormErrorMessages';
-import validations from './ProfileEditForm.validations';
 import { reduxForm } from 'redux-form';
+import { autobind } from 'core-decorators';
+import { generateValidation } from 'redux-form-validation';
+
+import TextInput from '../../components/FormFields/TextInput';
+import HorizontalRadioGroup from '../../components/FormFields/HorizontalRadioGroup';
+import DropDown from '../../components/FormFields/DropDown';
+import FormErrorMessages from '../../components/FormFields/FormErrorMessages';
+import validations from './ProfileEditForm.validations';
+
 import { messages } from './ProfileEditForm.i18n';
 import styles from './ProfileEditForm.scss';
-import { autobind } from 'core-decorators';
 
 const MALE: string = 'male';
 const FEMALE: string = 'female';
 
 class ProfileEditForm extends React.Component {
+  static displayName = 'ProfileEditForm';
   static propTypes = {
     fields: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
@@ -46,20 +50,25 @@ class ProfileEditForm extends React.Component {
     return this.props.pristine;
   }
 
-  render(): Element {
-    const {
-      fields: {
-        givenName,
-        familyName,
-        nickname,
-        email,
-        emailVerified,
-        age,
-        gender,
-        locale,
-        notes,
-        },
-      } = this.props;
+  render(): Element<any> {
+    const fields = Object.assign({}, this.props.fields);
+    for (const prop in fields) {
+      if ({}.hasOwnProperty.call(fields, prop)) {
+        delete fields[prop].initialValue;
+        delete fields[prop].autofill;
+        delete fields[prop].onUpdate;
+        delete fields[prop].valid;
+        delete fields[prop].invalid;
+        delete fields[prop].dirty;
+        delete fields[prop].pristine;
+        delete fields[prop].active;
+        delete fields[prop].touched;
+        delete fields[prop].visited;
+        delete fields[prop].autofilled;
+      }
+    }
+
+    const { givenName, familyName, nickname, email, emailVerified, age, gender, locale, notes } = fields;
     const { formatMessage } = this.props.intl;
     const genderValues = [
       {
@@ -76,51 +85,70 @@ class ProfileEditForm extends React.Component {
     const locales: string[] = ['en-GB', 'en-AU', 'es-ES', 'es-CR', 'es-NI'];
 
     return (
-      <div className={styles.container}>
-        <form onSubmit={this.onUpdateClick}>
+      <div className={ styles.container }>
+        <form onSubmit={ this.onUpdateClick }>
           <Row>
-            <Col sm={2}>
-              <img className={styles.picture} src={this.props.user.picture} />
+            <Col sm={ 2 }>
+              <img className={ styles.picture } src={ this.props.user.picture } />
             </Col>
-            <Col sm={5}>
-              <TextInput field={givenName} placeholder={formatMessage(messages.givenName.placeholder)}>
-                <FormErrorMessages field={givenName} minLength={validations.givenName.minLength} />
+            <Col sm={ 5 }>
+              <TextInput field={ givenName } placeholder={ formatMessage(messages.givenName.placeholder) }>
+                <FormErrorMessages field={ givenName } minLength={ validations.givenName.minLength } />
               </TextInput>
-              <TextInput field={familyName} placeholder={formatMessage(messages.familyName.placeholder)}>
-                <FormErrorMessages field={familyName} minLength={validations.familyName.minLength} />
+              <TextInput field={ familyName } placeholder={ formatMessage(messages.familyName.placeholder) }>
+                <FormErrorMessages field={ familyName } minLength={ validations.familyName.minLength } />
               </TextInput>
-              <TextInput field={nickname} placeholder={formatMessage(messages.nickname.placeholder)}>
-                <FormErrorMessages field={nickname} maxLength={validations.nickname.maxLength} />
+              <TextInput field={ nickname } placeholder={ formatMessage(messages.nickname.placeholder) }>
+                <FormErrorMessages field={ nickname } maxLength={ validations.nickname.maxLength } />
               </TextInput>
-              <TextInput field={email} type="email" placeholder={formatMessage(messages.email.placeholder)}>
-                <FormErrorMessages field={email} />
-              </TextInput>
-              <Input type="checkbox" label={formatMessage(messages.emailVerified.label)} {...emailVerified} />
-            </Col>
-            <Col sm={5}>
               <Row>
-                <Col sm={3}>
-                  <TextInput field={age} type="number" placeholder={formatMessage(messages.age.placeholder)}>
-                    <FormErrorMessages field={age} min={validations.age.min} max={validations.age.max} />
-                  </TextInput>
-                </Col>
-                <Col sm={9}>
-                  <HorizontalRadioGroup field={gender} values={genderValues} />
-                </Col>
+                <FormGroup controlId="formControlsPersonal">
+                  <Col sm={ 8 }>
+                    <ControlLabel>{formatMessage(messages.email.label)}</ControlLabel>
+                    <TextInput field={ email } type="email" placeholder={ formatMessage(messages.email.placeholder) }>
+                      <FormErrorMessages field={ email } />
+                    </TextInput>
+                  </Col>
+                  <Col sm={ 4 }>
+                    <ControlLabel>{formatMessage(messages.emailVerified.label)}</ControlLabel>
+                    <Checkbox checked={ emailVerified.checked } readOnly>
+                      {formatMessage(messages.emailVerified.placeholder)}
+                    </Checkbox>
+                  </Col>
+                </FormGroup>
               </Row>
-              <DropDown label={formatMessage(messages.locale.label)} field={locale} values={locales} />
-              <Input type="textarea" label={formatMessage(messages.notes.label)} {...notes} />
+            </Col>
+            <Col sm={ 5 }>
+              <Row>
+                <FormGroup controlId="formControlsPersonal">
+                  <Col sm={ 4 }>
+                    <ControlLabel>{formatMessage(messages.age.placeholder)}</ControlLabel>
+                    <TextInput field={ age } type="number" placeholder={ formatMessage(messages.age.placeholder) }>
+                      <FormErrorMessages field={ age } min={ validations.age.min } max={ validations.age.max } />
+                    </TextInput>
+                  </Col>
+                  <Col sm={ 8 }>
+                    <ControlLabel>{formatMessage(messages.gender.label)}</ControlLabel>
+                    <HorizontalRadioGroup field={ gender } values={ genderValues } />
+                  </Col>
+                </FormGroup>
+              </Row>
+              <DropDown label={ formatMessage(messages.locale.label) } field={ locale } values={ locales } />
+              <FormGroup controlId="formControlsTextarea">
+                <ControlLabel>{formatMessage(messages.notes.label)}</ControlLabel>
+                <FormControl componentClass="textarea" placeholder="textarea" { ...notes } />
+              </FormGroup>
             </Col>
           </Row>
           <Row>
-            <Col sm={2} />
-            <Col sm={10}>
+            <Col sm={ 2 } />
+            <Col sm={ 10 }>
               <Button
                 bsStyle="primary"
-                onClick={this.onUpdateClick}
-                disabled={this.isUpdateButtonDisabled()}
+                onClick={ this.onUpdateClick }
+                disabled={ this.isUpdateButtonDisabled() }
               >
-                <FormattedMessage {...messages.save.label} />
+                <FormattedMessage { ...messages.save.label } />
               </Button>&nbsp;
               {
                 // Need to include the preceding non-breaking space, because when React renders the HTML,
@@ -129,10 +157,10 @@ class ProfileEditForm extends React.Component {
               }
               <Button
                 bsStyle="default"
-                onClick={this.onResetClick}
-                disabled={this.isResetButtonDisabled()}
+                onClick={ this.onResetClick }
+                disabled={ this.isResetButtonDisabled() }
               >
-                <FormattedMessage {...messages.reset.label} />
+                <FormattedMessage { ...messages.reset.label } />
               </Button>
             </Col>
           </Row>

@@ -3,6 +3,7 @@ import styles from './Hero.scss';
 import classNames from 'classnames';
 
 export default class Hero extends React.Component {
+  static displayName = 'Hero';
   static propTypes = {
     children: React.PropTypes.node,
     displayUnderNavbar: React.PropTypes.bool,
@@ -17,7 +18,7 @@ export default class Hero extends React.Component {
     });
 
     return (
-      <div className={classes}>
+      <div className={ classes }>
         {this.props.children}
       </div>
     );

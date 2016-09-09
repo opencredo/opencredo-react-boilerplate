@@ -1,3 +1,5 @@
+/* eslint operator-linebreak: 0 */
+/* eslint comma-dangle: 0 */
 const head = require('lodash/head');
 const tail = require('lodash/tail');
 const path = require('path');
@@ -18,7 +20,38 @@ const DEVELOPMENT = NODE_ENV === 'development';
 const TESTING = NODE_ENV === 'test';
 const PRODUCTION = NODE_ENV === 'production';
 const __DEBUG__ = DEVELOPMENT;
+log(`Starting in ${ NODE_ENV } mode.`);
 
+// Webpack scss handling setup
+const loaderOrLoaders = DEVELOPMENT ? 'loader' : 'loaders';
+log(`SCSS webpack ${ loaderOrLoaders } enabled.`);
+/* Any .scss file in ./src/... *except* those in ./src/styles/
+ * are local css modules. the class names and ids will be changed to:
+ * [name]-[local]-[hash:base64:5] */
+const devLoaders = {
+  test: /\.scss$/,
+  include: /src\/(?!styles).+/,
+  loaders: [
+    'style',
+    'css?modules&sourceMap&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]',
+    'postcss',
+    'sass',
+  ]
+};
+const prodLoader = {
+  test: /\.scss$/,
+  include: /src\/(?!styles).+/,
+  loader: ExtractTextPlugin.extract(
+    { fallbackLoader: 'style-loader',
+      loader: 'css-loader?' +
+      'modules&sourceMap&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]&sourceMap?' +
+      'postcss?' +
+      'sass?' +
+      'sourceMap?',
+    }
+  )
+};
+const scssLoader = DEVELOPMENT ? devLoaders : prodLoader;
 
 // Webpack configuration
 log('Creating webpack configuration...');
@@ -27,6 +60,13 @@ const webpackconfig = {
   resolve: {
     root: config.paths.app,
     extensions: ['', '.js', '.jsx'],
+    alias: {
+      react: path.join(__dirname, 'node_modules', 'react'),
+    },
+  },
+
+  resolveLoader: {
+    fallback: path.join(__dirname, 'node_modules'),
   },
 
   entry: {
@@ -35,7 +75,7 @@ const webpackconfig = {
   },
 
   output: {
-    filename: `[name].[${config.compiler.hash_type}].js`,
+    filename: `[name].[${ config.compiler.hash_type }].js`,
     path: config.paths.dist,
     publicPath: config.webpack.output.publicPath,
   },
@@ -73,25 +113,13 @@ const webpackconfig = {
         test: /\.json$/,
         loader: 'json',
       },
-      // Any .scss file in ./src/... *except* those in ./src/styles/
-      // are local css modules. the class names and ids will be changed to:
-      // [name]-[local]-[hash:base64:5]
-      {
-        test: /\.scss$/,
-        include: /src\/(?!styles).+/,
-        loaders: [
-          'style',
-          'css?modules&sourceMap&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]',
-          'postcss',
-          'sass',
-        ],
-      },
-      // Any .scss files in ./src/styles are treated as normal (not local)
-      // sass files, and so class names and ids will remain as specified
+      scssLoader,
+      /* Any .scss files in ./src/styles are treated as normal (not local)
+       * sass files, and so class names and ids will remain as specified */
       {
         test: /\.scss$/,
         include: /src\/styles/,
-        loader: 'style!css?sourceMap!postcss!sass',
+        loader: 'style!css!postcss!sass',
       },
       // File loaders
       /* eslint-disable */
@@ -138,26 +166,30 @@ if (!TESTING) {
 if (DEVELOPMENT) {
   log('Extending webpack configuration with development settings.');
 
-  log('Adding HMR entry points');
-  webpackconfig.entry.app.push('webpack-hot-middleware/client');
+  log('Adding HMR entry points.');
+  webpackconfig.entry.app.unshift(
+    'webpack-hot-middleware/client',
+    'react-hot-loader/patch'
+  );
 
-  log('Enable development plugins (HMR, NoErrors)');
+  log('Enable development plugins (HMR, NoErrors).');
   webpackconfig.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   );
 }
 
-
 if (PRODUCTION) {
   log('Extending webpack configuration with production settings.');
 
-  log('Add uglify and dedupe plugins');
+  log('Add uglify and dedupe plugins.');
   webpackconfig.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         unused: true,
         dead_code: true,
+        warnings: false,
       },
     }),
     new webpack.optimize.DedupePlugin()
@@ -175,9 +207,7 @@ if (PRODUCTION) {
     /* eslint-enable */
   });
   webpackconfig.plugins.push(
-    new ExtractTextPlugin('[name].[contenthash].css', {
-      allChunks: true,
-    })
+    new ExtractTextPlugin('[name].[contenthash].css')
   );
 }
 

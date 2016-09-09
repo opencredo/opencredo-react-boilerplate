@@ -6,6 +6,10 @@ export const messages = {
     },
   },
   email: {
+    label: {
+      id: 'profile.form.email.label',
+      defaultMessage: 'Email',
+    },
     placeholder: {
       id: 'profile.form.email.placeholder',
       defaultMessage: 'email',
@@ -14,7 +18,11 @@ export const messages = {
   emailVerified: {
     label: {
       id: 'profile.form.emailVerified.label',
-      defaultMessage: 'email verified?',
+      defaultMessage: 'Status',
+    },
+    placeholder: {
+      id: 'profile.form.emailVerified.placeholder',
+      defaultMessage: 'verified',
     },
   },
   familyName: {
@@ -24,6 +32,10 @@ export const messages = {
     },
   },
   gender: {
+    label: {
+      id: 'profile.form.gender.label',
+      defaultMessage: 'Gender',
+    },
     male: {
       label: {
         id: 'profile.form.gender.male.label',

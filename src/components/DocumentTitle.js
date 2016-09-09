@@ -11,6 +11,7 @@ type DocumentTitleProps = {
 };
 
 class DocumentTitle extends Component {
+  static displayName = 'DocumentTitle';
   static propTypes = {
     title: PropTypes.object.isRequired,
     children: PropTypes.element.isRequired,
@@ -30,7 +31,7 @@ class DocumentTitle extends Component {
     document.title = props.intl.formatMessage(props.title);
   }
 
-  render(): React.Element {
+  render(): React.Element<any> {
     return (
       <div>
         {this.props.children}

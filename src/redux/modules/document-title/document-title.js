@@ -1,6 +1,6 @@
 /* @flow */
-import type { FormattedMessageType } from 'declarations/i18n-types';
-import config from 'app-config';
+import type { FormattedMessageType } from '../../../declarations/i18n-types';
+import config from '../../../app-config';
 
 const UPDATE_DOCUMENT_TITLE = '@@document-title/UPDATE';
 const RESET_DOCUMENT_TITLE = '@@document-title/RESET';
@@ -36,10 +36,10 @@ export function documentTitleReducer(
   state: FormattedMessageType = initialState,
   action: DocumentTitleAction): FormattedMessageType {
   switch (action.type) {
-    case RESET_DOCUMENT_TITLE:
-    case UPDATE_DOCUMENT_TITLE:
-      return action.documentTitle;
-    default:
-      return state;
+  case RESET_DOCUMENT_TITLE:
+  case UPDATE_DOCUMENT_TITLE:
+    return action.documentTitle;
+  default:
+    return state;
   }
 }

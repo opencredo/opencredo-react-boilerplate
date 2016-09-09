@@ -1,33 +1,34 @@
+/* eslint global-require: 0 */
+import { createStore, applyMiddleware, compose } from 'redux';
+import { persistState } from 'redux-devtools';
+import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './root-reducer';
-import { applyMiddleware, compose, createStore } from 'redux';
-import { syncHistory } from 'react-router-redux';
+import DevTools from '../containers/DevTools';
+// import createLogger from 'redux-logger';
 
-function withDevTools(middleware) {
-  const devTools = window.devToolsExtension
-    ? window.devToolsExtension()
-    : require('../containers/DevTools').instrument();
-  return compose(middleware, devTools);
-}
-
-export default function configureStore(initialState, browserHistory) {
-  const routerMiddleware = syncHistory(browserHistory);
-
-  let middleware = applyMiddleware(thunk, routerMiddleware);
+export default function configureStore(initialState, history) {
+  // Installs hooks that always keep react-router and redux store in sync
+  const middleware = [thunk, routerMiddleware(history)];
+  let store;
 
   if (__DEBUG__) {
-    // use devtools in debug environment
-    middleware = withDevTools(middleware);
-  }
-
-  const store = middleware(createStore)(rootReducer, initialState);
-
-  if (__DEBUG__) {
-    // listen for route replays (devtools)
-    routerMiddleware.listenForReplays(store);
+    // middleware.push(createLogger());
+    store = createStore(rootReducer, initialState, compose(
+      applyMiddleware(...middleware),
+      DevTools.instrument(),
+      persistState(
+        window.location.href.match(
+          /[?&]debug_session=([^&#]+)\b/
+        )
+      )
+    ));
+  } else {
+    store = createStore(rootReducer, initialState, compose(applyMiddleware(...middleware), f => f));
   }
 
   if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
     module.hot.accept('./root-reducer', () => {
       const nextRootReducer = require('./root-reducer').default;
       store.replaceReducer(nextRootReducer);

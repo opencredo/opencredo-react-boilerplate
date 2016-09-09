@@ -30,17 +30,17 @@ app.use(webpackDevMiddleware(compiler, {
 log('Enabling Webpack Hot Module Replacement (HMR).');
 app.use(webpackHotMiddleware(compiler));
 
-log(`Serving static content from ${config.paths.static}`);
+log(`Serving static content from ${ config.paths.static }`);
 app.use(express.static(config.paths.static));
 
 const port = yargs.argv.port || config.server.port;
 app.listen(port, config.server.hostname, () => {
-  log(`Server is now running at http://${config.server.hostname}:${port}.`);
+  log(`Server is now running at http://${ config.server.hostname }:${ port }.`);
 });
 
 if (yargs.argv.withBrowsersync) {
   browserSync.init({
-    proxy: `${config.server.hostname}:${port}`,
+    proxy: `${ config.server.hostname }:${ port }`,
     port: 4000,
     ui: {
       port: 4040,

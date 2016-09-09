@@ -1,3 +1,4 @@
+/* eslint global-require: 0 */
 const path = require('path');
 const merge = require('lodash/merge');
 
@@ -58,5 +59,5 @@ const config = {
 if (NODE_ENV === 'test') {
   module.exports = config;
 } else {
-  module.exports = merge({}, config, require(`./environments/${NODE_ENV}`));
+  module.exports = merge({}, config, require(`./environments/${ NODE_ENV }`));
 }

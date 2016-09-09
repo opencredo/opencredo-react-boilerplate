@@ -1,8 +1,8 @@
+/* eslint no-undefined: 0 */
 /* @flow */
+import type { User } from '../../../declarations/app';
 
-import type { User } from 'declarations/app';
-
-import { updateProfile } from 'api/user';
+import { updateProfile } from '../../../api/user';
 import { showSpinner, hideSpinner } from '../spinner/spinner';
 
 export const SET_USER = '@@user/SET_USER';
@@ -58,7 +58,7 @@ export const setUser = (user: ?User): UserAction => {
   };
 };
 
-export const clearUser = ():UserAction => {
+export const clearUser = (): UserAction => {
   persistUser(null);
 
   return {

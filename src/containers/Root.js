@@ -1,9 +1,10 @@
+/* eslint global-require: 0 */
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
 export default class Root extends React.Component {
-
+  static displayName = 'Root';
   static propTypes = {
     history: PropTypes.object.isRequired,
     store: PropTypes.object.isRequired,
@@ -24,12 +25,12 @@ export default class Root extends React.Component {
   }
 
   render() {
+    const { history, store, routes } = this.props;
+
     return (
-      <Provider store={this.props.store}>
-        <div style={{ height: '100%' }}>
-          <Router history={this.props.history}>
-            {this.props.routes}
-          </Router>
+      <Provider store={ store }>
+        <div style={ { height: '100%' } }>
+          <Router history={ history } routes={ routes } />
           {this.devTools}
         </div>
       </Provider>

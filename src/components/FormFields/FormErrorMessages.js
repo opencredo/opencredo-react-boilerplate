@@ -2,34 +2,36 @@
 import React, { PropTypes, Element } from 'react';
 import { FormattedMessage } from 'react-intl';
 import FormMessages from 'redux-form-validation';
-import { messages } from 'shared/forms';
+import { messages } from '../../shared/forms';
 
-const FormErrorMessages = (props: Object): Element => (
+const FormErrorMessages = (props: Object): Element<any> => (
   <FormMessages
     tagName="span"
-    errorCount={1}
-    field={props.field}
+    errorCount={ 1 }
+    field={ props.field }
   >
     <span when="required" className="help-block">
-      <FormattedMessage {...messages.error.required} />
+      <FormattedMessage { ...messages.error.required } />
     </span>
     <span when="email" className="help-block">
-      <FormattedMessage {...messages.error.email} />
+      <FormattedMessage { ...messages.error.email } />
     </span>
     <span when="min" className="help-block">
-      <FormattedMessage values={{ min: props.min }} {...messages.error.min} />
+      <FormattedMessage values={ { min: props.min } } { ...messages.error.min } />
     </span>
     <span when="max" className="help-block">
-      <FormattedMessage values={{ max: props.max }} {...messages.error.max} />
+      <FormattedMessage values={ { max: props.max } } { ...messages.error.max } />
     </span>
     <span when="minLength" className="help-block">
-      <FormattedMessage values={{ minLength: props.minLength }} {...messages.error.minLength} />
+      <FormattedMessage values={ { minLength: props.minLength } } { ...messages.error.minLength } />
     </span>
     <span when="maxLength" className="help-block">
-      <FormattedMessage values={{ maxLength: props.maxLength }} {...messages.error.maxLength} />
+      <FormattedMessage values={ { maxLength: props.maxLength } } { ...messages.error.maxLength } />
     </span>
   </FormMessages>
 );
+
+FormErrorMessages.displayName = 'FormErrorMessages';
 
 FormErrorMessages.propTypes = {
   field: PropTypes.object.isRequired,

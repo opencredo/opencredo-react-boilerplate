@@ -10,6 +10,7 @@ const requireAuthentication = (ComposedComponent) => {
   });
 
   class AuthenticatedComponent extends Component {
+    static displayName = 'AuthenticatedComponent';
     static propTypes = {
       dispatch: PropTypes.func.isRequired,
       isAuthenticated: PropTypes.bool.isRequired,
@@ -42,8 +43,8 @@ const requireAuthentication = (ComposedComponent) => {
       });
 
       return (
-        <div className={wrapperClass}>
-          { isAuthenticated ? <ComposedComponent {...this.props} /> : null }
+        <div className={ wrapperClass }>
+          { isAuthenticated ? <ComposedComponent { ...this.props } /> : null }
         </div>
       );
     }
