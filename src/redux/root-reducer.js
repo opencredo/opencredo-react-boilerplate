@@ -6,12 +6,14 @@ import { languageReducer as language } from './modules/language/language';
 import { reducer as form } from 'redux-form';
 import user from './modules/user/user-reducer';
 import auth from './modules/auth/auth-reducer';
+import { themeReducer as theme } from './modules/theme/theme';
 
 export default combineReducers({
   auth,
   spinner,
   user,
   language,
+  theme,
   routing,
   documentTitle,
   form,
