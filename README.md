@@ -1,5 +1,8 @@
 # opencredo-react-boilerplate
 
+> [!NOTE]
+> This repo has been archived and is no longer under development. OpenCredo is now part of [Trifork](https://github.com/trifork).
+
 [![Build Status](https://travis-ci.org/opencredo/opencredo-react-boilerplate.svg?branch=master)](https://travis-ci.org/opencredo/opencredo-react-boilerplate)
 [![Dependency Status](https://david-dm.org/opencredo/opencredo-react-boilerplate.svg)](https://david-dm.org/opencredo/opencredo-react-boilerplate)
 [![devDependency Status](https://david-dm.org/opencredo/opencredo-react-boilerplate/dev-status.svg)](https://david-dm.org/opencredo/opencredo-react-boilerplate#info=devDependencies)
